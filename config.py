@@ -72,10 +72,28 @@ bilder={"startscreen" : pygame.transform.scale(startscreen_original, (homeWidth,
 
 maxWertTile=2048
 r_siz=50
-s = pygame.Surface((50,50))  # the size of your rect
-s.set_alpha(128)                # alpha level
-s.fill((255,255,255))           # this fills the entire surface
-clck_pos_lvl_1 = (4*r_siz+5,5)
+
+clck_pos_lvl_1 = (pygame.Rect(5,4*r_siz+5,r_siz,r_siz),"Level1")
+clck_pos_lvl_2 = (pygame.Rect(5,4*r_siz+5,r_siz,r_siz),"Level2")
+clck_pos_lvl_3 = (pygame.Rect(5,4*r_siz+5,r_siz,r_siz),"Level3")
+clck_pos_lvl_4 = (pygame.Rect(5,4*r_siz+5,r_siz,r_siz),"Level4")
+clck_pos_lvl_5 = (pygame.Rect(5,4*r_siz+5,r_siz,r_siz),"Level5")
+clck_pos_lvl_6 = (pygame.Rect(5,4*r_siz+5,r_siz,r_siz),"Level6")
+clck_pos_lvl_7 = (pygame.Rect(5,4*r_siz+5,r_siz,r_siz),"Level7")
+clck_pos_lvl_8 = (pygame.Rect(5,4*r_siz+5,r_siz,r_siz),"Level8")
+clck_pos_lvl_9 = (pygame.Rect(5,4*r_siz+5,r_siz,r_siz),"Level9")
+clck_pos_lvl_10 = (pygame.Rect(5,4*r_siz+5,r_siz,r_siz),"Level10")
+clck_pos_lvl_11 = (pygame.Rect(5,4*r_siz+5,r_siz,r_siz),"Level11")
+clck_pos_lvl_12 = (pygame.Rect(5,4*r_siz+5,r_siz,r_siz),"Level12")
+clck_pos_lvl_13 = (pygame.Rect(5,4*r_siz+5,r_siz,r_siz),"Level13")
+clck_pos_lvl_14 = (pygame.Rect(5,4*r_siz+5,r_siz,r_siz),"Level14")
+clck_pos_lvl_15 = (pygame.Rect(5,4*r_siz+5,r_siz,r_siz),"Level15")
+clck_pos_lvl_16 = (pygame.Rect(5,4*r_siz+5,r_siz,r_siz),"Level16")
+clck_pos_lvl_17 = (pygame.Rect(5,4*r_siz+5,r_siz,r_siz),"Level17")
+clck_pos_lvl_18 = (pygame.Rect(5,4*r_siz+5,r_siz,r_siz),"Level18")
+clck_pos_lvl_19 = (pygame.Rect(5,4*r_siz+5,r_siz,r_siz),"Level19")
+clck_pos_lvl_20 = (pygame.Rect(5,4*r_siz+5,r_siz,r_siz),"Level20")
+
 lvls1=[clck_pos_lvl_1]
 
 lvls2=[]

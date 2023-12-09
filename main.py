@@ -1,10 +1,10 @@
 import pygame
 from config import *
 from logic import *
-
+i=1
 
 def inputLoop():
-  global board, direction, status, running,lvls1
+  global board, direction, status, running,lvls1,lvls2,i
   # Abfrage von Events (Tastendruck / Mausklick)
   for event in pygame.event.get():
     if event.type == pygame.KEYDOWN:
@@ -49,12 +49,15 @@ def inputLoop():
       pygame.quit()
       quit()
 
-    #if event.type == pygame.MOUSEBUTTONDOWN:
-    #  if event.button == 1:  # Left mouse button.
-    #    # Check if the rect collides with the mouse pos.
-    #    for area in lvls1:
-    #      if area.collidepoint(event.pos):
-    #        print(str(area)+" clicked")
+    if event.type == pygame.MOUSEBUTTONDOWN:
+      if event.button == 1:  # Left mouse button.
+        # Check if the rect collides with the mouse pos.
+        for area in lvls1:
+          if area[0].collidepoint(event.pos):
+            print(area[1])
+            print(area[1][-1])
+            print(i)
+            i+=1
 
 
 def logicLoop():
