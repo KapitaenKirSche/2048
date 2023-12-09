@@ -1,0 +1,6 @@
+.DS_Store
+__pycache__
+replit_zip_error_log.txt
+.replit
+.pythonlibs/
+.cache/
