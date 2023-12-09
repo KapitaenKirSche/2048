@@ -90,9 +90,7 @@ def logicLoop():
 
     direction = -1
 
-'''
-Comment 3
-'''
+
 
 
 def drawLoop():
