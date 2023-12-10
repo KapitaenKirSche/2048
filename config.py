@@ -71,32 +71,32 @@ bilder={"startscreen" : pygame.transform.scale(startscreen_original, (homeWidth,
 
 
 maxWertTile=2048
-r_siz=48
 
 
+r_siz=49
 
-clck_pos_lvl_11 = (pygame.Rect(5,4*r_siz+5,r_siz,r_siz),"Level11")
-clck_pos_lvl_12 = (pygame.Rect(5,4*r_siz+5,r_siz,r_siz),"Level12")
-clck_pos_lvl_13 = (pygame.Rect(5,4*r_siz+5,r_siz,r_siz),"Level13")
-clck_pos_lvl_14 = (pygame.Rect(5,4*r_siz+5,r_siz,r_siz),"Level14")
-clck_pos_lvl_15 = (pygame.Rect(5,4*r_siz+5,r_siz,r_siz),"Level15")
-clck_pos_lvl_16 = (pygame.Rect(5,4*r_siz+5,r_siz,r_siz),"Level16")
-clck_pos_lvl_17 = (pygame.Rect(5,4*r_siz+5,r_siz,r_siz),"Level17")
-clck_pos_lvl_18 = (pygame.Rect(5,4*r_siz+5,r_siz,r_siz),"Level18")
-clck_pos_lvl_19 = (pygame.Rect(5,4*r_siz+5,r_siz,r_siz),"Level19")
-clck_pos_lvl_20 = (pygame.Rect(5,4*r_siz+5,r_siz,r_siz),"Level20")
-
-lvls1=[ (pygame.Rect(0*r_siz+5,4*r_siz+5,r_siz,r_siz),"Level1"),
-        (pygame.Rect(2*r_siz+5,3*r_siz+5,r_siz,r_siz),"Level2"),
-        (pygame.Rect(4*r_siz+5,5*r_siz+5,r_siz,r_siz),"Level3"),
-        (pygame.Rect(6*r_siz+5,5*r_siz+5,r_siz,r_siz),"Level4"),
-        (pygame.Rect(8*r_siz+5,4*r_siz+5,r_siz,r_siz),"Level5"),
-        (pygame.Rect(7*r_siz+5,2*r_siz+5,r_siz,r_siz),"Level6"),
-
-        (pygame.Rect(5*r_siz + 5, 1 * r_siz + 5, r_siz, r_siz), "Level7"),
-        (pygame.Rect(2*r_siz + 5, 3 * r_siz + 5, r_siz, r_siz), "Level8"),
-        (pygame.Rect(2*r_siz + 5, 3 * r_siz + 5, r_siz, r_siz), "Level9"),
-        (pygame.Rect(2*r_siz + 5, 3 * r_siz + 5, r_siz, r_siz), "Level10")
+clickpos_levelselect1=[
+        (pygame.Rect(0  * r_siz + 5, 4 * r_siz + 5, r_siz, r_siz), "Level1"),
+        (pygame.Rect(2  * r_siz + 5, 3 * r_siz + 5, r_siz, r_siz), "Level2"),
+        (pygame.Rect(4  * r_siz + 5, 5 * r_siz + 5, r_siz, r_siz), "Level3"),
+        (pygame.Rect(6  * r_siz + 5, 5 * r_siz + 5, r_siz, r_siz), "Level4"),
+        (pygame.Rect(8  * r_siz + 5, 4 * r_siz + 5, r_siz, r_siz), "Level5"),
+        (pygame.Rect(7  * r_siz + 5, 2 * r_siz + 5, r_siz, r_siz), "Level6"),
+        (pygame.Rect(5  * r_siz + 5, 1 * r_siz + 5, r_siz, r_siz), "Level7"),
+        (pygame.Rect(7  * r_siz + 5, 0 * r_siz + 5, r_siz, r_siz), "Level8"),
+        (pygame.Rect(10 * r_siz + 5, 0 * r_siz + 5, r_siz, r_siz), "Level9"),
+        (pygame.Rect(11 * r_siz + 5, 2 * r_siz + 5, r_siz, r_siz), "Level10"),
+        (pygame.Rect(11 * r_siz + 5, 4 * r_siz + 5, r_siz, r_siz), "Level11"),
+        (pygame.Rect(11 * r_siz + 5, 6 * r_siz + 5, r_siz, r_siz), "Level12"),
+        (pygame.Rect(8  * r_siz + 5, 7 * r_siz + 5, r_siz, r_siz), "Level13"),
+        (pygame.Rect(5  * r_siz + 5, 7 * r_siz + 5, r_siz, r_siz), "Level14"),
+        (pygame.Rect(3  * r_siz + 5, 9 * r_siz + 5, r_siz, r_siz), "Level15"),
+        (pygame.Rect(6  * r_siz + 5, 10* r_siz + 5, r_siz, r_siz), "Level16"),
+        (pygame.Rect(9  * r_siz + 5, 9 * r_siz + 5, r_siz, r_siz), "Level17"),
+        (pygame.Rect(11 * r_siz + 5, 9 * r_siz + 5, r_siz, r_siz), "Level18"),
+        (pygame.Rect(13 * r_siz + 5, 10* r_siz + 5, r_siz, r_siz), "Level19"),
+        (pygame.Rect(13 * r_siz + 5, 7 * r_siz + 5, r_siz, r_siz), "Level20"),
+        (pygame.Rect(14 * r_siz + 3, 10* r_siz + 4, r_siz, r_siz), "Levelselect2"),
         ]
 
 lvls2=[]

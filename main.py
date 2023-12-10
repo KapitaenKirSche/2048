@@ -1,10 +1,9 @@
 import pygame
 from config import *
 from logic import *
-i=1
 
 def inputLoop():
-  global board, direction, status, running,lvls1,lvls2,i
+  global board, direction, status, running,clickpos_levelselect1
   # Abfrage von Events (Tastendruck / Mausklick)
   for event in pygame.event.get():
     if event.type == pygame.KEYDOWN:
@@ -28,12 +27,12 @@ def inputLoop():
       elif status=="overworld1":
         if event.key == pygame.K_RIGHT:
           status="overworld2"
-      elif status=="overworld2":
+      elif status == "overworld2":
         if event.key == pygame.K_LEFT:
           status = "overworld1"
-        #if event.key == pygame.K_RIGHT:
+        # if event.key == pygame.K_RIGHT:
         #  status="overworld3"
-      elif status=="overworld3":
+      elif status == "overworld3":
         pass
 
       if event.key == pygame.K_ESCAPE:
@@ -42,22 +41,25 @@ def inputLoop():
       if event.key == pygame.K_SPACE:
         #print("space")
         pass
+      if event.type == pygame.QUIT:
+        pygame.quit()
+        quit()
 
+    if status == "overworld1":
       if event.type == pygame.MOUSEBUTTONDOWN:
-        pass
-    if event.type == pygame.QUIT:
-      pygame.quit()
-      quit()
+        if event.button == 1:  # Left mouse button.
 
-    if event.type == pygame.MOUSEBUTTONDOWN:
-      if event.button == 1:  # Left mouse button.
-        # Check if the rect collides with the mouse pos.
-        for area in lvls1:
-          if area[0].collidepoint(event.pos):
-            print(area[1])
-            print(area[1][-1])
-            print(i)
-            i+=1
+          for area in clickpos_levelselect1:
+            if area[0].collidepoint(event.pos):
+
+              if area[1] == "Levelselect2":
+                status = "overworld2"
+              elif "Level" in area[1]:
+                status = str(area[1]).lower() + "Init"
+
+
+
+
 
 
 def logicLoop():
@@ -100,7 +102,7 @@ def drawLoop():
   '''
   Die Funktion drawLoop ist die Zeichnungsschleife des Spiels.
   '''
-  global board, changed, status, window, overworldWidth, overworldHeight, lvls1, lvls2
+  global board, changed, status, window, overworldWidth, overworldHeight, clickpos_levelselect1
   if status == "homeInit":
     window = pygame.display.set_mode((homeWidth, homeHeight))
     pygame.display.set_caption('Battlemerge-A 2048 Game')
@@ -113,9 +115,9 @@ def drawLoop():
     window = pygame.display.set_mode((overworldWidth, overworldHeight))
     status="overworld1"
   elif status == "overworld1":
-    drawOverworld(window,1,lvls1)
+    drawOverworld(window,1)
   elif status == "overworld2":
-    drawOverworld(window,2, lvls2)
+    drawOverworld(window,2)
   elif status == "gameInit":
     window = pygame.display.set_mode((xmax, ymax))
     status = "inGame"

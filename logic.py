@@ -276,10 +276,8 @@ def drawUIHome(fenster, colors=config.colors):
   '''
   fenster.blit(config.bilder["startscreen"], (0, 0))
 
-def drawOverworld(fenster,site,areas):
+def drawOverworld(fenster,site):
   fenster.blit(config.bilder["overworld"+str(site)], (0, 0))
-  #for i in areas:
-    #pygame.blit(s,i)
 
 
 
