@@ -100,3 +100,11 @@ clickpos_levelselect1=[
         ]
 
 lvls2=[]
+
+
+
+board_level1=[[0,2,0],
+              [0,0,0],
+              [0,0,4]
+              ]
+

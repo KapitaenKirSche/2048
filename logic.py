@@ -328,3 +328,7 @@ def setup_tiles(width, heigth, tile_list=config.tile_list, colors=config.colors,
     tiles[tile]=tile_surf
 
   return tiles
+
+
+def initLevel(board,max_score=-1,max_tile=-1):
+  config.board=board
