@@ -2,7 +2,9 @@ import pygame
 import config as cfg
 from logic import *
 
+
 def inputLoop():
+  #global board, direction, status, running, clickpos_levelselect1
   # Abfrage von Events (Tastendruck / Mausklick)
   for event in pygame.event.get():
     if event.type == pygame.KEYDOWN:
@@ -21,11 +23,11 @@ def inputLoop():
       elif cfg.status == "home":
         cfg.status = "overworldinit"
 
-      elif cfg.status=="overworldinit":
+      elif cfg.status == "overworldinit":
         pass
-      elif cfg.status=="overworld1":
+      elif cfg.status == "overworld1":
         if event.key == pygame.K_RIGHT:
-          cfg.status="overworld2"
+          cfg.status = "overworld2"
       elif cfg.status == "overworld2":
         if event.key == pygame.K_LEFT:
           cfg.status = "overworld1"
@@ -57,31 +59,30 @@ def inputLoop():
                 cfg.status = str(area[1]).lower() + "Init"
 
 
-
-
-
-
 def logicLoop():
   '''
   Die Funktion logicLoop ist die Logikschleife des Spiels.
   '''
+  #global board, direction, changed, status, width, length, tile_surfaces, boards
 
   if cfg.status == "homeInit":
     pass
   elif cfg.status == "overworldinit":
     pass
-  elif cfg.status == "overworld1":#in Levelselect Seite 1
+  elif cfg.status == "overworld1":  #in Levelselect Seite 1
     pass
-  elif cfg.status == "overworld2":#in Levelselect Seite2
+  elif cfg.status == "overworld2":  #in Levelselect Seite2
     pass
 
+  elif cfg.status == "level1Init":
+    initLevel(cfg.boards.get("level1"))
 
-  elif cfg.status =="level1Init":
-    initLevel(cfg.board)
+    print(cfg.board)
+    print(cfg.width)
+
   elif cfg.status == "gameInit":  #Erstes mal im Spiel
-    cfg.board = initGame(cfg.width, cfg.length, 2)
-    cfg.tile_surfaces=setup_tiles(cfg.size,cfg.size)
-
+    #board = buildBoard(width, length, 2)
+    cfg.tile_surfaces = setup_tiles(cfg.size, cfg.size)
 
   elif cfg.status == "inGame":  #aktuell im Spiel
     if bewegung_moeglich_generell(cfg.board) == False:
@@ -97,12 +98,11 @@ def logicLoop():
     cfg.direction = -1
 
 
-
-
 def drawLoop():
   '''
   Die Funktion drawLoop ist die Zeichnungsschleife des Spiels.
   '''
+  #global board, changed, status, window, overworldWidth, overworldHeight, clickpos_levelselect1
   global window
   if cfg.status == "homeInit":
     window = pygame.display.set_mode((cfg.homeWidth, cfg.homeHeight))
@@ -114,22 +114,26 @@ def drawLoop():
     pass
   elif cfg.status == "overworldinit":
     window = pygame.display.set_mode((cfg.overworldWidth, cfg.overworldHeight))
-    cfg.status="overworld1"
+    cfg.status = "overworld1"
   elif cfg.status == "overworld1":
-    drawOverworld(window,1)
+    drawOverworld(window, 1)
   elif cfg.status == "overworld2":
-    drawOverworld(window,2)
+    drawOverworld(window, 2)
+
+  elif cfg.status == "level1Init":
+    cfg.status = "gameInit"
+
   elif cfg.status == "gameInit":
     window = pygame.display.set_mode((cfg.xmax, cfg.ymax))
-    status = "inGame"
+    cfg.status = "inGame"
   elif cfg.status == "inGame":
     if cfg.changed:
-      #konsolenAusgabe(cfg.board)
+      konsolenAusgabe(cfg.board)
       cfg.changed = False
 
       #Zeichnet das Spiel
       drawUIingame(cfg.score, cfg.highscore, window)
-      drawBoard(cfg.board, window,tile_surfs=cfg.tile_surfaces)
+      drawBoard(cfg.board, window, tile_surfs=cfg.tile_surfaces)
 
   pygame.display.flip()
 

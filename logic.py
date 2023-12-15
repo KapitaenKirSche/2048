@@ -2,6 +2,7 @@
 import random
 import config
 import pygame
+import copy
 
 #Bewegen-------------------------------------------------------------------------------------
 #Nimmt ein Spielfeld als Eingabe und gibt ein Spielfeld zurück, bei dem alle Felder soweit wie möglich in die richtige Richtung bewegt sind.
@@ -13,7 +14,7 @@ def move(board, dir, maxim=-1):
   Input: board(Matrix, Spielfeld)
          dir(int, Richtung: 0-oben;1-rechts;2-unten;3-links)
          maxim(int, maximale Bewegungen der Felder)
-  führt die Bewegun aus. 
+  führt die Bewegun aus.
   Output: board(Matrix, Spielfeld)
   '''
   if dir == 0:
@@ -237,13 +238,11 @@ def buildBoard(x, y, anzahlnewrand=0):
   return board
 
 
-def initGame(x, y, anzahlnewrand):
-
-  return buildBoard(x, y, anzahlnewrand)
-
-
 #Zeichnen---------------------------------------------------------
-def drawBoard(board, fenster, colors=config.colors,tile_surfs=config.tile_surfaces):
+def drawBoard(board,
+              fenster,
+              colors=config.colors,
+              tile_surfs=config.tile_surfaces):
   '''
   input: board(matrix, das Spielfeld), fenster(pygame window, in welchem fenster das Spielfeld gemalt werden soll)
 
@@ -258,7 +257,6 @@ def drawBoard(board, fenster, colors=config.colors,tile_surfs=config.tile_surfac
       rectx = config.size_in_between * x + config.size * (x - 1)
       recty = config.size_in_between * y + config.size * (y - 1)
       fenster.blit(tile_surfs[tile], (rectx, recty))
-
 
 
 def drawUIingame(score, highscore, fenster, colors=config.colors):
@@ -276,9 +274,9 @@ def drawUIHome(fenster, colors=config.colors):
   '''
   fenster.blit(config.bilder["startscreen"], (0, 0))
 
-def drawOverworld(fenster,site):
-  fenster.blit(config.bilder["overworld"+str(site)], (0, 0))
 
+def drawOverworld(fenster, site):
+  fenster.blit(config.bilder["overworld" + str(site)], (0, 0))
 
 
 def konsolenAusgabe(board):
@@ -288,7 +286,12 @@ def konsolenAusgabe(board):
 
 
 #-------------------------------
-def draw_text_in_box(surface, text, font="Arial", color1=(0, 0, 0),color2=(255,255,255),fact=0.85):
+def draw_text_in_box(surface,
+                     text,
+                     font="Arial",
+                     color1=(0, 0, 0),
+                     color2=(255, 255, 255),
+                     fact=0.85):
   """
   Draws text in a box on the given surface.
   Make sure never exeeding the box's dimensions.
@@ -299,36 +302,49 @@ def draw_text_in_box(surface, text, font="Arial", color1=(0, 0, 0),color2=(255,2
   text_to_draw = my_font.render(str(text), True, color1)
   text_width = text_to_draw.get_width()
   text_height = text_to_draw.get_height()
-  while text_width < surface.get_width()*fact and text_height < surface.get_height()*fact:
+  while text_width < surface.get_width(
+  ) * fact and text_height < surface.get_height() * fact:
     fontsize += 1
     my_font = pygame.font.SysFont(font, fontsize)
     text_to_draw = my_font.render(str(text), True, color1)
     text_width = text_to_draw.get_width()
     text_height = text_to_draw.get_height()
   my_font = pygame.font.SysFont(font, fontsize - 1)
-  if int(text) <=4:
-    color=color1
+  if int(text) <= 4:
+    color = color1
   else:
-    color=color2
+    color = color2
   text_to_draw = my_font.render(str(text), True, color)
   text_width = text_to_draw.get_width()
   text_height = text_to_draw.get_height()
   surfheight = surface.get_height()
   surfwidth = surface.get_width()
-  if text !=0:
-    surface.blit(text_to_draw, (surfwidth / 2 - text_width / 2, (surfheight / 2 - text_height / 2)+3))
+  if text != 0:
+    surface.blit(text_to_draw, (surfwidth / 2 - text_width / 2,
+                                (surfheight / 2 - text_height / 2) + 3))
 
 
-def setup_tiles(width, heigth, tile_list=config.tile_list, colors=config.colors, font="assets/fonts/ClearSans-Bold.ttf",font_color=(255,255,255)):
+def setup_tiles(width,
+                heigth,
+                tile_list=config.tile_list,
+                colors=config.colors,
+                font="assets/fonts/ClearSans-Bold.ttf",
+                font_color=(255, 255, 255)):
   tiles = {}
   for tile in tile_list:
     tile_surf = pygame.Surface((width, heigth))
     tile_surf.fill(colors.get(tile))
     draw_text_in_box(tile_surf, tile, font)
-    tiles[tile]=tile_surf
+    tiles[tile] = tile_surf
 
   return tiles
 
 
-def initLevel(board,max_score=-1,max_tile=-1):
-  config.board=board
+def initLevel(board):
+  config.board = copy.deepcopy(board)
+  config.width = len(board[0])
+  config.length = len(board)
+  config.xmax = config.width * config.size + config.xextra + config.size_in_between * (
+      config.width + 1)
+  config.ymax = config.length * config.size + config.yextra + config.size_in_between * (
+      config.length + 1)
