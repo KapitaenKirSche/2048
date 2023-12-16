@@ -295,6 +295,15 @@ def drawUIingame(score, fenster, colors=config.colors):
   '''
   fenster.fill(colors.get("bg"))
 
+  draw_text_in_box(config.score_txt_box,"Score")
+  draw_text_in_box(config.score_box,config.score)
+  draw_text_in_box(config.level_info_box,"Level "+str(config.status[-1]))
+  draw_text_in_box(config.level_goal_box,"Hier steht ein langer Text.")
+
+  fenster.blit(config.score_txt_box,config.score_txt_pos)
+  fenster.blit(config.score_box, config.score_pos)
+  fenster.blit(config.level_info_box, config.level_info_pos)
+  fenster.blit(config.level_goal_box, config.level_goal_pos)
 
 
 
@@ -335,24 +344,29 @@ def setup_tiles(width,
   return tiles
 
 def setup_surfaces_ui():
+  color=0
   config.score_txt_box = pygame.Surface((config.size, config.size // 2))
+  config.score_txt_box.fill(config.colors.get(color))
   config.score_txt_pos = (config.size_in_between,config.size_in_between)
 
+
   config.score_box = pygame.Surface((config.size, config.size))
+  config.score_box.fill(config.colors.get(color))
   config.score_pos = (config.size_in_between, config.size_in_between*2+config.size // 2)
 
   config.level_info_box = pygame.Surface((3*config.size+2*config.size_in_between, config.size//2))
+  config.level_info_box.fill(config.colors.get(color))
   config.level_info_pos = (2*config.size_in_between+config.size, config.size_in_between)
 
   config.level_goal_box = pygame.Surface((3 * config.size + 2 * config.size_in_between, config.size))
+  config.level_goal_box.fill(config.colors.get(color))
   config.level_goal_pos = (2 * config.size_in_between + config.size, config.size_in_between*2+config.size // 2)
 
 
 def draw_text_in_box(surface,
                      text,
                      font="Arial",
-                     color1=(0, 0, 0),
-                     color2=(255, 255, 255),
+                     color=(0, 0, 0),
                      fact=0.85):
   """
   Draws text in a box on the given surface.
@@ -361,21 +375,18 @@ def draw_text_in_box(surface,
   """
   fontsize = 0
   my_font = pygame.font.SysFont(font, fontsize)
-  text_to_draw = my_font.render(str(text), True, color1)
+  text_to_draw = my_font.render(str(text), True, color)
   text_width = text_to_draw.get_width()
   text_height = text_to_draw.get_height()
   while text_width < surface.get_width(
   ) * fact and text_height < surface.get_height() * fact:
     fontsize += 1
     my_font = pygame.font.SysFont(font, fontsize)
-    text_to_draw = my_font.render(str(text), True, color1)
+    text_to_draw = my_font.render(str(text), True, color)
     text_width = text_to_draw.get_width()
     text_height = text_to_draw.get_height()
   my_font = pygame.font.SysFont(font, fontsize - 1)
-  if int(text) <= 4:
-    color = color1
-  else:
-    color = color2
+
   text_to_draw = my_font.render(str(text), True, color)
   text_width = text_to_draw.get_width()
   text_height = text_to_draw.get_height()
@@ -399,7 +410,10 @@ def initLevel(board):
   config.ymax = config.yextra_top + config.length * config.size + config.yextra + config.size_in_between * (
       config.length + 1)
 
+
+  setup_surfaces_ui()
   config.score=0
+
 
 
 

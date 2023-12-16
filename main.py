@@ -125,13 +125,14 @@ def drawLoop():
   elif cfg.status == "gameInit":
     window = pygame.display.set_mode((cfg.xmax, cfg.ymax))
     cfg.status = "inGame"
+
   elif cfg.status == "inGame":
     if cfg.changed:
       #konsolenAusgabe(cfg.board)
       cfg.changed = False
 
       #Zeichnet das Spiel
-      drawUIingame(cfg.score, cfg.highscore, window)
+      drawUIingame(cfg.score, window)
       drawBoard(cfg.board, window, tile_surfs=cfg.tile_surfaces)
 
   pygame.display.flip()

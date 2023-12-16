@@ -116,15 +116,15 @@ lvls2 = []
 
 
 #UI init
-score_txt_box=pygame.Surface(0,0)
+score_txt_box=pygame.Surface((1,1))
 score_txt_pos = (0,0)
 
-score_box=pygame.Surface(0,0)
+score_box=pygame.Surface((1,1))
 score_pos = (0,0)
 
-level_info_box=pygame.Surface(0,0)
+level_info_box=pygame.Surface((1,1))
 level_info_pos=(0,0)
 
-level_goal_box=pygame.Surface(0,0)
+level_goal_box=pygame.Surface((1,1))
 level_goal_pos=(0,0)
 
