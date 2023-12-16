@@ -309,16 +309,19 @@ def drawUIingame(fenster, colors=config.colors,level_goal_text="Hier steht ein l
 
   fenster.fill(colors.get("bg"))
   color=0
+  config.ui_bg_box.fill(config.colors.get("ui_bg"))
   config.score_txt_box.fill(config.colors.get(color))
   config.score_box.fill(config.colors.get(color))
   config.level_info_box.fill(config.colors.get(color))
   config.level_goal_box.fill(config.colors.get(color))
 
-  draw_text_in_box(config.score_txt_box,"Score",max_fontsize=16)
+
+  draw_text_in_box(config.score_txt_box,"Score",max_fontsize=20)
   draw_text_in_box(config.score_box,config.score)
   draw_text_in_box(config.level_info_box,"Level "+str(config.level))
   draw_text_in_box(config.level_goal_box,level_goal_text_to_giveout)
 
+  fenster.blit(config.ui_bg_box,config.ui_bg_pos)
   fenster.blit(config.score_txt_box,config.score_txt_pos)
   fenster.blit(config.score_box, config.score_pos)
   fenster.blit(config.level_info_box, config.level_info_pos)
@@ -363,6 +366,9 @@ def setup_tiles(width,
   return tiles
 
 def setup_surfaces_ui():
+  config.ui_bg_box=pygame.Surface((config.xmax, config.yextra_top))
+  config.ui_bg_pos=((0,0))
+
   config.score_txt_box = pygame.Surface((config.size, config.size // 2))
   config.score_txt_pos = (config.size_in_between,config.size_in_between)
 

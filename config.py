@@ -15,6 +15,7 @@ colors = {
     1024: (237, 197, 63),
     2048: (237, 194, 46),
     "bg": (187, 173, 160),
+    "ui_bg": (0, 0, 0),
     "text_2&4": (0, 0, 0),
     "text_rest": (255, 255, 255)
 }
@@ -117,6 +118,9 @@ lvls2 = []
 
 
 #UI init
+ui_bg_box=pygame.Surface((1,1))
+ui_bg_pos= (0,0)
+
 score_txt_box=pygame.Surface((1,1))
 score_txt_pos = (0,0)
 
