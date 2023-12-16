@@ -132,7 +132,7 @@ def drawLoop():
       cfg.changed = False
 
       #Zeichnet das Spiel
-      drawUIingame(cfg.score, window)
+      drawUIingame(window)
       drawBoard(cfg.board, window, tile_surfs=cfg.tile_surfaces)
 
   pygame.display.flip()

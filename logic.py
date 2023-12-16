@@ -288,7 +288,7 @@ def drawBoard(board,
       fenster.blit(tile_surfs[tile], (rectx, recty))
 
 
-def drawUIingame(score, fenster, colors=config.colors):
+def drawUIingame(fenster, colors=config.colors):
   '''
   Input: score(int, aktuelle Punktezahl), fenster(pygame.window)
   Zeichnet das Spielfeld in das Fenster
