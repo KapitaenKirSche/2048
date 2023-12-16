@@ -128,6 +128,7 @@ def merge(board):
   verdoppelt alle Felder, wo zwei gleiche Zahlen aufeinander treffen
   return: umgewandeltes board
   '''
+  countScore(board)
   for i in range(len(board)):
     for j in range(len(board[i])):
       x = board[i][j]
@@ -348,3 +349,14 @@ def initLevel(board):
       config.width + 1)
   config.ymax = config.length * config.size + config.yextra + config.size_in_between * (
       config.length + 1)
+
+  config.score=0
+
+
+def countScore(board):
+  for i in board:
+    for j in i:
+      if j < 0:
+        config.score+=j*-2
+
+  print(config.score)

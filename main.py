@@ -40,7 +40,7 @@ def inputLoop():
         pygame.quit()
         quit()
       if event.key == pygame.K_SPACE:
-        #print("space")
+
         pass
       if event.type == pygame.QUIT:
         pygame.quit()
@@ -77,8 +77,7 @@ def logicLoop():
   elif cfg.status == "level1Init":
     initLevel(cfg.boards.get("level1"))
 
-    print(cfg.board)
-    print(cfg.width)
+
 
   elif cfg.status == "gameInit":  #Erstes mal im Spiel
     #board = buildBoard(width, length, 2)
@@ -128,7 +127,7 @@ def drawLoop():
     cfg.status = "inGame"
   elif cfg.status == "inGame":
     if cfg.changed:
-      konsolenAusgabe(cfg.board)
+      #konsolenAusgabe(cfg.board)
       cfg.changed = False
 
       #Zeichnet das Spiel
