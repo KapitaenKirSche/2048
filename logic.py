@@ -258,6 +258,14 @@ def buildBoard(x, y, anzahlnewrand=0):
   board = createRandom(board, anzahlnewrand)
   return board
 
+def countScore(board):
+  for i in board:
+    for j in i:
+      if j < 0:
+        config.score+=j*-2
+
+  print(config.score)
+
 
 #Zeichnen---------------------------------------------------------
 def drawBoard(board,
@@ -276,17 +284,20 @@ def drawBoard(board,
     for tile in row:
       x += 1
       rectx = config.size_in_between * x + config.size * (x - 1)
-      recty = config.size_in_between * y + config.size * (y - 1)
+      recty = config.yextra_top + config.size_in_between * y + config.size * (y - 1)
       fenster.blit(tile_surfs[tile], (rectx, recty))
 
 
-def drawUIingame(score, highscore, fenster, colors=config.colors):
+def drawUIingame(score, fenster, colors=config.colors):
   '''
-  Input: score(int, aktuelle Punktezahl), highscore(int, beste Punktezahl)
+  Input: score(int, aktuelle Punktezahl), fenster(pygame.window)
   Zeichnet das Spielfeld in das Fenster
   '''
   fenster.fill(colors.get("bg"))
-  pygame.draw.rect(fenster, (50, 50, 50), (config.ui_down_rect))
+
+
+
+
 
 
 def drawUIHome(fenster, colors=config.colors):
@@ -306,7 +317,37 @@ def konsolenAusgabe(board):
   print("\n\n")
 
 
-#-------------------------------
+#---------------------------------------------------------------------------------------------------------------------#
+
+def setup_tiles(width,
+                heigth,
+                tile_list=config.tile_list,
+                colors=config.colors,
+                font="assets/fonts/ClearSans-Bold.ttf",
+                font_color=(255, 255, 255)):
+  tiles = {}
+  for tile in tile_list:
+    tile_surf = pygame.Surface((width, heigth))
+    tile_surf.fill(colors.get(tile))
+    draw_text_in_box(tile_surf, tile, font)
+    tiles[tile] = tile_surf
+
+  return tiles
+
+def setup_surfaces_ui():
+  config.score_txt_box = pygame.Surface((config.size, config.size // 2))
+  config.score_txt_pos = (config.size_in_between,config.size_in_between)
+
+  config.score_box = pygame.Surface((config.size, config.size))
+  config.score_pos = (config.size_in_between, config.size_in_between*2+config.size // 2)
+
+  config.level_info_box = pygame.Surface((3*config.size+2*config.size_in_between, config.size//2))
+  config.level_info_pos = (2*config.size_in_between+config.size, config.size_in_between)
+
+  config.level_goal_box = pygame.Surface((3 * config.size + 2 * config.size_in_between, config.size))
+  config.level_goal_pos = (2 * config.size_in_between + config.size, config.size_in_between*2+config.size // 2)
+
+
 def draw_text_in_box(surface,
                      text,
                      font="Arial",
@@ -345,38 +386,20 @@ def draw_text_in_box(surface,
                                 (surfheight / 2 - text_height / 2) + 3))
 
 
-def setup_tiles(width,
-                heigth,
-                tile_list=config.tile_list,
-                colors=config.colors,
-                font="assets/fonts/ClearSans-Bold.ttf",
-                font_color=(255, 255, 255)):
-  tiles = {}
-  for tile in tile_list:
-    tile_surf = pygame.Surface((width, heigth))
-    tile_surf.fill(colors.get(tile))
-    draw_text_in_box(tile_surf, tile, font)
-    tiles[tile] = tile_surf
 
-  return tiles
 
 
 def initLevel(board):
   config.board = copy.deepcopy(board)
   config.width = len(board[0])
   config.length = len(board)
+  yextra_top = config.size + config.size // 2 + 2 * config.size_in_between
   config.xmax = config.width * config.size + config.xextra + config.size_in_between * (
       config.width + 1)
-  config.ymax = config.length * config.size + config.yextra + config.size_in_between * (
+  config.ymax = config.yextra_top + config.length * config.size + config.yextra + config.size_in_between * (
       config.length + 1)
 
   config.score=0
 
 
-def countScore(board):
-  for i in board:
-    for j in i:
-      if j < 0:
-        config.score+=j*-2
 
-  print(config.score)

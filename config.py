@@ -30,10 +30,13 @@ length = 4  # Felder hoch
 size = 100  # 1 Block ist 100 Pixel breit und hoch
 size_in_between = 10  #Abstand zwischen allen Blöcken, sowie zwischen block und rand
 xextra = 0
-yextra = 100
+
+yextra = 0
+yextra_top = size+size//2+2*size_in_between
+
 xmax = width * size + xextra + size_in_between * (
     width + 1)  # x-Koordinate des rechten Randes
-ymax = length * size + yextra + size_in_between * (
+ymax = yextra_top +length * size + yextra + size_in_between * (
     length + 1)  # y-Koordinate des unteneren Randes
 
 homeHeight = 615
@@ -54,9 +57,9 @@ changed = True
 score = 0
 highscore = 0
 
-ui_down_rect = pygame.Rect(
-    0, length * size + size_in_between * (length + 1),
-    width * size + xextra + size_in_between * (width + 1), yextra)
+#ui_down_rect = pygame.Rect(
+#    0, length * size + size_in_between * (length + 1),
+#    width * size + xextra + size_in_between * (width + 1), yextra)
 
 tilerect = pygame.Rect(size_in_between, size_in_between, size, size)
 
@@ -105,3 +108,23 @@ clickpos_levelselect1 = [
 ]
 
 lvls2 = []
+
+
+
+
+
+
+
+#UI init
+score_txt_box=pygame.Surface(0,0)
+score_txt_pos = (0,0)
+
+score_box=pygame.Surface(0,0)
+score_pos = (0,0)
+
+level_info_box=pygame.Surface(0,0)
+level_info_pos=(0,0)
+
+level_goal_box=pygame.Surface(0,0)
+level_goal_pos=(0,0)
+
