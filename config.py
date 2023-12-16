@@ -30,9 +30,10 @@ length = 4  # Felder hoch
 size = 100  # 1 Block ist 100 Pixel breit und hoch
 size_in_between = 10  #Abstand zwischen allen Blöcken, sowie zwischen block und rand
 xextra = 0
+level=0
 
 yextra = 0
-yextra_top = size+size//2+2*size_in_between
+yextra_top = size+size//2+3*size_in_between
 
 xmax = width * size + xextra + size_in_between * (
     width + 1)  # x-Koordinate des rechten Randes

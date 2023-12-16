@@ -121,6 +121,7 @@ def drawLoop():
 
   elif cfg.status == "level1Init":
     cfg.status = "gameInit"
+    cfg.level=1
 
   elif cfg.status == "gameInit":
     window = pygame.display.set_mode((cfg.xmax, cfg.ymax))

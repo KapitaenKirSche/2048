@@ -288,17 +288,36 @@ def drawBoard(board,
       fenster.blit(tile_surfs[tile], (rectx, recty))
 
 
-def drawUIingame(fenster, colors=config.colors):
+def drawUIingame(fenster, colors=config.colors,level_goal_text="Hier steht ein langer Text."):
   '''
   Input: score(int, aktuelle Punktezahl), fenster(pygame.window)
   Zeichnet das Spielfeld in das Fenster
   '''
-  fenster.fill(colors.get("bg"))
+  level_goal_text_list=level_goal_text.split(" ")
+  level_goal_text_to_giveout=""
+  index=0
+  # for i in level_goal_text_list:
+  #   if index == len(level_goal_text_list)//2+1:
+  #     level_goal_text_to_giveout+="\n"
+  #     level_goal_text_to_giveout+=i+" "
+  #   else:
+  #     level_goal_text_to_giveout+=i+" "
+  #   index+=1
+  level_goal_text_to_giveout=level_goal_text
 
-  draw_text_in_box(config.score_txt_box,"Score")
+
+
+  fenster.fill(colors.get("bg"))
+  color=0
+  config.score_txt_box.fill(config.colors.get(color))
+  config.score_box.fill(config.colors.get(color))
+  config.level_info_box.fill(config.colors.get(color))
+  config.level_goal_box.fill(config.colors.get(color))
+
+  draw_text_in_box(config.score_txt_box,"Score",max_fontsize=16)
   draw_text_in_box(config.score_box,config.score)
-  draw_text_in_box(config.level_info_box,"Level "+str(config.status[-1]))
-  draw_text_in_box(config.level_goal_box,"Hier steht ein langer Text.")
+  draw_text_in_box(config.level_info_box,"Level "+str(config.level))
+  draw_text_in_box(config.level_goal_box,level_goal_text_to_giveout)
 
   fenster.blit(config.score_txt_box,config.score_txt_pos)
   fenster.blit(config.score_box, config.score_pos)
@@ -344,28 +363,23 @@ def setup_tiles(width,
   return tiles
 
 def setup_surfaces_ui():
-  color=0
   config.score_txt_box = pygame.Surface((config.size, config.size // 2))
-  config.score_txt_box.fill(config.colors.get(color))
   config.score_txt_pos = (config.size_in_between,config.size_in_between)
 
-
   config.score_box = pygame.Surface((config.size, config.size))
-  config.score_box.fill(config.colors.get(color))
   config.score_pos = (config.size_in_between, config.size_in_between*2+config.size // 2)
 
-  config.level_info_box = pygame.Surface((3*config.size+2*config.size_in_between, config.size//2))
-  config.level_info_box.fill(config.colors.get(color))
+  config.level_info_box = pygame.Surface(((config.width-1)*config.size+(config.width-2)*config.size_in_between, config.size//2))
   config.level_info_pos = (2*config.size_in_between+config.size, config.size_in_between)
 
-  config.level_goal_box = pygame.Surface((3 * config.size + 2 * config.size_in_between, config.size))
-  config.level_goal_box.fill(config.colors.get(color))
+  config.level_goal_box = pygame.Surface(((config.width-1)*config.size+(config.width-2)*config.size_in_between, config.size))
   config.level_goal_pos = (2 * config.size_in_between + config.size, config.size_in_between*2+config.size // 2)
 
 
 def draw_text_in_box(surface,
                      text,
                      font="Arial",
+                     max_fontsize=9999,
                      color=(0, 0, 0),
                      fact=0.85):
   """
@@ -385,7 +399,8 @@ def draw_text_in_box(surface,
     text_to_draw = my_font.render(str(text), True, color)
     text_width = text_to_draw.get_width()
     text_height = text_to_draw.get_height()
-  my_font = pygame.font.SysFont(font, fontsize - 1)
+
+  my_font = pygame.font.SysFont(font, min(fontsize, max_fontsize) - 1)
 
   text_to_draw = my_font.render(str(text), True, color)
   text_width = text_to_draw.get_width()
@@ -404,7 +419,7 @@ def initLevel(board):
   config.board = copy.deepcopy(board)
   config.width = len(board[0])
   config.length = len(board)
-  yextra_top = config.size + config.size // 2 + 2 * config.size_in_between
+  config.yextra_top = config.size + config.size // 2 + 3 * config.size_in_between
   config.xmax = config.width * config.size + config.xextra + config.size_in_between * (
       config.width + 1)
   config.ymax = config.yextra_top + config.length * config.size + config.yextra + config.size_in_between * (
