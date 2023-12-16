@@ -8,24 +8,55 @@ import copy
 #Nimmt ein Spielfeld als Eingabe und gibt ein Spielfeld zurück, bei dem alle Felder soweit wie möglich in die richtige Richtung bewegt sind.
 #Spielfeld(board) ist eine Liste von Listen->Matrix(Tabelle), wobei jedes Element eine Zahl(Zweierpotenz bzw. 0 für leeres Feld) besitzt (0,2,4,8,16,...,2048)
 
+def move_test(board, dir, maxim=-1):
+  '''
+  Input: board(Matrix, Spielfeld)
+         dir(int, Richtung: 0-oben;1-rechts;2-unten;3-links)
+         maxim(int, maximale Bewegungen der Felder)
+  führt die Bewegung aus, allerdings ohne Punkte zählen.
+  Output: board(Matrix, Spielfeld)
+  '''
+  if dir == 0:
+    board = up(board, maxim)
+    board = merge(board)
+  elif dir == 1:
+    board = right(board, maxim)
+    board = merge(board)
+  elif dir == 2:
+    board = down(board, maxim)
+    board = merge(board)
+  elif dir == 3:
+    board = left(board, maxim)
+    board = merge(board)
+  return board
+
 
 def move(board, dir, maxim=-1):
   '''
   Input: board(Matrix, Spielfeld)
          dir(int, Richtung: 0-oben;1-rechts;2-unten;3-links)
          maxim(int, maximale Bewegungen der Felder)
-  führt die Bewegun aus.
+  führt die Bewegung aus.
   Output: board(Matrix, Spielfeld)
   '''
   if dir == 0:
     board = up(board, maxim)
+    countScore(board)
+    board = merge(board)
   elif dir == 1:
     board = right(board, maxim)
+    countScore(board)
+    board = merge(board)
   elif dir == 2:
     board = down(board, maxim)
+    countScore(board)
+    board = merge(board)
   elif dir == 3:
     board = left(board, maxim)
+    countScore(board)
+    board = merge(board)
   return board
+
 
 
 def left(board, maxim=-1):
@@ -85,7 +116,7 @@ def up(board, maxim=-1):
       spaltencount += 1
     zeilencount += 1
 
-  return merge(inp_board)
+  return inp_board
 
 
 def down(board, maxim=-1):
@@ -128,7 +159,6 @@ def merge(board):
   verdoppelt alle Felder, wo zwei gleiche Zahlen aufeinander treffen
   return: umgewandeltes board
   '''
-  countScore(board)
   for i in range(len(board)):
     for j in range(len(board[i])):
       x = board[i][j]
@@ -170,18 +200,8 @@ def bewegungMoeglichSpeziell(board, dir, maxim=-1):
   output: beweg_mogl(bool, gibt an ob eine Bewegung mgl. ist)
   '''
   beweg_mogl = False
-  if dir == 0:
-    if board != up(board, maxim):
-      beweg_mogl = True
-  elif dir == 1:
-    if board != right(board, maxim):
-      beweg_mogl = True
-  elif dir == 2:
-    if board != down(board, maxim):
-      beweg_mogl = True
-  elif dir == 3:
-    if board != left(board, maxim):
-      beweg_mogl = True
+  if board != move_test(board, dir, maxim):
+    beweg_mogl =True
 
   return beweg_mogl
 
