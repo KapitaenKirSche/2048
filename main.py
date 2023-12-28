@@ -8,6 +8,7 @@ def inputLoop():
   # Abfrage von Events (Tastendruck / Mausklick)
   for event in pygame.event.get():
     if event.type == pygame.KEYDOWN:
+
       if cfg.status == "inGame":
         if event.key == pygame.K_UP:
           cfg.direction = 0
@@ -20,9 +21,13 @@ def inputLoop():
 
         if event.key == pygame.K_LEFT:
           cfg.direction = 3
+
+
+      #Homescreen
       elif cfg.status == "home":
         cfg.status = "overworldinit"
 
+      #overworld
       elif cfg.status == "overworldinit":
         pass
       elif cfg.status == "overworld1":
@@ -36,20 +41,19 @@ def inputLoop():
       elif cfg.status == "overworld3":
         pass
 
+
       if event.key == pygame.K_ESCAPE:
         pygame.quit()
         quit()
-      if event.key == pygame.K_SPACE:
-
-        pass
       if event.type == pygame.QUIT:
         pygame.quit()
         quit()
 
-    if cfg.status == "overworld1":
-      if event.type == pygame.MOUSEBUTTONDOWN:
-        if event.button == 1:  # Left mouse button.
 
+    if event.type == pygame.MOUSEBUTTONDOWN:
+      if event.button == 1:  # Left mouse button.
+
+        if cfg.status == "overworld1":
           for area in cfg.clickpos_levelselect1:
             if area[0].collidepoint(event.pos):
 
@@ -65,6 +69,10 @@ def logicLoop():
   '''
   #global board, direction, changed, status, width, length, tile_surfaces, boards
 
+
+
+  #Status des Spiels--------------------------------------
+  #Overworld
   if cfg.status == "homeInit":
     pass
   elif cfg.status == "overworldinit":
@@ -74,20 +82,27 @@ def logicLoop():
   elif cfg.status == "overworld2":  #in Levelselect Seite2
     pass
 
-  elif cfg.status == "level1Init":
-    initLevel(cfg.boards.get("level1"))
+  #LevelxInit
+  elif "level" in cfg.status:
+    if "Init" in cfg.status:
+      cfg.current_level=int(cfg.status[5])
+      initLevel(cfg.boards.get(cfg.current_level))
 
 
-
-  elif cfg.status == "gameInit":  #Erstes mal im Spiel
+  elif cfg.status == "gameInit":  #Erstes mal im Spiel (dem richtigen Spiel, nicht homescreen)
     #board = buildBoard(width, length, 2)
     cfg.tile_surfaces = setup_tiles(cfg.size, cfg.size)
 
-  elif cfg.status == "inGame":  #aktuell im Spiel
+
+  # aktuell im Spiel
+  elif cfg.status == "inGame":
     if bewegung_moeglich_generell(cfg.board) == False:
       cfg.status = "gameOver"
-    elif maxWert(cfg.board) == cfg.maxWertTile:
-      cfg.status = "sieg"
+
+    if cfg.gamemode=="maxTile":
+      if biggestTile(cfg.board) == cfg.maxWertTile:
+        cfg.status = "sieg"
+
     if cfg.direction >= 0:  #Wenn Pfeiltaste gedrückt ist
       if bewegungMoeglichSpeziell(cfg.board, cfg.direction) == True:
         cfg.board = move(cfg.board, cfg.direction)

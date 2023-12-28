@@ -1,6 +1,5 @@
-#Farben
 import pygame
-
+#Initial
 colors = {
     0: (192, 180, 165),
     2: (238, 228, 218),
@@ -19,11 +18,6 @@ colors = {
     "text_2&4": (0, 0, 0),
     "text_rest": (255, 255, 255)
 }
-tile_surfaces = {}
-tile_list = [0, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048]
-
-level1_board = [[0, 0, 2], [0, 0, 0], [2, 0, 0]]
-boards = {"level1": level1_board}
 
 # Größe des Spielfeldes
 width = 4  #  Felder breit
@@ -50,6 +44,49 @@ running = True
 
 # Spiel
 board = []
+
+
+
+
+
+
+tile_list = [0, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048]
+current_level=0
+gamemode=""
+maxWertTile = 2048
+levelGoalText="TestTest, langer Text und so."
+
+#Dictionary der pygame surfaces der Tiles. wird beim status gameInit -> setuptiles() initialisiert.
+tile_surfaces = {}
+
+#boardsetup
+boards={}
+boards[1] = [[0, 0, 2],
+             [0, 0, 0],
+             [2, 0, 0]]
+
+#Sizes
+sizes={}
+sizes[1]=100
+
+#Sizes in between
+sizes_in_between={}
+sizes_in_between[1]=10
+
+#Gamemodes
+gamemodes={}
+gamemodes[1]="maxTile"
+
+#maxTiles
+maxTiles = {}
+maxTiles[1]=128
+
+#UITexts
+level_goal_texts={}
+level_goal_texts[1]="Erreiche das "+str(maxTiles[1])+" Tile."
+
+
+
 
 #default fuer Richtung. Up-0,Right-1,Down-2,Left-3
 direction = -1
@@ -79,8 +116,6 @@ bilder = {
     "overworld2":
     overworld2_original
 }
-
-maxWertTile = 2048
 
 r_siz = 49
 

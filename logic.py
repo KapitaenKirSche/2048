@@ -57,21 +57,17 @@ def move(board, dir, maxim=-1):
     board = merge(board)
   return board
 
-
-
 def left(board, maxim=-1):
   board = rotateRight(board)
   board = up(board, maxim)
   board = rotateRight(board, 3)
   return board
 
-
 def right(board, maxim=-1):
   board = rotateRight(board, 3)
   board = up(board, maxim)
   board = rotateRight(board)
   return board
-
 
 def up(board, maxim=-1):
   '''
@@ -117,7 +113,6 @@ def up(board, maxim=-1):
     zeilencount += 1
 
   return inp_board
-
 
 def down(board, maxim=-1):
   board = rotateRight(board, 2)
@@ -206,13 +201,13 @@ def bewegungMoeglichSpeziell(board, dir, maxim=-1):
   return beweg_mogl
 
 
-def maxWert(board):
+def biggestTile(board):
   '''
   input: board(Spielfeld, Matrix)
 
-  gibt den höchsten Zellenwert aus
+  gibt den Wert der höchsten Zelle aus
 
-  return: höchster(int, höchster Zellenwert)
+  return: hoechster(int, höchster Zellenwert)
   '''
   hoechster = 0
   for zeile in board:
@@ -246,9 +241,9 @@ def buildBoard(x, y, anzahlnewrand=0):
          y(int,laenge y-Achse Matrix),
          anzahlnewrand(int, gibt an, wieviele neue Zellen zuffällig befüllt werden sollen)
 
-  baut eine Matrix anhand den x- und y Längen auf und füllt mit leeren Feldern
+  baut eine Matrix anhand den x- und y Längen auf und füllt mit leeren Feldern, bzw. neuen 2en und vieren, der Anzahl 'anzahlnewrand'
 
-  output:board(Matrix,Spielfeld mit zwei zufälligen zweien bzw. vieren)
+  output:board(Matrix,Spielfeld mit 'anzahlnewrand' zufälligen zweien bzw. vieren)
   '''
   board = []
   for i in range(y):
@@ -265,6 +260,38 @@ def countScore(board):
         config.score+=j*-2
 
   print(config.score)
+
+
+#----------------------------------------------------------------------------------------------------------------------#
+#Funktionen, die für den status des Spiels verantwortlich sind. Setzten Level aus, initialisieren, etc.
+
+
+def initLevel(board):
+  level=config.current_level
+
+  config.size = config.sizes[level]
+  config.size_in_between = config.sizes_in_between[level]
+
+  config.board = copy.deepcopy(board)
+  config.width = len(board[0])
+  config.length = len(board)
+
+  config.gamemode=config.gamemodes[level]
+  if config.gamemodes[level] == "maxTile":
+    config.maxWertTile=config.maxTiles[level]
+  config.levelGoalText=config.level_goal_texts[level]
+
+  config.yextra_top = config.size + config.size // 2 + 3 * config.size_in_between
+  config.xmax = config.width * config.size + config.xextra + config.size_in_between * (
+      config.width + 1)
+  config.ymax = config.yextra_top + config.length * config.size + config.yextra + config.size_in_between * (
+      config.length + 1)
+
+
+  setup_surfaces_ui()
+  config.score=0
+
+
 
 
 #Zeichnen---------------------------------------------------------
@@ -288,21 +315,12 @@ def drawBoard(board,
       fenster.blit(tile_surfs[tile], (rectx, recty))
 
 
-def drawUIingame(fenster, colors=config.colors,level_goal_text="Hier steht ein langer Text."):
+def drawUIingame(fenster, colors=config.colors,level_goal_text=config.levelGoalText):
   '''
   Input: score(int, aktuelle Punktezahl), fenster(pygame.window)
   Zeichnet das Spielfeld in das Fenster
   '''
-  level_goal_text_list=level_goal_text.split(" ")
-  level_goal_text_to_giveout=""
-  index=0
-  # for i in level_goal_text_list:
-  #   if index == len(level_goal_text_list)//2+1:
-  #     level_goal_text_to_giveout+="\n"
-  #     level_goal_text_to_giveout+=i+" "
-  #   else:
-  #     level_goal_text_to_giveout+=i+" "
-  #   index+=1
+
   level_goal_text_to_giveout=level_goal_text
 
 
@@ -342,45 +360,6 @@ def drawOverworld(fenster, site):
   fenster.blit(config.bilder["overworld" + str(site)], (0, 0))
 
 
-def konsolenAusgabe(board):
-  for i in board:
-    print(str(i))
-  print("\n\n")
-
-
-#---------------------------------------------------------------------------------------------------------------------#
-
-def setup_tiles(width,
-                heigth,
-                tile_list=config.tile_list,
-                colors=config.colors,
-                font="assets/fonts/ClearSans-Bold.ttf",
-                font_color=(255, 255, 255)):
-  tiles = {}
-  for tile in tile_list:
-    tile_surf = pygame.Surface((width, heigth))
-    tile_surf.fill(colors.get(tile))
-    draw_text_in_box(tile_surf, tile, font)
-    tiles[tile] = tile_surf
-
-  return tiles
-
-def setup_surfaces_ui():
-  config.ui_bg_box=pygame.Surface((config.xmax, config.yextra_top))
-  config.ui_bg_pos=((0,0))
-
-  config.score_txt_box = pygame.Surface((config.size, config.size // 2))
-  config.score_txt_pos = (config.size_in_between,config.size_in_between)
-
-  config.score_box = pygame.Surface((config.size, config.size))
-  config.score_pos = (config.size_in_between, config.size_in_between*2+config.size // 2)
-
-  config.level_info_box = pygame.Surface(((config.width-1)*config.size+(config.width-2)*config.size_in_between, config.size//2))
-  config.level_info_pos = (2*config.size_in_between+config.size, config.size_in_between)
-
-  config.level_goal_box = pygame.Surface(((config.width-1)*config.size+(config.width-2)*config.size_in_between, config.size))
-  config.level_goal_pos = (2 * config.size_in_between + config.size, config.size_in_between*2+config.size // 2)
-
 
 def draw_text_in_box(surface,
                      text,
@@ -418,22 +397,46 @@ def draw_text_in_box(surface,
                                 (surfheight / 2 - text_height / 2) + 3))
 
 
+def konsolenAusgabe(board):
+  for i in board:
+    print(str(i))
+  print("\n\n")
 
 
+#---------------------------------------------------------------------------------------------------------------------#
+#Init Zeichnen
+def setup_tiles(width,
+                heigth,
+                tile_list=config.tile_list,
+                colors=config.colors,
+                font="assets/fonts/ClearSans-Bold.ttf",
+                font_color=(255, 255, 255)):
+  tiles = {}
+  for tile in tile_list:
+    tile_surf = pygame.Surface((width, heigth))
+    tile_surf.fill(colors.get(tile))
+    draw_text_in_box(tile_surf, tile, font)
+    tiles[tile] = tile_surf
 
-def initLevel(board):
-  config.board = copy.deepcopy(board)
-  config.width = len(board[0])
-  config.length = len(board)
-  config.yextra_top = config.size + config.size // 2 + 3 * config.size_in_between
-  config.xmax = config.width * config.size + config.xextra + config.size_in_between * (
-      config.width + 1)
-  config.ymax = config.yextra_top + config.length * config.size + config.yextra + config.size_in_between * (
-      config.length + 1)
+  return tiles
+
+def setup_surfaces_ui():
+  config.ui_bg_box=pygame.Surface((config.xmax, config.yextra_top))
+  config.ui_bg_pos=((0,0))
+
+  config.score_txt_box = pygame.Surface((config.size, config.size // 2))
+  config.score_txt_pos = (config.size_in_between,config.size_in_between)
+
+  config.score_box = pygame.Surface((config.size, config.size))
+  config.score_pos = (config.size_in_between, config.size_in_between*2+config.size // 2)
+
+  config.level_info_box = pygame.Surface(((config.width-1)*config.size+(config.width-2)*config.size_in_between, config.size//2))
+  config.level_info_pos = (2*config.size_in_between+config.size, config.size_in_between)
+
+  config.level_goal_box = pygame.Surface(((config.width-1)*config.size+(config.width-2)*config.size_in_between, config.size))
+  config.level_goal_pos = (2 * config.size_in_between + config.size, config.size_in_between*2+config.size // 2)
 
 
-  setup_surfaces_ui()
-  config.score=0
 
 
 
