@@ -265,6 +265,7 @@ def countScore(board):
 
 
 def initLevel(board):
+  config.changed = True
   level_int=config.current_level
   level=config.levels[level_int]
 

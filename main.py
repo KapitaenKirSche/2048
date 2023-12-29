@@ -1,6 +1,5 @@
 import pygame
 import config as cfg
-import time
 from logic import *
 
 
@@ -56,7 +55,7 @@ def inputLoop():
 
 
     if event.type == pygame.MOUSEBUTTONDOWN:
-      if event.button == 1:  # Left mouse button.
+      if event.button == 1:  #linke Maustaste
 
         if cfg.status == "overworld1":
           for area in cfg.clickpos_levelselect1:
@@ -165,14 +164,18 @@ def drawLoop():
       drawBoard(cfg.board, window, tile_surfs=cfg.tile_surfaces)
 
   elif cfg.status == "gameOverInit":
-    time.sleep(1.5)
+    pygame.time.delay(500)
     window = pygame.display.set_mode((cfg.goWidth, cfg.goHeight))
     cfg.status = "gameOver"
+    window.blit(config.bilder["gameover1"], (0, 0))
+    pygame.time.delay(400)
 
   elif cfg.status == "siegInit":
-    time.sleep(1.5)
+    pygame.time.delay(500)
     window = pygame.display.set_mode((cfg.siegWidth, cfg.siegHeigth))
     cfg.status = "sieg"
+    window.blit(config.bilder["win1"], (0, 0))
+    pygame.time.delay(400)
 
   elif cfg.status == "gameOver":
     window.blit(config.bilder["gameover1"], (0, 0))
