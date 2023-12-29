@@ -104,8 +104,8 @@ def logicLoop():
         cfg.status = "sieg"
 
     if cfg.direction >= 0:  #Wenn Pfeiltaste gedrückt ist
-      if bewegungMoeglichSpeziell(cfg.board, cfg.direction) == True:
-        cfg.board = move(cfg.board, cfg.direction)
+      if bewegungMoeglichSpeziell(cfg.board, cfg.direction,maxim=cfg.max_moves_per_move) == True:
+        cfg.board = move(cfg.board, cfg.direction,maxim=cfg.max_moves_per_move)
         cfg.board = createRandom(cfg.board)
         cfg.changed = True
 

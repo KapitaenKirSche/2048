@@ -281,6 +281,7 @@ def initLevel(board):
   if config.gamemode == "maxTile":
     config.maxWertTile=level["maxTile"]
   config.levelGoalText=level["level_text"]
+  config.max_moves_per_move=level["max_moves_per_move"]
 
   config.yextra_top = config.size + config.size // 2 + 3 * config.size_in_between
   config.xmax = config.width * config.size + config.xextra + config.size_in_between * (
@@ -322,7 +323,7 @@ def drawUIingame(fenster, colors=config.colors):
   Zeichnet das Spielfeld in das Fenster
   '''
   level_goal_text = config.levelGoalText
-  
+
   fenster.fill(colors.get("bg"))
   color=0
   config.ui_bg_box.fill(config.colors.get("ui_bg"))

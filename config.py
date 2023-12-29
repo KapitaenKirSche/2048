@@ -78,6 +78,7 @@ current_level=0
 gamemode=""
 maxWertTile = 2048
 levelGoalText="TestTest, langer Text und so."
+max_moves_per_move = -1
 
 #Dictionary der pygame surfaces der Tiles. wird beim status gameInit -> setuptiles() initialisiert.
 tile_surfaces = {}
@@ -142,12 +143,14 @@ level1={
     "gamemode"        : "maxTile",
     "maxTile"         : 128, #only, if gamemode == "maxTile
     "level_text"      : "Erreiche das 128 Tile.",
-    "max_per_move"    : 1, #-1 ist default -> bis zum Rand
+    "max_moves_per_move"    : 1, #-1 ist default -> bis zum Rand
     "board"           : [[0, 0, 2],
                          [0, 0, 0],
                          [2, 0, 0]
                          ]
 }
+
+
 
 levels={
     1 : level1
