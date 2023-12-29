@@ -1,5 +1,6 @@
 import pygame
 import config as cfg
+import time
 from logic import *
 
 
@@ -25,10 +26,10 @@ def inputLoop():
 
       #Homescreen
       elif cfg.status == "home":
-        cfg.status = "overworldinit"
+        cfg.status = "overworldInit"
 
       #overworld
-      elif cfg.status == "overworldinit":
+      elif cfg.status == "overworldInit":
         pass
       elif cfg.status == "overworld1":
         if event.key == pygame.K_RIGHT:
@@ -79,7 +80,7 @@ def logicLoop():
   #Overworld
   if cfg.status == "homeInit":
     pass
-  elif cfg.status == "overworldinit":
+  elif cfg.status == "overworldInit":
     pass
   elif cfg.status == "overworld1":  #in Levelselect Seite 1
     pass
@@ -138,7 +139,7 @@ def drawLoop():
 
   elif cfg.status == "home":
     pass
-  elif cfg.status == "overworldinit":
+  elif cfg.status == "overworldInit":
     window = pygame.display.set_mode((cfg.overworldWidth, cfg.overworldHeight))
     cfg.status = "overworld1"
   elif cfg.status == "overworld1":
@@ -164,10 +165,12 @@ def drawLoop():
       drawBoard(cfg.board, window, tile_surfs=cfg.tile_surfaces)
 
   elif cfg.status == "gameOverInit":
+    time.sleep(1.5)
     window = pygame.display.set_mode((cfg.goWidth, cfg.goHeight))
     cfg.status = "gameOver"
 
   elif cfg.status == "siegInit":
+    time.sleep(1.5)
     window = pygame.display.set_mode((cfg.siegWidth, cfg.siegHeigth))
     cfg.status = "sieg"
 
