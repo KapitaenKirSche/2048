@@ -45,11 +45,34 @@ running = True
 # Spiel
 board = []
 
+#UI init
+ui_bg_box=pygame.Surface((1,1))
+ui_bg_pos= (0,0)
+
+score_txt_box=pygame.Surface((1,1))
+score_txt_pos = (0,0)
+
+score_box=pygame.Surface((1,1))
+score_pos = (0,0)
+
+level_info_box=pygame.Surface((1,1))
+level_info_pos=(0,0)
+
+level_goal_box=pygame.Surface((1,1))
+level_goal_pos=(0,0)
 
 
+#default fuer Richtung. Up-0,Right-1,Down-2,Left-3
+direction = -1
 
+#prüft ob Spielfeld verändert wurde
+changed = True
+score = 0
+tilerect = pygame.Rect(size_in_between, size_in_between, size, size)
+#default status.
+status = "homeInit"
 
-
+#---------------------------------------------------------
 tile_list = [0, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048]
 current_level=0
 gamemode=""
@@ -59,43 +82,16 @@ levelGoalText="TestTest, langer Text und so."
 #Dictionary der pygame surfaces der Tiles. wird beim status gameInit -> setuptiles() initialisiert.
 tile_surfaces = {}
 
-#Levels
-level1={
-    "size"            : 100,
-    "size_in_between" : 10,
-    "gamemode"        : "maxTile",
-    "maxTile"         : 128, #only, if gamemode == "maxTile
-    "level_text"      : "Erreiche das 128 Tile.",
-    "max_per_move"    : 1, #-1 ist default -> bis zum Rand
-    "board"           : [[0, 0, 2],
-                         [0, 0, 0],
-                         [2, 0, 0]
-                         ]
-}
-
-levels={
-    1 : level1
-}
 
 
 
 
-#default fuer Richtung. Up-0,Right-1,Down-2,Left-3
-direction = -1
-#prüft ob Spielfeld verändert wurde
-changed = True
 
-score = 0
-highscore = 0
 
-#ui_down_rect = pygame.Rect(
-#    0, length * size + size_in_between * (length + 1),
-#    width * size + xextra + size_in_between * (width + 1), yextra)
 
-tilerect = pygame.Rect(size_in_between, size_in_between, size, size)
 
-status = "homeInit"
 
+#Bilder-import-----------------
 startscreen_original = pygame.image.load("assets/images/startscreen.jpg")
 overworld1_original = pygame.image.load("assets/images/levelselect1.PNG")
 overworld2_original = pygame.image.load("assets/images/levelselect2.PNG")
@@ -109,8 +105,10 @@ bilder = {
     overworld2_original
 }
 
-r_siz = 49
 
+
+#Mausklick-positionen
+r_siz = 49
 clickpos_levelselect1 = [
     (pygame.Rect(0 * r_siz + 5, 4 * r_siz + 5, r_siz, r_siz), "Level1"),
     (pygame.Rect(2 * r_siz + 5, 3 * r_siz + 5, r_siz, r_siz), "Level2"),
@@ -136,27 +134,23 @@ clickpos_levelselect1 = [
                  r_siz), "Levelselect2"),
 ]
 
-lvls2 = []
 
+#Levels----------------------------------------------------------------------------------------
+level1={
+    "size"            : 100,
+    "size_in_between" : 10,
+    "gamemode"        : "maxTile",
+    "maxTile"         : 128, #only, if gamemode == "maxTile
+    "level_text"      : "Erreiche das 128 Tile.",
+    "max_per_move"    : 1, #-1 ist default -> bis zum Rand
+    "board"           : [[0, 0, 2],
+                         [0, 0, 0],
+                         [2, 0, 0]
+                         ]
+}
 
+levels={
+    1 : level1
+}
 
-
-
-
-
-#UI init
-ui_bg_box=pygame.Surface((1,1))
-ui_bg_pos= (0,0)
-
-score_txt_box=pygame.Surface((1,1))
-score_txt_pos = (0,0)
-
-score_box=pygame.Surface((1,1))
-score_pos = (0,0)
-
-level_info_box=pygame.Surface((1,1))
-level_info_pos=(0,0)
-
-level_goal_box=pygame.Surface((1,1))
-level_goal_pos=(0,0)
 
