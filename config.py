@@ -59,31 +59,23 @@ levelGoalText="TestTest, langer Text und so."
 #Dictionary der pygame surfaces der Tiles. wird beim status gameInit -> setuptiles() initialisiert.
 tile_surfaces = {}
 
-#boardsetup
-boards={}
-boards[1] = [[0, 0, 2],
-             [0, 0, 0],
-             [2, 0, 0]]
+#Levels
+level1={
+    "size"            : 100,
+    "size_in_between" : 10,
+    "gamemode"        : "maxTile",
+    "maxTile"         : 128, #only, if gamemode == "maxTile
+    "level_text"      : "Erreiche das 128 Tile.",
+    "max_per_move"    : 1, #-1 ist default -> bis zum Rand
+    "board"           : [[0, 0, 2],
+                         [0, 0, 0],
+                         [2, 0, 0]
+                         ]
+}
 
-#Sizes
-sizes={}
-sizes[1]=100
-
-#Sizes in between
-sizes_in_between={}
-sizes_in_between[1]=10
-
-#Gamemodes
-gamemodes={}
-gamemodes[1]="maxTile"
-
-#maxTiles
-maxTiles = {}
-maxTiles[1]=128
-
-#UITexts
-level_goal_texts={}
-level_goal_texts[1]="Erreiche das "+str(maxTiles[1])+" Tile."
+levels={
+    1 : level1
+}
 
 
 

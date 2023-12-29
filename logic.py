@@ -267,19 +267,20 @@ def countScore(board):
 
 
 def initLevel(board):
-  level=config.current_level
+  level_int=config.current_level
+  level=config.levels[level_int]
 
-  config.size = config.sizes[level]
-  config.size_in_between = config.sizes_in_between[level]
+  config.size = level["size"]
+  config.size_in_between = level["size_in_between"]
 
-  config.board = copy.deepcopy(board)
+  config.board = copy.deepcopy(level["board"])
   config.width = len(board[0])
   config.length = len(board)
 
-  config.gamemode=config.gamemodes[level]
-  if config.gamemodes[level] == "maxTile":
-    config.maxWertTile=config.maxTiles[level]
-  config.levelGoalText=config.level_goal_texts[level]
+  config.gamemode=level["gamemode"]
+  if config.gamemode == "maxTile":
+    config.maxWertTile=level["maxTile"]
+  config.levelGoalText=level["level_text"]
 
   config.yextra_top = config.size + config.size // 2 + 3 * config.size_in_between
   config.xmax = config.width * config.size + config.xextra + config.size_in_between * (
@@ -315,16 +316,13 @@ def drawBoard(board,
       fenster.blit(tile_surfs[tile], (rectx, recty))
 
 
-def drawUIingame(fenster, colors=config.colors,level_goal_text=config.levelGoalText):
+def drawUIingame(fenster, colors=config.colors):
   '''
   Input: score(int, aktuelle Punktezahl), fenster(pygame.window)
   Zeichnet das Spielfeld in das Fenster
   '''
-
-  level_goal_text_to_giveout=level_goal_text
-
-
-
+  level_goal_text = config.levelGoalText
+  
   fenster.fill(colors.get("bg"))
   color=0
   config.ui_bg_box.fill(config.colors.get("ui_bg"))
@@ -337,7 +335,7 @@ def drawUIingame(fenster, colors=config.colors,level_goal_text=config.levelGoalT
   draw_text_in_box(config.score_txt_box,"Score",max_fontsize=20)
   draw_text_in_box(config.score_box,config.score)
   draw_text_in_box(config.level_info_box,"Level "+str(config.level))
-  draw_text_in_box(config.level_goal_box,level_goal_text_to_giveout)
+  draw_text_in_box(config.level_goal_box,level_goal_text)
 
   fenster.blit(config.ui_bg_box,config.ui_bg_pos)
   fenster.blit(config.score_txt_box,config.score_txt_pos)

@@ -86,7 +86,7 @@ def logicLoop():
   elif "level" in cfg.status:
     if "Init" in cfg.status:
       cfg.current_level=int(cfg.status[5])
-      initLevel(cfg.boards.get(cfg.current_level))
+      initLevel(cfg.levels[cfg.current_level]["board"])
 
 
   elif cfg.status == "gameInit":  #Erstes mal im Spiel (dem richtigen Spiel, nicht homescreen)
