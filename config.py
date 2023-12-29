@@ -150,10 +150,69 @@ level1={
                          ]
 }
 
+level2={
+    "size"            : 90,
+    "size_in_between" : 9,
+    "gamemode"        : "maxTile",
+    "maxTile"         : 256, #only, if gamemode == "maxTile
+    "level_text"      : "Erreiche das 256 Tile.",
+    "max_moves_per_move"    : 1, #-1 ist default -> bis zum Rand
+    "board"           : [[0, 0, 2, 0],
+                         [0, 0, 0, 0],
+                         [0, 0, 0, 0],
+                         [2, 0, 0, 0]
+                         ]
+}
 
+level3={
+    "size"            : 90,
+    "size_in_between" : 9,
+    "gamemode"        : "maxTile",
+    "maxTile"         : 512, #only, if gamemode == "maxTile
+    "level_text"      : "Erreiche das 512 Tile.",
+    "max_moves_per_move"    : 1, #-1 ist default -> bis zum Rand
+    "board"           : [[0, 0, 2, 0],
+                         [0, 0, 0, 0],
+                         [0, 0, 0, 0],
+                         [2, 0, 0, 0]
+                         ]
+}
+
+level4={
+    "size"            : 90,
+    "size_in_between" : 9,
+    "gamemode"        : "maxTile",
+    "maxTile"         : 1024, #only, if gamemode == "maxTile
+    "level_text"      : "Erreiche das 1024 Tile.",
+    "max_moves_per_move"    : 1, #-1 ist default -> bis zum Rand
+    "board"           : [[0, 0, 2, 0],
+                         [0, 0, 0, 0],
+                         [0, 0, 0, 0],
+                         [2, 0, 0, 0]
+                         ]
+}
+
+level5={
+    "size"            : 60,
+    "size_in_between" : 5,
+    "gamemode"        : "maxTile",
+    "maxTile"         : 2048, #only, if gamemode == "maxTile
+    "level_text"      : "Erreiche das 2048 Tile.",
+    "max_moves_per_move"    : 1, #-1 ist default -> bis zum Rand
+    "board"           : [[0, 0, 2, 0, 0],
+                         [0, 0, 0, 0, 0],
+                         [0, 0, 0, 0, 0],
+                         [2, 0, 0, 0, 0],
+                         [0, 0, 0, 0, 0]
+                         ]
+}
 
 levels={
-    1 : level1
+    1 : level1,
+    2 : level2,
+    3 : level3,
+    4 : level4,
+    5 : level5
 }
 
 

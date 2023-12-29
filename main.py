@@ -134,9 +134,11 @@ def drawLoop():
   elif cfg.status == "overworld2":
     drawOverworld(window, 2)
 
-  elif cfg.status == "level1Init":
-    cfg.status = "gameInit"
-    cfg.level=1
+
+  elif "level" in cfg.status:
+    if "Init" in cfg.status:
+      cfg.status = "gameInit"
+      cfg.level=1
 
   elif cfg.status == "gameInit":
     window = pygame.display.set_mode((cfg.xmax, cfg.ymax))
