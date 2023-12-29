@@ -259,8 +259,6 @@ def countScore(board):
       if j < 0:
         config.score+=j*-2
 
-  print(config.score)
-
 
 #----------------------------------------------------------------------------------------------------------------------#
 #Funktionen, die für den status des Spiels verantwortlich sind. Setzten Level aus, initialisieren, etc.
@@ -335,7 +333,7 @@ def drawUIingame(fenster, colors=config.colors):
 
   draw_text_in_box(config.score_txt_box,"Score",max_fontsize=20)
   draw_text_in_box(config.score_box,config.score)
-  draw_text_in_box(config.level_info_box,"Level "+str(config.level))
+  draw_text_in_box(config.level_info_box,"Level "+str(config.current_level))
   draw_text_in_box(config.level_goal_box,level_goal_text)
 
   fenster.blit(config.ui_bg_box,config.ui_bg_pos)

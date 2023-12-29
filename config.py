@@ -25,7 +25,6 @@ length = 4  # Felder hoch
 size = 100  # 1 Block ist 100 Pixel breit und hoch
 size_in_between = 10  #Abstand zwischen allen Blöcken, sowie zwischen block und rand
 xextra = 0
-level=0
 
 yextra = 0
 yextra_top = size+size//2+3*size_in_between
@@ -35,10 +34,15 @@ xmax = width * size + xextra + size_in_between * (
 ymax = yextra_top +length * size + yextra + size_in_between * (
     length + 1)  # y-Koordinate des unteneren Randes
 
-homeHeight = 615
 homeWidth = 720
-overworldHeight = 550
+homeHeight = 615
 overworldWidth = 711
+overworldHeight = 550
+goWidth=702
+goHeight=600
+siegWidth=702
+siegHeigth=600
+
 
 running = True
 
@@ -71,6 +75,7 @@ score = 0
 tilerect = pygame.Rect(size_in_between, size_in_between, size, size)
 #default status.
 status = "homeInit"
+best_level=0
 
 #---------------------------------------------------------
 tile_list = [0, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048]
@@ -96,14 +101,19 @@ tile_surfaces = {}
 startscreen_original = pygame.image.load("assets/images/startscreen.jpg")
 overworld1_original = pygame.image.load("assets/images/levelselect1.PNG")
 overworld2_original = pygame.image.load("assets/images/levelselect2.PNG")
+gameover1_original = pygame.image.load("assets/images/gameover1.JPG")
+win1_original = pygame.image.load("assets/images/win1.JPG")
+lock_original = pygame.image.load("assets/images/lock.png")
+face1_original = pygame.image.load("assets/images/face1.png")
 
 bilder = {
-    "startscreen":
-    pygame.transform.scale(startscreen_original, (homeWidth, homeHeight)),
-    "overworld1":
-    overworld1_original,
-    "overworld2":
-    overworld2_original
+    "startscreen": pygame.transform.scale(startscreen_original, (homeWidth, homeHeight)),
+    "overworld1":  overworld1_original,
+    "overworld2":  overworld2_original,
+    "gameover1":   gameover1_original,
+    "win1":        win1_original,
+    "lock":        lock_original,
+    "face1":       face1_original
 }
 
 
@@ -193,17 +203,17 @@ level4={
 }
 
 level5={
-    "size"            : 60,
-    "size_in_between" : 5,
+    "size"            : 80,
+    "size_in_between" : 8,
     "gamemode"        : "maxTile",
     "maxTile"         : 2048, #only, if gamemode == "maxTile
     "level_text"      : "Erreiche das 2048 Tile.",
     "max_moves_per_move"    : 1, #-1 ist default -> bis zum Rand
-    "board"           : [[0, 0, 2, 0, 0],
-                         [0, 0, 0, 0, 0],
-                         [0, 0, 0, 0, 0],
-                         [2, 0, 0, 0, 0],
-                         [0, 0, 0, 0, 0]
+    "board"           : [[0, 0, 2, 0, 0, 0],
+                         [0, 0, 0, 0, 0, 0],
+                         [0, 0, 0, 0, 0, 0],
+                         [2, 0, 0, 0, 0, 0],
+                         [0, 0, 0, 0, 0, 0]
                          ]
 }
 

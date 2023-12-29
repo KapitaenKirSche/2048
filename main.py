@@ -42,6 +42,10 @@ def inputLoop():
         pass
 
 
+      elif cfg.status == "sieg" or cfg.status == "gameOver":
+        cfg.status = "overworldInit"
+
+
       if event.key == pygame.K_ESCAPE:
         pygame.quit()
         quit()
@@ -97,11 +101,16 @@ def logicLoop():
   # aktuell im Spiel
   elif cfg.status == "inGame":
     if bewegung_moeglich_generell(cfg.board) == False:
-      cfg.status = "gameOver"
+      cfg.status = "gameOverInit"
+      cfg.current_level=0
 
     if cfg.gamemode=="maxTile":
       if biggestTile(cfg.board) == cfg.maxWertTile:
-        cfg.status = "sieg"
+        cfg.status = "siegInit"
+        cfg.best_level = max(cfg.best_level,cfg.current_level)
+        cfg.current_level=0
+
+
 
     if cfg.direction >= 0:  #Wenn Pfeiltaste gedrückt ist
       if bewegungMoeglichSpeziell(cfg.board, cfg.direction,maxim=cfg.max_moves_per_move) == True:
@@ -110,6 +119,9 @@ def logicLoop():
         cfg.changed = True
 
     cfg.direction = -1
+
+
+
 
 
 def drawLoop():
@@ -138,7 +150,6 @@ def drawLoop():
   elif "level" in cfg.status:
     if "Init" in cfg.status:
       cfg.status = "gameInit"
-      cfg.level=1
 
   elif cfg.status == "gameInit":
     window = pygame.display.set_mode((cfg.xmax, cfg.ymax))
@@ -146,12 +157,26 @@ def drawLoop():
 
   elif cfg.status == "inGame":
     if cfg.changed:
-      #konsolenAusgabe(cfg.board)
       cfg.changed = False
 
       #Zeichnet das Spiel
       drawUIingame(window)
       drawBoard(cfg.board, window, tile_surfs=cfg.tile_surfaces)
+
+  elif cfg.status == "gameOverInit":
+    window = pygame.display.set_mode((cfg.goWidth, cfg.goHeight))
+    cfg.status = "gameOver"
+
+  elif cfg.status == "siegInit":
+    window = pygame.display.set_mode((cfg.siegWidth, cfg.siegHeigth))
+    cfg.status = "sieg"
+
+  elif cfg.status == "gameOver":
+    window.blit(config.bilder["gameover1"], (0, 0))
+
+  elif cfg.status == "sieg":
+    window.blit(config.bilder["win1"], (0, 0))
+
 
   pygame.display.flip()
 
