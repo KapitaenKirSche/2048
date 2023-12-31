@@ -1,6 +1,6 @@
 import pygame
 import config as cfg
-import time
+from timer import Timer
 from logic import *
 
 
@@ -110,8 +110,7 @@ def logicLoop():
     if cfg.gamemode=="maxTile":
       if biggestTile(cfg.board) == cfg.maxWertTile:
         cfg.status = "siegInit"
-        cfg.best_level = max(cfg.best_level,cfg.current_level)
-        cfg.current_level=0
+
 
 
 
@@ -131,7 +130,6 @@ def drawLoop():
   '''
   Die Funktion drawLoop ist die Zeichnungsschleife des Spiels.
   '''
-  #global board, changed, status, window, overworldWidth, overworldHeight, clickpos_levelselect1
   global window, timer
   if cfg.status == "homeInit":
     window = pygame.display.set_mode((cfg.homeWidth, cfg.homeHeight))
@@ -168,44 +166,31 @@ def drawLoop():
 
   elif cfg.status == "gameOverInit":
     if cfg.timer_set != True:
-      timer=time.Timer(5000)
+      timer=Timer(5000)
       cfg.timer_set = True
     else:
       if timer.wait():
         window = pygame.display.set_mode((cfg.goWidth, cfg.goHeight))
-        window.blit(config.bilder["gameover1"], (0, 0))
-        cfg.timer_set = False
-
-    if cfg.timer_set!=True:
-      timer = time.Timer(5000)
-      cfg.timer_set=True
-    else:
-      if timer.wait():
         cfg.status = "gameOver"
-        cfg.timer_set=False
-
+        cfg.timer_set = False
 
 
   elif cfg.status == "siegInit":
     if cfg.timer_set != True:
-      timer = time.Timer(5000)
+      timer = Timer(5000)
       cfg.timer_set = True
     else:
       if timer.wait():
         window = pygame.display.set_mode((cfg.siegWidth, cfg.siegHeight))
-        window.blit(config.bilder["sieg1"], (0, 0))
+        cfg.best_level = max(cfg.best_level, cfg.current_level)
+        cfg.current_level = 0
+        cfg.status="sieg"
         cfg.timer_set = False
 
-    if cfg.timer_set != True:
-      timer = time.Timer(5000)
-      cfg.timer_set = True
-    else:
-      if timer.wait():
-        cfg.status = "sieg"
-        cfg.timer_set = False
 
   elif cfg.status == "gameOver":
     window.blit(config.bilder["gameover1"], (0, 0))
+
 
   elif cfg.status == "sieg":
     window.blit(config.bilder["win1"], (0, 0))

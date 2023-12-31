@@ -356,6 +356,14 @@ def drawUIHome(fenster, colors=config.colors):
 
 def drawOverworld(fenster, site):
   fenster.blit(config.bilder["overworld" + str(site)], (0, 0))
+  if int(site) == 1:
+    for i in config.clickpos_levelselect1:
+      if i[1]!="Levelselect2":
+        if int(i[1][-2:]) <= config.best_level:
+          fenster.blit(config.bilder["face1"], (i[0][0]-4,i[0][1]+40))
+        else:
+          if int(i[1][-2:]) != config.best_level+1:
+            fenster.blit(config.bilder["lock"], (i[0][0]+12,i[0][1]+30))
 
 
 
