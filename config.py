@@ -1,4 +1,5 @@
 import pygame
+import time
 #Initial
 colors = {
     0: (192, 180, 165),
@@ -18,6 +19,10 @@ colors = {
     "text_2&4": (0, 0, 0),
     "text_rest": (255, 255, 255)
 }
+#timers
+#timer_levelend_a=time.Timer(800)
+#timer_levelend_b=time.Timer(200)
+timer_set=False
 
 # Größe des Spielfeldes
 width = 4  #  Felder breit
@@ -76,6 +81,7 @@ tilerect = pygame.Rect(size_in_between, size_in_between, size, size)
 #default status.
 status = "homeInit"
 best_level=0
+
 
 #---------------------------------------------------------
 tile_list = [0, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048]
@@ -224,5 +230,6 @@ levels={
     4 : level4,
     5 : level5
 }
+
 
 
