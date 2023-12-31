@@ -76,16 +76,13 @@ def up(board, maxim=-1):
 
   return: Spielfeld, bewegt nach oben
   '''
-
-  inp_board = []
-  for x in range(len(board)):
-    inp_board.append([])
-    for i in board[x]:
-      inp_board[x].append(i)
+  #copy board
+  inp_board=copy.deepcopy(board)
 
   zeilencount = 0
   for zeile in inp_board:
     spaltencount = 0
+
     for spalte in zeile:
       maxim_ = maxim
       a_ = zeilencount
@@ -97,14 +94,16 @@ def up(board, maxim=-1):
       while running:
         a_ -= 1
         maxim_ -= 1
+
+
         if inp_board[a_][spaltencount][0] == 0:
           inp_board[a_][spaltencount] = spalte
-          inp_board[a_ + 1][spaltencount] = config.template_tuple
+          inp_board[a_ + 1][spaltencount] = config.template_tile_list
 
         elif inp_board[a_][spaltencount][0] == spalte[0]:
           inp_board[a_][spaltencount] = spalte
           inp_board[a_][spaltencount][0] *= -1
-          inp_board[a_ + 1][spaltencount] = config.template_tuple
+          inp_board[a_ + 1][spaltencount] = config.template_tile_list=[0,"player"]
 
         else:
           running = False
@@ -158,7 +157,7 @@ def merge(board):
   for i in range(len(board)):
     for j in range(len(board[i])):
       x = board[i][j]
-      if x[0] < 0:
+      if x[0] < 0 and x[0]!=-1:
         board[i][j][0] = x[0] * -2
   return board
 
@@ -233,7 +232,11 @@ def createRandom(board, numb=1):
         if board[zeile][spalte][0] == 0:
           nullen.append((zeile, spalte))
     rndm = random.randint(0, len(nullen) - 1)
-    board[nullen[rndm][0]][nullen[rndm][1]] = random.choice([2, 4])
+
+    insert=config.template_tile_list=[0,"player"]
+    insert[0]=random.choice([2, 4])
+    board[nullen[rndm][0]][nullen[rndm][1]] = insert
+
   return board
 
 
@@ -255,6 +258,24 @@ def buildBoard(x, y, anzahlnewrand=0):
   board = createRandom(board, anzahlnewrand)
   return board
 
+def fillBoardWithDictionarys(board=config.board,aussnahmen={}):
+  '''
+  füllt ein board mit dem template dictionary, es sei denn eine Koordinate hat schon ein dictionary im außnahme dictionary
+  return: Board, befüllt mit dictionarys
+  '''
+  for y in range(len(board)):
+    for x in range(len(board[y])):
+      if (x,y) in aussnahmen:
+        board[y][x]=copy.deepcopy(aussnahmen[(x, y)])
+      else:
+        board[y][x]=copy.deepcopy(config.template_tile_dic)
+
+
+
+  return board
+
+
+
 def countScore(board):
   for i in board:
     for j in i:
@@ -274,6 +295,7 @@ def initLevel(board):
   config.size = level["size"]
   config.size_in_between = level["size_in_between"]
 
+  board=fillBoardWithDictionarys(board=board,aussnahmen=level["preset_tiles"])
   config.board = copy.deepcopy(level["board"])
   config.width = len(board[0])
   config.length = len(board)

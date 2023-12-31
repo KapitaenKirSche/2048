@@ -166,7 +166,11 @@ clickpos_levelselect1 = [
                  r_siz), "Levelselect2"),
 ]
 
-template_tuple=(0,"player")
+
+template_tile_dic={
+    "tile_numb" : 0,
+    "fraction"  : "None"
+}
 #Levels----------------------------------------------------------------------------------------
 level01={
     "size"            : 100,
@@ -175,10 +179,16 @@ level01={
     "maxTile"         : 128, #only, if gamemode == "maxTile
     "level_text"      : "Erreiche das 128 Tile.",
     "max_moves_per_move"    : 1, #-1 ist default -> bis zum Rand
-    "board"           : [[(0,"player"), (0,"player"), (4,"player")],
-                         [(0,"player"), (0,"player"), (0,"player")],
-                         [(2,"player"), (0,"player"), (0,"player")]
-                         ]
+
+    "board"           : [[{}, {}, {}],
+                         [{}, {}, {}],
+                         [{}, {}, {}]
+                         ],
+    "preset_tiles"    : {(2,0):{"tile_numb" : 2,
+                                "fraction"  : "player"},
+                         (0,2):{"tile_numb" : 4,
+                                "fraction"  : "player"}
+                         }
 }
 
 level02={
