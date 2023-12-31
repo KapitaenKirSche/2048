@@ -92,7 +92,7 @@ def logicLoop():
   #LevelxInit
   elif "level" in cfg.status:
     if "Init" in cfg.status:
-      cfg.current_level=int(cfg.status[5])
+      cfg.current_level=int(cfg.status[5:7])
       initLevel(cfg.levels[cfg.current_level]["board"])
 
 
@@ -166,7 +166,7 @@ def drawLoop():
 
   elif cfg.status == "gameOverInit":
     if cfg.timer_set != True:
-      timer=Timer(5000)
+      timer=Timer(900)
       cfg.timer_set = True
     else:
       if timer.wait():
@@ -177,7 +177,7 @@ def drawLoop():
 
   elif cfg.status == "siegInit":
     if cfg.timer_set != True:
-      timer = Timer(5000)
+      timer = Timer(900)
       cfg.timer_set = True
     else:
       if timer.wait():
