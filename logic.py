@@ -201,7 +201,7 @@ def bewegungMoeglichSpeziell(board, dir, maxim=-1):
   return beweg_mogl
 
 
-def biggestTile(board):
+def biggestTile(board, tile_category="player"):
   '''
   input: board(Spielfeld, Matrix)
 
@@ -212,8 +212,9 @@ def biggestTile(board):
   hoechster = 0
   for zeile in board:
     for spalte in zeile:
-      if spalte > hoechster:
-        hoechster = spalte
+      if spalte[0] > hoechster:
+        if spalte[1]==tile_category:
+          hoechster = spalte[0]
   return hoechster
 
 
@@ -313,7 +314,7 @@ def drawBoard(board,
       x += 1
       rectx = config.size_in_between * x + config.size * (x - 1)
       recty = config.yextra_top + config.size_in_between * y + config.size * (y - 1)
-      fenster.blit(tile_surfs[tile], (rectx, recty))
+      fenster.blit(tile_surfs[str(tile[0])+"_"+str(tile[1])], (rectx, recty))
 
 
 def drawUIingame(fenster, colors=config.colors):
@@ -324,7 +325,7 @@ def drawUIingame(fenster, colors=config.colors):
   level_goal_text = config.levelGoalText
 
   fenster.fill(colors.get("bg"))
-  color=0
+  color="0_player"
   config.ui_bg_box.fill(config.colors.get("ui_bg"))
   config.score_txt_box.fill(config.colors.get(color))
   config.score_box.fill(config.colors.get(color))
@@ -333,7 +334,7 @@ def drawUIingame(fenster, colors=config.colors):
 
 
   draw_text_in_box(config.score_txt_box,"Score",max_fontsize=20)
-  draw_text_in_box(config.score_box,config.score)
+  draw_text_in_box(config.score_box,str(config.score))
   draw_text_in_box(config.level_info_box,"Level "+str(config.current_level))
   draw_text_in_box(config.level_goal_box,level_goal_text)
 
@@ -419,9 +420,10 @@ def setup_tiles(width,
                 font_color=(255, 255, 255)):
   tiles = {}
   for tile in tile_list:
+    tile_numb=int(tile.split("_")[0])
     tile_surf = pygame.Surface((width, heigth))
     tile_surf.fill(colors.get(tile))
-    draw_text_in_box(tile_surf, tile, font)
+    draw_text_in_box(tile_surf, tile_numb, font)
     tiles[tile] = tile_surf
 
   return tiles

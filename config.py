@@ -2,18 +2,33 @@ import pygame
 import timer
 #Initial
 colors = {
-    0: (192, 180, 165),
-    2: (238, 228, 218),
-    4: (237, 224, 200),
-    8: (242, 177, 121),
-    16: (245, 149, 99),
-    32: (246, 124, 95),
-    64: (246, 94, 59),
-    128: (237, 207, 114),
-    256: (237, 204, 97),
-    512: (237, 200, 80),
-    1024: (237, 197, 63),
-    2048: (237, 194, 46),
+    "0_player": (192, 180, 165),
+    "2_player": (238, 228, 218),
+    "4_player": (237, 224, 200),
+    "8_player": (242, 177, 121),
+    "16_player": (245, 149, 99),
+    "32_player": (246, 124, 95),
+    "64_player": (246, 94, 59),
+    "128_player": (237, 207, 114),
+    "256_player": (237, 204, 97),
+    "512_player": (237, 200, 80),
+    "1024_player": (237, 197, 63),
+    "2048_player": (237, 194, 46),
+
+    "0_enemy": (192, 180, 165),
+    "2_enemy": (238, 228, 218),
+    "4_enemy": (237, 224, 200),
+    "8_enemy": (242, 177, 121),
+    "16_enemy": (245, 149, 99),
+    "32_enemy": (246, 124, 95),
+    "64_enemy": (246, 94, 59),
+    "128_enemy": (237, 207, 114),
+    "256_enemy": (237, 204, 97),
+    "512_enemy": (237, 200, 80),
+    "1024_enemy": (237, 197, 63),
+    "2048_enemy": (237, 194, 46),
+
+
     "bg": (187, 173, 160),
     "ui_bg": (0, 0, 0),
     "text_2&4": (0, 0, 0),
@@ -45,7 +60,7 @@ overworldHeight = 550
 goWidth=702
 goHeight=600
 siegWidth=702
-siegHeigth=600
+siegHeight=600
 
 
 running = True
@@ -83,7 +98,8 @@ best_level=0
 
 
 #---------------------------------------------------------
-tile_list = [0, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048]
+tile_list = ["0_player", "2_player", "4_player", "8_player", "16_player", "32_player", "64_player", "128_player", "256_player", "512_player", "1024_player", "2048_player",
+             "0_enemy", "2_enemy", "4_enemy", "8_enemy", "16_enemy", "32_enemy", "64_enemy", "128_enemy", "256_enemy", "512_enemy", "1024_enemy", "2048_enemy"]
 current_level=0
 gamemode=""
 maxWertTile = 2048
@@ -152,20 +168,20 @@ clickpos_levelselect1 = [
 
 
 #Levels----------------------------------------------------------------------------------------
-level1={
+level01={
     "size"            : 100,
     "size_in_between" : 10,
     "gamemode"        : "maxTile",
     "maxTile"         : 128, #only, if gamemode == "maxTile
     "level_text"      : "Erreiche das 128 Tile.",
     "max_moves_per_move"    : 1, #-1 ist default -> bis zum Rand
-    "board"           : [[0, 0, 2],
-                         [0, 0, 0],
-                         [2, 0, 0]
+    "board"           : [[(0,"player"), (0,"player"), (4,"player")],
+                         [(0,"player"), (0,"player"), (0,"player")],
+                         [(2,"player"), (0,"player"), (0,"player")]
                          ]
 }
 
-level2={
+level02={
     "size"            : 90,
     "size_in_between" : 9,
     "gamemode"        : "maxTile",
@@ -179,7 +195,7 @@ level2={
                          ]
 }
 
-level3={
+level03={
     "size"            : 90,
     "size_in_between" : 9,
     "gamemode"        : "maxTile",
@@ -193,7 +209,7 @@ level3={
                          ]
 }
 
-level4={
+level04={
     "size"            : 90,
     "size_in_between" : 9,
     "gamemode"        : "maxTile",
@@ -207,7 +223,7 @@ level4={
                          ]
 }
 
-level5={
+level05={
     "size"            : 80,
     "size_in_between" : 8,
     "gamemode"        : "maxTile",
@@ -218,16 +234,15 @@ level5={
                          [0, 0, 0, 0, 0, 0],
                          [0, 0, 0, 0, 0, 0],
                          [2, 0, 0, 0, 0, 0],
-                         [0, 0, 0, 0, 0, 0]
                          ]
 }
 
 levels={
-    1 : level1,
-    2 : level2,
-    3 : level3,
-    4 : level4,
-    5 : level5
+    1 : level01,
+    2 : level02,
+    3 : level03,
+    4 : level04,
+    5 : level05
 }
 
 
