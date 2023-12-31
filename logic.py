@@ -97,13 +97,14 @@ def up(board, maxim=-1):
       while running:
         a_ -= 1
         maxim_ -= 1
-        if inp_board[a_][spaltencount] == 0:
+        if inp_board[a_][spaltencount][0] == 0:
           inp_board[a_][spaltencount] = spalte
-          inp_board[a_ + 1][spaltencount] = 0
+          inp_board[a_ + 1][spaltencount] = config.template_tuple
 
-        elif inp_board[a_][spaltencount] == spalte:
-          inp_board[a_][spaltencount] = spalte * -1
-          inp_board[a_ + 1][spaltencount] = 0
+        elif inp_board[a_][spaltencount][0] == spalte[0]:
+          inp_board[a_][spaltencount] = spalte
+          inp_board[a_][spaltencount][0] *= -1
+          inp_board[a_ + 1][spaltencount] = config.template_tuple
 
         else:
           running = False
@@ -157,8 +158,8 @@ def merge(board):
   for i in range(len(board)):
     for j in range(len(board[i])):
       x = board[i][j]
-      if x < 0:
-        board[i][j] = x * -2
+      if x[0] < 0:
+        board[i][j][0] = x[0] * -2
   return board
 
 
@@ -229,7 +230,7 @@ def createRandom(board, numb=1):
     nullen = []
     for zeile in range(len(board)):
       for spalte in range(len(board[zeile])):
-        if board[zeile][spalte] == 0:
+        if board[zeile][spalte][0] == 0:
           nullen.append((zeile, spalte))
     rndm = random.randint(0, len(nullen) - 1)
     board[nullen[rndm][0]][nullen[rndm][1]] = random.choice([2, 4])
@@ -257,8 +258,8 @@ def buildBoard(x, y, anzahlnewrand=0):
 def countScore(board):
   for i in board:
     for j in i:
-      if j < 0:
-        config.score+=j*-2
+      if j[0] < 0:
+        config.score+=j[0]*-2
 
 
 #----------------------------------------------------------------------------------------------------------------------#

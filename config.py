@@ -166,7 +166,7 @@ clickpos_levelselect1 = [
                  r_siz), "Levelselect2"),
 ]
 
-
+template_tuple=(0,"player")
 #Levels----------------------------------------------------------------------------------------
 level01={
     "size"            : 100,
