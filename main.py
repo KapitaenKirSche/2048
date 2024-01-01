@@ -93,7 +93,14 @@ def logicLoop():
   elif "level" in cfg.status:
     if "Init" in cfg.status:
       cfg.current_level=int(cfg.status[5:7])
-      initLevel(cfg.levels[cfg.current_level]["board"])
+      if cfg.current_level <= cfg.best_level+1:
+        initLevel(cfg.levels[cfg.current_level]["board"])
+      else:
+        if cfg.current_level <= 20:
+          cfg.status="overworld1"
+        else:
+          cfg.status="overworld2"
+        cfg.current_level = 0
 
 
   elif cfg.status == "gameInit":  #Erstes mal im Spiel (dem richtigen Spiel, nicht homescreen)
@@ -116,7 +123,7 @@ def logicLoop():
     if cfg.direction >= 0:  #Wenn Pfeiltaste gedrückt ist
       if bewegungMoeglichSpeziell(cfg.board, cfg.direction,maxim=cfg.max_moves_per_move) == True:
         cfg.board = move(cfg.board, cfg.direction,maxim=cfg.max_moves_per_move)
-        cfg.board = createRandom(cfg.board)
+        cfg.board = createRandom(cfg.board,chance_enemy=cfg.levels[cfg.current_level]["chance_enemy_spawn"])
         cfg.changed = True
 
     cfg.direction = -1

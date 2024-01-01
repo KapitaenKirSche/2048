@@ -95,20 +95,42 @@ def up(board, maxim=-1):
         a_ -= 1
         maxim_ -= 1
 
+        if spalte["fraction"] != "none":
+          if inp_board[a_][spaltencount]["tile_numb"] == 0:
+            inp_board[a_][spaltencount] = copy.deepcopy(spalte)
+            inp_board[a_ + 1][spaltencount] = config.template_tile_dic
 
-        if inp_board[a_][spaltencount]["tile_numb"] == 0:
-          inp_board[a_][spaltencount] = copy.deepcopy(spalte)
-          inp_board[a_ + 1][spaltencount] = config.template_tile_dic
 
-        elif inp_board[a_][spaltencount]["tile_numb"] == spalte["tile_numb"]:
-          inp_board[a_][spaltencount] = copy.deepcopy(spalte)
-          inp_board[a_][spaltencount]["tile_numb"] *= -1
-          inp_board[a_ + 1][spaltencount] = config.template_tile_dic
+          elif inp_board[a_][spaltencount]["tile_numb"] == spalte["tile_numb"] and inp_board[a_][spaltencount]["fraction"] == spalte["fraction"]:
+            inp_board[a_][spaltencount] = copy.deepcopy(spalte)
+            inp_board[a_][spaltencount]["tile_numb"] *= -1
+            inp_board[a_ + 1][spaltencount] = config.template_tile_dic
 
-        else:
-          running = False
+
+          #Gegner-kollision:
+          elif inp_board[a_][spaltencount]["fraction"] != spalte["fraction"]:
+            if inp_board[a_][spaltencount]["tile_numb"] > spalte["tile_numb"]:
+              inp_board[a_+1][spaltencount] = copy.deepcopy(config.template_tile_dic)
+            elif inp_board[a_][spaltencount]["tile_numb"] < spalte["tile_numb"]:
+              inp_board[a_][spaltencount] = copy.deepcopy(spalte)
+            else:
+              if inp_board[a_][spaltencount]["fraction"] == "enemy":
+                pass
+              else:
+                inp_board[a_][spaltencount]=copy.deepcopy(spalte)
+              inp_board[a_][spaltencount]["tile_numb"] *= -1
+              inp_board[a_ + 1][spaltencount] = copy.deepcopy(config.template_tile_dic)
+
+
+
+
+
+          else:
+            running = False
+        else: running=False
         if a_ == 0 or maxim_ == 0:
           running = False
+
       spaltencount += 1
     zeilencount += 1
 
@@ -230,7 +252,7 @@ def createRandom(board, numb=1, chance_enemy=0):
          numb: Anzahl wie oft der Prozess wiederholt wird
          chance_enemy:int, Warscheinlichkeit, dass ein neues Tile ein Gegner ist. in Prozent
 
-  Gibt das Board, mit einer nach Zufall verteilten Zahl 2 oder 4 an einer leeren Stelle aus
+  Gibt das Board, mit einer nach Zufall vrteilten Zahl 2 oder 4 an einer leeren Stelle aus
   '''
   for _ in range(numb):
     nullen = []
@@ -371,7 +393,7 @@ def drawUIingame(fenster, colors=config.colors):
   draw_text_in_box(config.score_txt_box,"Score",max_fontsize=20)
   draw_text_in_box(config.score_box,str(config.score))
   draw_text_in_box(config.level_info_box,"Level "+str(config.current_level))
-  draw_text_in_box(config.level_goal_box,level_goal_text)
+  draw_text_in_box(config.level_goal_box,level_goal_text, fact=0.95)
 
   fenster.blit(config.ui_bg_box,config.ui_bg_pos)
   fenster.blit(config.score_txt_box,config.score_txt_pos)

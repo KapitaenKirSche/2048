@@ -16,17 +16,17 @@ colors = {
     "2048_player": (237, 194, 46),
 
 
-    "2_enemy": (238, 228, 218),
-    "4_enemy": (237, 224, 200),
-    "8_enemy": (242, 177, 121),
-    "16_enemy": (245, 149, 99),
-    "32_enemy": (246, 124, 95),
-    "64_enemy": (246, 94, 59),
-    "128_enemy": (237, 207, 114),
-    "256_enemy": (237, 204, 97),
-    "512_enemy": (237, 200, 80),
-    "1024_enemy": (237, 197, 63),
-    "2048_enemy": (237, 194, 46),
+    "2_enemy": (218, 250, 220),
+    "4_enemy": (176, 229, 179),
+    "8_enemy": (137, 242, 121),
+    "16_enemy": (122, 223, 91),
+    "32_enemy": (86, 213, 85),
+    "64_enemy": (44, 173, 43),
+    "128_enemy": (139, 183, 230),
+    "256_enemy": (113, 173, 238),
+    "512_enemy": (80, 148, 220),
+    "1024_enemy": (43, 128, 217),
+    "2048_enemy": (18, 121, 230),
 
 
     "bg": (187, 173, 160),
@@ -94,7 +94,7 @@ score = 0
 tilerect = pygame.Rect(size_in_between, size_in_between, size, size)
 #default status.
 status = "homeInit"
-best_level=0
+best_level=15
 
 
 #---------------------------------------------------------
@@ -178,6 +178,7 @@ level01={
     "gamemode"        : "maxTile",
     "maxTile"         : 128, #only, if gamemode == "maxTile
     "level_text"      : "Erreiche das 128 Tile.",
+    "chance_enemy_spawn": 0,
     "max_moves_per_move"    : 1, #-1 ist default -> bis zum Rand
 
     "board"           : [[{}, {}, {}],
@@ -197,12 +198,18 @@ level02={
     "gamemode"        : "maxTile",
     "maxTile"         : 256, #only, if gamemode == "maxTile
     "level_text"      : "Erreiche das 256 Tile.",
+    "chance_enemy_spawn": 0,
     "max_moves_per_move"    : 1, #-1 ist default -> bis zum Rand
-    "board"           : [[0, 0, 2, 0],
-                         [0, 0, 0, 0],
-                         [0, 0, 0, 0],
-                         [2, 0, 0, 0]
-                         ]
+    "board"           : [[{}, {}, {}, {}],
+                         [{}, {}, {}, {}],
+                         [{}, {}, {}, {}],
+                         [{}, {}, {}, {}]
+                         ],
+    "preset_tiles"    : {(2,0):{"tile_numb" : 2,
+                                "fraction"  : "player"},
+                         (0,3):{"tile_numb" : 4,
+                                "fraction"  : "player"}
+                             }
 }
 
 level03={
@@ -211,12 +218,18 @@ level03={
     "gamemode"        : "maxTile",
     "maxTile"         : 512, #only, if gamemode == "maxTile
     "level_text"      : "Erreiche das 512 Tile.",
+    "chance_enemy_spawn": 0,
     "max_moves_per_move"    : 1, #-1 ist default -> bis zum Rand
-    "board"           : [[0, 0, 2, 0],
-                         [0, 0, 0, 0],
-                         [0, 0, 0, 0],
-                         [2, 0, 0, 0]
-                         ]
+    "board"           : [[{}, {}, {}, {}],
+                         [{}, {}, {}, {}],
+                         [{}, {}, {}, {}],
+                         [{}, {}, {}, {}]
+                         ],
+    "preset_tiles"    : {(2,0):{"tile_numb" : 2,
+                                "fraction"  : "player"},
+                         (0,3):{"tile_numb" : 2,
+                                "fraction"  : "player"}
+                             }
 }
 
 level04={
@@ -225,12 +238,18 @@ level04={
     "gamemode"        : "maxTile",
     "maxTile"         : 1024, #only, if gamemode == "maxTile
     "level_text"      : "Erreiche das 1024 Tile.",
+    "chance_enemy_spawn": 0,
     "max_moves_per_move"    : 1, #-1 ist default -> bis zum Rand
-    "board"           : [[0, 0, 2, 0],
-                         [0, 0, 0, 0],
-                         [0, 0, 0, 0],
-                         [2, 0, 0, 0]
-                         ]
+    "board"           : [[{}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}]
+                         ],
+    "preset_tiles": {(2, 0): {"tile_numb": 2,
+                              "fraction": "player"},
+                     (1, 3): {"tile_numb": 2,
+                              "fraction": "player"}
+                     }
 }
 
 level05={
@@ -238,13 +257,21 @@ level05={
     "size_in_between" : 8,
     "gamemode"        : "maxTile",
     "maxTile"         : 2048, #only, if gamemode == "maxTile
-    "level_text"      : "Erreiche das 2048 Tile.",
+    "level_text"      : "Erreiche das 2048 Tile. Achtung: Gegner!",
+    "chance_enemy_spawn":20,
     "max_moves_per_move"    : 1, #-1 ist default -> bis zum Rand
-    "board"           : [[0, 0, 2, 0, 0, 0],
-                         [0, 0, 0, 0, 0, 0],
-                         [0, 0, 0, 0, 0, 0],
-                         [2, 0, 0, 0, 0, 0],
-                         ]
+    "board"           : [[{}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}]
+                         ],
+    "preset_tiles": {(3, 0): {"tile_numb": 4,
+                              "fraction": "player"},
+                     (1, 3): {"tile_numb": 2,
+                              "fraction": "player"},
+                     (1, 2): {"tile_numb": 4,
+                              "fraction": "enemy"}
+                     }
 }
 
 levels={
