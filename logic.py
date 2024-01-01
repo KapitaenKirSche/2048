@@ -173,12 +173,18 @@ def bewegung_moeglich_generell(board, maxim=-1):
   '''
   beweg_mogl = False
   for i in board:
-    if 0 in i:
-      beweg_mogl = True
+    for j in i:
+      if 0 in j:
+        beweg_mogl = True
+
   if beweg_mogl == False:
     if board != up(board, maxim):
       beweg_mogl = True
     elif board != right(board, maxim):
+      beweg_mogl = True
+    elif board != left(board, maxim):
+      beweg_mogl = True
+    elif board != down(board, maxim):
       beweg_mogl = True
 
   return beweg_mogl
