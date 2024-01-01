@@ -2,7 +2,7 @@ import pygame
 import timer
 #Initial
 colors = {
-    "0_player": (192, 180, 165),
+    "0_none": (192, 180, 165),
     "2_player": (238, 228, 218),
     "4_player": (237, 224, 200),
     "8_player": (242, 177, 121),
@@ -15,7 +15,7 @@ colors = {
     "1024_player": (237, 197, 63),
     "2048_player": (237, 194, 46),
 
-    "0_enemy": (192, 180, 165),
+
     "2_enemy": (238, 228, 218),
     "4_enemy": (237, 224, 200),
     "8_enemy": (242, 177, 121),
@@ -98,8 +98,8 @@ best_level=0
 
 
 #---------------------------------------------------------
-tile_list = ["0_player", "2_player", "4_player", "8_player", "16_player", "32_player", "64_player", "128_player", "256_player", "512_player", "1024_player", "2048_player",
-             "0_enemy", "2_enemy", "4_enemy", "8_enemy", "16_enemy", "32_enemy", "64_enemy", "128_enemy", "256_enemy", "512_enemy", "1024_enemy", "2048_enemy"]
+tile_list = ["0_none", "2_player", "4_player", "8_player", "16_player", "32_player", "64_player", "128_player", "256_player", "512_player", "1024_player", "2048_player",
+                       "2_enemy", "4_enemy", "8_enemy", "16_enemy", "32_enemy", "64_enemy", "128_enemy", "256_enemy", "512_enemy", "1024_enemy", "2048_enemy"]
 current_level=0
 gamemode=""
 maxWertTile = 2048
@@ -169,7 +169,7 @@ clickpos_levelselect1 = [
 
 template_tile_dic={
     "tile_numb" : 0,
-    "fraction"  : "None"
+    "fraction"  : "none"
 }
 #Levels----------------------------------------------------------------------------------------
 level01={

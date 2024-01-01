@@ -97,13 +97,12 @@ def logicLoop():
 
 
   elif cfg.status == "gameInit":  #Erstes mal im Spiel (dem richtigen Spiel, nicht homescreen)
-    #board = buildBoard(width, length, 2)
     cfg.tile_surfaces = setup_tiles(cfg.size, cfg.size)
 
 
   # aktuell im Spiel
   elif cfg.status == "inGame":
-    if bewegung_moeglich_generell(cfg.board) == False:
+    if bewegung_moeglich_generell(cfg.board, cfg.levels[cfg.current_level]["max_moves_per_move"]) == False:
       cfg.status = "gameOverInit"
       cfg.current_level=0
 

@@ -96,14 +96,14 @@ def up(board, maxim=-1):
         maxim_ -= 1
 
 
-        if inp_board[a_][spaltencount][0] == 0:
-          inp_board[a_][spaltencount] = spalte
-          inp_board[a_ + 1][spaltencount] = config.template_tile_list
+        if inp_board[a_][spaltencount]["tile_numb"] == 0:
+          inp_board[a_][spaltencount] = copy.deepcopy(spalte)
+          inp_board[a_ + 1][spaltencount] = config.template_tile_dic
 
-        elif inp_board[a_][spaltencount][0] == spalte[0]:
-          inp_board[a_][spaltencount] = spalte
-          inp_board[a_][spaltencount][0] *= -1
-          inp_board[a_ + 1][spaltencount] = config.template_tile_list=[0,"player"]
+        elif inp_board[a_][spaltencount]["tile_numb"] == spalte["tile_numb"]:
+          inp_board[a_][spaltencount] = copy.deepcopy(spalte)
+          inp_board[a_][spaltencount]["tile_numb"] *= -1
+          inp_board[a_ + 1][spaltencount] = config.template_tile_dic
 
         else:
           running = False
@@ -157,8 +157,8 @@ def merge(board):
   for i in range(len(board)):
     for j in range(len(board[i])):
       x = board[i][j]
-      if x[0] < 0 and x[0]!=-1:
-        board[i][j][0] = x[0] * -2
+      if x["tile_numb"] < 0 and x["tile_numb"]!=-1:
+        board[i][j]["tile_numb"] = x["tile_numb"] * -2
   return board
 
 
@@ -212,16 +212,17 @@ def biggestTile(board, tile_category="player"):
   hoechster = 0
   for zeile in board:
     for spalte in zeile:
-      if spalte[0] > hoechster:
-        if spalte[1]==tile_category:
-          hoechster = spalte[0]
+      if spalte["tile_numb"] > hoechster:
+        if spalte["fraction"]==tile_category:
+          hoechster = spalte["tile_numb"]
   return hoechster
 
 
-def createRandom(board, numb=1):
+def createRandom(board, numb=1, chance_enemy=0):
   '''
   Input: board: Spielfeld
          numb: Anzahl wie oft der Prozess wiederholt wird
+         chance_enemy:int, Warscheinlichkeit, dass ein neues Tile ein Gegner ist. in Prozent
 
   Gibt das Board, mit einer nach Zufall verteilten Zahl 2 oder 4 an einer leeren Stelle aus
   '''
@@ -229,12 +230,17 @@ def createRandom(board, numb=1):
     nullen = []
     for zeile in range(len(board)):
       for spalte in range(len(board[zeile])):
-        if board[zeile][spalte][0] == 0:
+        if board[zeile][spalte]["tile_numb"] == 0:
           nullen.append((zeile, spalte))
     rndm = random.randint(0, len(nullen) - 1)
 
-    insert=config.template_tile_list=[0,"player"]
-    insert[0]=random.choice([2, 4])
+    insert=copy.deepcopy(config.template_tile_dic)
+    insert["tile_numb"]=random.choice([2, 4])
+    rndm2=random.randint(1,100)
+    if rndm2 <= chance_enemy:
+      insert["fraction"] = "enemy"
+    else:
+      insert["fraction"] = "player"
     board[nullen[rndm][0]][nullen[rndm][1]] = insert
 
   return board
@@ -279,8 +285,8 @@ def fillBoardWithDictionarys(board=config.board,aussnahmen={}):
 def countScore(board):
   for i in board:
     for j in i:
-      if j[0] < 0:
-        config.score+=j[0]*-2
+      if j["tile_numb"] < 0:
+        config.score+=j["tile_numb"]*-2
 
 
 #----------------------------------------------------------------------------------------------------------------------#
@@ -337,7 +343,7 @@ def drawBoard(board,
       x += 1
       rectx = config.size_in_between * x + config.size * (x - 1)
       recty = config.yextra_top + config.size_in_between * y + config.size * (y - 1)
-      fenster.blit(tile_surfs[str(tile[0])+"_"+str(tile[1])], (rectx, recty))
+      fenster.blit(tile_surfs[str(tile["tile_numb"])+"_"+str(tile["fraction"])], (rectx, recty))
 
 
 def drawUIingame(fenster, colors=config.colors):
@@ -348,7 +354,7 @@ def drawUIingame(fenster, colors=config.colors):
   level_goal_text = config.levelGoalText
 
   fenster.fill(colors.get("bg"))
-  color="0_player"
+  color="0_none"
   config.ui_bg_box.fill(config.colors.get("ui_bg"))
   config.score_txt_box.fill(config.colors.get(color))
   config.score_box.fill(config.colors.get(color))
@@ -422,9 +428,9 @@ def draw_text_in_box(surface,
   text_height = text_to_draw.get_height()
   surfheight = surface.get_height()
   surfwidth = surface.get_width()
-  if text != 0:
-    surface.blit(text_to_draw, (surfwidth / 2 - text_width / 2,
-                                (surfheight / 2 - text_height / 2) + 3))
+
+  surface.blit(text_to_draw, (surfwidth / 2 - text_width / 2,
+                             (surfheight / 2 - text_height / 2) + 3))
 
 
 def konsolenAusgabe(board):
@@ -442,11 +448,13 @@ def setup_tiles(width,
                 font="assets/fonts/ClearSans-Bold.ttf",
                 font_color=(255, 255, 255)):
   tiles = {}
+
   for tile in tile_list:
     tile_numb=int(tile.split("_")[0])
     tile_surf = pygame.Surface((width, heigth))
     tile_surf.fill(colors.get(tile))
-    draw_text_in_box(tile_surf, tile_numb, font)
+    if tile_numb != 0:
+      draw_text_in_box(tile_surf, tile_numb, font)
     tiles[tile] = tile_surf
 
   return tiles
