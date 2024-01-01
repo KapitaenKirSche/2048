@@ -98,13 +98,13 @@ def up(board, maxim=-1):
         if spalte["fraction"] != "none":
           if inp_board[a_][spaltencount]["tile_numb"] == 0:
             inp_board[a_][spaltencount] = copy.deepcopy(spalte)
-            inp_board[a_ + 1][spaltencount] = config.template_tile_dic
+            inp_board[a_ + 1][spaltencount] = copy.deepcopy(config.template_tile_dic)
 
 
           elif inp_board[a_][spaltencount]["tile_numb"] == spalte["tile_numb"] and inp_board[a_][spaltencount]["fraction"] == spalte["fraction"]:
             inp_board[a_][spaltencount] = copy.deepcopy(spalte)
             inp_board[a_][spaltencount]["tile_numb"] *= -1
-            inp_board[a_ + 1][spaltencount] = config.template_tile_dic
+            inp_board[a_ + 1][spaltencount] = copy.deepcopy(config.template_tile_dic)
 
 
           #Gegner-kollision:
@@ -113,17 +113,7 @@ def up(board, maxim=-1):
               inp_board[a_+1][spaltencount] = copy.deepcopy(config.template_tile_dic)
             elif inp_board[a_][spaltencount]["tile_numb"] < spalte["tile_numb"]:
               inp_board[a_][spaltencount] = copy.deepcopy(spalte)
-            else:
-              if inp_board[a_][spaltencount]["fraction"] == "enemy":
-                pass
-              else:
-                inp_board[a_][spaltencount]=copy.deepcopy(spalte)
-              inp_board[a_][spaltencount]["tile_numb"] *= -1
-              inp_board[a_ + 1][spaltencount] = copy.deepcopy(config.template_tile_dic)
-
-
-
-
+              inp_board[a_+1][spaltencount] = copy.deepcopy(config.template_tile_dic)
 
           else:
             running = False
@@ -429,7 +419,10 @@ def draw_text_in_box(surface,
                      text,
                      font="Arial",
                      max_fontsize=9999,
-                     color=(0, 0, 0),
+                     fraction="none",
+                     colors={"color_none": (0, 0, 0),
+                             "color_player":(255,255,255),
+                             "color_enemy":(0,0,0)},
                      fact=0.85):
   """
   Draws text in a box on the given surface.
@@ -438,18 +431,18 @@ def draw_text_in_box(surface,
   """
   fontsize = 0
   my_font = pygame.font.SysFont(font, fontsize)
+  color=colors["color_"+str(fraction)]
   text_to_draw = my_font.render(str(text), True, color)
   text_width = text_to_draw.get_width()
   text_height = text_to_draw.get_height()
-  while text_width < surface.get_width(
-  ) * fact and text_height < surface.get_height() * fact:
+  while text_width < surface.get_width() * fact and text_height < surface.get_height() * fact:
     fontsize += 1
     my_font = pygame.font.SysFont(font, fontsize)
     text_to_draw = my_font.render(str(text), True, color)
     text_width = text_to_draw.get_width()
     text_height = text_to_draw.get_height()
 
-  my_font = pygame.font.SysFont(font, min(fontsize, max_fontsize) - 1)
+  my_font = pygame.font.SysFont(font, min(int(fontsize), int(max_fontsize)) - 1)
 
   text_to_draw = my_font.render(str(text), True, color)
   text_width = text_to_draw.get_width()
@@ -479,10 +472,14 @@ def setup_tiles(width,
 
   for tile in tile_list:
     tile_numb=int(tile.split("_")[0])
+    tile_frac=tile.split("_")[1]
     tile_surf = pygame.Surface((width, heigth))
     tile_surf.fill(colors.get(tile))
     if tile_numb != 0:
-      draw_text_in_box(tile_surf, tile_numb, font)
+      if tile_numb <=4:
+        draw_text_in_box(tile_surf, tile_numb, font, fraction="none")
+      else:
+        draw_text_in_box(tile_surf, tile_numb, font,fraction=tile_frac)
     tiles[tile] = tile_surf
 
   return tiles

@@ -256,9 +256,9 @@ level05={
     "size"            : 80,
     "size_in_between" : 8,
     "gamemode"        : "maxTile",
-    "maxTile"         : 2048, #only, if gamemode == "maxTile
-    "level_text"      : "Erreiche das 2048 Tile. Achtung: Gegner!",
-    "chance_enemy_spawn":20,
+    "maxTile"         : 1024, #only, if gamemode == "maxTile"
+    "level_text"      : "Erreiche das 1024 Tile. Achtung: Gegner!",
+    "chance_enemy_spawn":30,
     "max_moves_per_move"    : 1, #-1 ist default -> bis zum Rand
     "board"           : [[{}, {}, {}, {}, {}, {}],
                          [{}, {}, {}, {}, {}, {}],
