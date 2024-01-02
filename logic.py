@@ -106,7 +106,8 @@ def up(board, maxim=-1):
             inp_board[a_][spaltencount]["tile_numb"] *= -1
             inp_board[a_ + 1][spaltencount] = copy.deepcopy(config.template_tile_dic)
 
-
+          elif inp_board[a_][spaltencount]["type"] == "wall":
+            pass
           #Gegner-kollision:
           elif inp_board[a_][spaltencount]["fraction"] != spalte["fraction"]:
             if inp_board[a_][spaltencount]["tile_numb"] > spalte["tile_numb"]:
@@ -117,7 +118,9 @@ def up(board, maxim=-1):
 
           else:
             running = False
-        else: running=False
+
+        else:
+          running=False
         if a_ == 0 or maxim_ == 0:
           running = False
 
@@ -361,7 +364,11 @@ def drawBoard(board,
       x += 1
       rectx = config.size_in_between * x + config.size * (x - 1)
       recty = config.yextra_top + config.size_in_between * y + config.size * (y - 1)
-      fenster.blit(tile_surfs[str(tile["tile_numb"])+"_"+str(tile["fraction"])], (rectx, recty))
+      if tile["tile_numb"] != -1:
+        fenster.blit(tile_surfs[str(tile["tile_numb"])+"_"+str(tile["fraction"])], (rectx, recty))
+      else:
+        fenster.blit(tile_surfs[str(tile["tile_numb"]) + "_" + str(tile["type"])], (rectx, recty))
+
 
 
 def drawUIingame(fenster, colors=config.colors):
@@ -477,11 +484,13 @@ def setup_tiles(width,
     tile_surf.fill(colors.get(tile))
     if tile_frac == "enemy":
       draw_face_in_tile(tile_surf, config.bilder.get("face_enemy"),width=width,heigth=heigth)
-    if tile_numb != 0:
+    if tile_numb > 0:
       if tile_numb <=4:
         draw_text_in_box(tile_surf, tile_numb, font, fraction="none")
       else:
         draw_text_in_box(tile_surf, tile_numb, font,fraction=tile_frac)
+    else:#besonderes Tile, z.B. Wand
+      pass
     tiles[tile] = tile_surf
 
   return tiles

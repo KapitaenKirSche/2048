@@ -28,6 +28,8 @@ colors = {
     "1024_enemy": (43, 128, 217),
     "2048_enemy": (18, 121, 230),
 
+    "-1_wall": (110, 109, 108),
+
 
     "bg": (187, 173, 160),
     "ui_bg": (0, 0, 0),
@@ -99,7 +101,8 @@ best_level=15
 
 #---------------------------------------------------------
 tile_list = ["0_none", "2_player", "4_player", "8_player", "16_player", "32_player", "64_player", "128_player", "256_player", "512_player", "1024_player", "2048_player",
-                       "2_enemy", "4_enemy", "8_enemy", "16_enemy", "32_enemy", "64_enemy", "128_enemy", "256_enemy", "512_enemy", "1024_enemy", "2048_enemy"]
+                       "2_enemy", "4_enemy", "8_enemy", "16_enemy", "32_enemy", "64_enemy", "128_enemy", "256_enemy", "512_enemy", "1024_enemy", "2048_enemy",
+             "-1_wall"]
 current_level=0
 gamemode=""
 maxWertTile = 2048
@@ -171,7 +174,8 @@ clickpos_levelselect1 = [
 
 template_tile_dic={
     "tile_numb" : 0,
-    "fraction"  : "none"
+    "fraction"  : "none",
+    "type"      : "none"
 }
 #Levels----------------------------------------------------------------------------------------
 level01={
@@ -188,9 +192,11 @@ level01={
                          [{}, {}, {}]
                          ],
     "preset_tiles"    : {(2,0):{"tile_numb" : 2,
-                                "fraction"  : "player"},
+                                "fraction"  : "player",
+                                "type"      : "none"},
                          (0,2):{"tile_numb" : 4,
-                                "fraction"  : "player"}
+                                "fraction"  : "player",
+                                "type"      : "none"}
                          }
 }
 
@@ -208,9 +214,11 @@ level02={
                          [{}, {}, {}, {}]
                          ],
     "preset_tiles"    : {(2,0):{"tile_numb" : 2,
-                                "fraction"  : "player"},
+                                "fraction"  : "player",
+                                "type"      : "none"},
                          (0,3):{"tile_numb" : 4,
-                                "fraction"  : "player"}
+                                "fraction"  : "player",
+                                "type"      : "none"}
                              }
 }
 
@@ -228,9 +236,11 @@ level03={
                          [{}, {}, {}, {}]
                          ],
     "preset_tiles"    : {(2,0):{"tile_numb" : 2,
-                                "fraction"  : "player"},
+                                "fraction"  : "player",
+                                "type"      : "none"},
                          (0,3):{"tile_numb" : 2,
-                                "fraction"  : "player"}
+                                "fraction"  : "player",
+                                "type"      : "none"}
                              }
 }
 
@@ -248,9 +258,11 @@ level04={
                          [{}, {}, {}, {}, {}]
                          ],
     "preset_tiles": {(2, 0): {"tile_numb": 2,
-                              "fraction": "player"},
+                              "fraction": "player",
+                              "type"      : "none"},
                      (1, 3): {"tile_numb": 2,
-                              "fraction": "player"}
+                              "fraction": "player",
+                              "type"      : "none"}
                      }
 }
 
@@ -268,11 +280,17 @@ level05={
                          [{}, {}, {}, {}, {}, {}]
                          ],
     "preset_tiles": {(3, 0): {"tile_numb": 4,
-                              "fraction": "player"},
+                              "fraction": "player",
+                              "type"      : "none"},
                      (1, 3): {"tile_numb": 2,
-                              "fraction": "player"},
+                              "fraction": "player",
+                              "type"      : "none"},
                      (3, 3): {"tile_numb": 4,
-                              "fraction": "enemy"}
+                              "fraction": "enemy",
+                              "type"      : "none"},
+                     (5, 3): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type":"wall"}
                      }
 
 }
