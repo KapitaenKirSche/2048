@@ -108,6 +108,11 @@ def up(board, maxim=-1):
 
           elif inp_board[a_][spaltencount]["type"] == "wall":
             pass
+
+          elif inp_board[a_][spaltencount]["type"] == "duplicate":
+            inp_board[a_][spaltencount]=copy.deepcopy(spalte)
+            inp_board[a_][spaltencount]["tile_numb"]*=-1
+            inp_board[a_+1][spaltencount]=copy.deepcopy(config.template_tile_dic)
           #Gegner-kollision:
           elif inp_board[a_][spaltencount]["fraction"] != spalte["fraction"]:
             if inp_board[a_][spaltencount]["tile_numb"] > spalte["tile_numb"]:
@@ -239,11 +244,12 @@ def biggestTile(board, tile_category="player"):
   return hoechster
 
 
-def createRandom(board, numb=1, chance_enemy=0):
+def createRandom(board, numb=1, chance_enemy=0, chance_duplicate=0):
   '''
   Input: board: Spielfeld
          numb: Anzahl wie oft der Prozess wiederholt wird
          chance_enemy:int, Warscheinlichkeit, dass ein neues Tile ein Gegner ist. in Prozent
+         chance_duplicate:int, Warscheinlichkeit, dass ein neues Tile eine *2- Platte ist.
 
   Gibt das Board, mit einer nach Zufall vrteilten Zahl 2 oder 4 an einer leeren Stelle aus
   '''
@@ -260,6 +266,9 @@ def createRandom(board, numb=1, chance_enemy=0):
     rndm2=random.randint(1,100)
     if rndm2 <= chance_enemy:
       insert["fraction"] = "enemy"
+    elif rndm2 <= chance_enemy+chance_duplicate:
+      insert["tile_numb"]=-1
+      insert["type"]="duplicate"
     else:
       insert["fraction"] = "player"
     board[nullen[rndm][0]][nullen[rndm][1]] = insert
@@ -429,7 +438,8 @@ def draw_text_in_box(surface,
                      fraction="none",
                      colors={"color_none": (0, 0, 0),
                              "color_player":(255,255,255),
-                             "color_enemy":(0,0,0)},
+                             "color_enemy":(0,0,0),
+                             "color_white":(244,244,244)},
                      fact=0.85):
   """
   Draws text in a box on the given surface.
@@ -484,6 +494,8 @@ def setup_tiles(width,
     tile_surf.fill(colors.get(tile))
     if tile_frac == "enemy":
       draw_face_in_tile(tile_surf, config.bilder.get("face_enemy"),width=width,heigth=heigth)
+    if tile_frac == "duplicate":
+      draw_text_in_box(tile_surf, "*2", font, fraction="white")
     if tile_numb > 0:
       if tile_numb <=4:
         draw_text_in_box(tile_surf, tile_numb, font, fraction="none")

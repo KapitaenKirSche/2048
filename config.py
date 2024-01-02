@@ -29,6 +29,8 @@ colors = {
     "2048_enemy": (18, 121, 230),
 
     "-1_wall": (110, 109, 108),
+    "-1_duplicate":(0,0,0),
+    "-1_halve":(0,0,0),
 
 
     "bg": (187, 173, 160),
@@ -102,7 +104,7 @@ best_level=15
 #---------------------------------------------------------
 tile_list = ["0_none", "2_player", "4_player", "8_player", "16_player", "32_player", "64_player", "128_player", "256_player", "512_player", "1024_player", "2048_player",
                        "2_enemy", "4_enemy", "8_enemy", "16_enemy", "32_enemy", "64_enemy", "128_enemy", "256_enemy", "512_enemy", "1024_enemy", "2048_enemy",
-             "-1_wall"]
+             "-1_wall", "-1_duplicate"]
 current_level=0
 gamemode=""
 maxWertTile = 2048
@@ -175,7 +177,8 @@ clickpos_levelselect1 = [
 template_tile_dic={
     "tile_numb" : 0,
     "fraction"  : "none",
-    "type"      : "none"
+    "type"      : "none",
+
 }
 #Levels----------------------------------------------------------------------------------------
 level01={
@@ -185,6 +188,7 @@ level01={
     "maxTile"         : 128, #only, if gamemode == "maxTile
     "level_text"      : "Erreiche das 128 Tile.",
     "chance_enemy_spawn": 0,
+    "chance_duplicate_spawn": 0,
     "max_moves_per_move"    : 1, #-1 ist default -> bis zum Rand
 
     "board"           : [[{}, {}, {}],
@@ -194,6 +198,7 @@ level01={
     "preset_tiles"    : {(2,0):{"tile_numb" : 2,
                                 "fraction"  : "player",
                                 "type"      : "none"},
+
                          (0,2):{"tile_numb" : 4,
                                 "fraction"  : "player",
                                 "type"      : "none"}
@@ -207,6 +212,7 @@ level02={
     "maxTile"         : 256, #only, if gamemode == "maxTile
     "level_text"      : "Erreiche das 256 Tile.",
     "chance_enemy_spawn": 0,
+    "chance_duplicate_spawn": 0,
     "max_moves_per_move"    : 1, #-1 ist default -> bis zum Rand
     "board"           : [[{}, {}, {}, {}],
                          [{}, {}, {}, {}],
@@ -229,6 +235,7 @@ level03={
     "maxTile"         : 512, #only, if gamemode == "maxTile
     "level_text"      : "Erreiche das 512 Tile.",
     "chance_enemy_spawn": 0,
+    "chance_duplicate_spawn": 0,
     "max_moves_per_move"    : 1, #-1 ist default -> bis zum Rand
     "board"           : [[{}, {}, {}, {}],
                          [{}, {}, {}, {}],
@@ -251,6 +258,7 @@ level04={
     "maxTile"         : 1024, #only, if gamemode == "maxTile
     "level_text"      : "Erreiche das 1024 Tile.",
     "chance_enemy_spawn": 0,
+    "chance_duplicate_spawn": 0,
     "max_moves_per_move"    : 1, #-1 ist default -> bis zum Rand
     "board"           : [[{}, {}, {}, {}, {}],
                          [{}, {}, {}, {}, {}],
@@ -273,6 +281,7 @@ level05={
     "maxTile"         : 1024, #only, if gamemode == "maxTile"
     "level_text"      : "Erreiche das 1024 Tile. Achtung: Gegner!",
     "chance_enemy_spawn":30,
+    "chance_duplicate_spawn": 0,
     "max_moves_per_move"    : 1, #-1 ist default -> bis zum Rand
     "board"           : [[{}, {}, {}, {}, {}, {}],
                          [{}, {}, {}, {}, {}, {}],
@@ -287,12 +296,49 @@ level05={
                               "type"      : "none"},
                      (3, 3): {"tile_numb": 4,
                               "fraction": "enemy",
-                              "type"      : "none"},
-                     (5, 3): {"tile_numb": -1,
-                              "fraction": "none",
-                              "type":"wall"}
+                              "type"      : "none"}
                      }
 
+}
+
+
+level06={
+    "size"            : 80,
+    "size_in_between" : 8,
+    "gamemode"        : "maxTile",
+    "maxTile"         : 1024, #only, if gamemode == "maxTile"
+    "level_text"      : "Erreiche das 1024 Tile. Achtung: Wände!",
+    "chance_enemy_spawn":25,
+    "chance_duplicate_spawn":1,
+    "max_moves_per_move": 1, #-1 ist default -> bis zum Rand
+    "board"           : [[{}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}]
+                         ],
+    "preset_tiles": {(2, 1): {"tile_numb": 4,
+                              "fraction": "player",
+                              "type"      : "none"},
+                     (3, 4): {"tile_numb": 2,
+                              "fraction": "player",
+                              "type"      : "none"},
+                     (3, 1): {"tile_numb": 4,
+                              "fraction": "enemy",
+                              "type"      : "none"},
+
+                     (4, 2): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type":"wall"},
+                     (4, 3): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "wall"},
+                     (5, 3): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "wall"},
+                     (0,1): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "duplicate"}
+                     }
 }
 
 levels={
@@ -300,7 +346,8 @@ levels={
     2 : level02,
     3 : level03,
     4 : level04,
-    5 : level05
+    5 : level05,
+    6 : level06
 }
 
 
