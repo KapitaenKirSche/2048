@@ -126,6 +126,7 @@ gameover1_original = pygame.image.load("assets/images/gameover1.JPG")
 win1_original = pygame.image.load("assets/images/win1.JPG")
 lock_original = pygame.image.load("assets/images/lock.png")
 face1_original = pygame.image.load("assets/images/face1.png")
+face_big_enemy_original = pygame.image.load("assets/images/face_big_enemy.png")
 
 bilder = {
     "startscreen": pygame.transform.scale(startscreen_original, (homeWidth, homeHeight)),
@@ -134,7 +135,8 @@ bilder = {
     "gameover1":   gameover1_original,
     "win1":        win1_original,
     "lock":        lock_original,
-    "face1":       face1_original
+    "face1":       face1_original,
+    "face_enemy":  face_big_enemy_original
 }
 
 
@@ -269,9 +271,10 @@ level05={
                               "fraction": "player"},
                      (1, 3): {"tile_numb": 2,
                               "fraction": "player"},
-                     (1, 2): {"tile_numb": 4,
+                     (3, 3): {"tile_numb": 4,
                               "fraction": "enemy"}
                      }
+
 }
 
 levels={

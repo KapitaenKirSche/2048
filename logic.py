@@ -475,6 +475,8 @@ def setup_tiles(width,
     tile_frac=tile.split("_")[1]
     tile_surf = pygame.Surface((width, heigth))
     tile_surf.fill(colors.get(tile))
+    if tile_frac == "enemy":
+      draw_face_in_tile(tile_surf, config.bilder.get("face_enemy"),width=width,heigth=heigth)
     if tile_numb != 0:
       if tile_numb <=4:
         draw_text_in_box(tile_surf, tile_numb, font, fraction="none")
@@ -483,6 +485,11 @@ def setup_tiles(width,
     tiles[tile] = tile_surf
 
   return tiles
+
+def draw_face_in_tile(surface,img_surf,width=config.width, heigth=config.width):
+  scaled_img=pygame.transform.scale(img_surf, (width,width//4))
+  surface.blit(scaled_img, (0,width-scaled_img.get_height()))
+
 
 def setup_surfaces_ui():
   config.ui_bg_box=pygame.Surface((config.xmax, config.yextra_top))
