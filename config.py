@@ -316,10 +316,10 @@ level06={
                          [{}, {}, {}, {}, {}, {}],
                          [{}, {}, {}, {}, {}, {}]
                          ],
-    "preset_tiles": {(2, 1): {"tile_numb": 4,
+    "preset_tiles": {(4, 0): {"tile_numb": 4,
                               "fraction": "player",
                               "type"      : "none"},
-                     (3, 4): {"tile_numb": 2,
+                     (5, 2): {"tile_numb": 2,
                               "fraction": "player",
                               "type"      : "none"},
                      (3, 1): {"tile_numb": 4,
