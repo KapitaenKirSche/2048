@@ -115,9 +115,13 @@ def up(board, maxim=-1):
             inp_board[a_+1][spaltencount]=copy.deepcopy(config.template_tile_dic)
 
           elif inp_board[a_][spaltencount]["type"]=="halve":
-            inp_board[a_][spaltencount] = copy.deepcopy(spalte)
-            inp_board[a_][spaltencount]["tile_numb"] = int(0.5*inp_board[a_][spaltencount]["tile_numb"])
-            inp_board[a_ + 1][spaltencount] = copy.deepcopy(config.template_tile_dic)
+            if spalte["tile_numb"] > 2:
+              inp_board[a_][spaltencount] = copy.deepcopy(spalte)
+              inp_board[a_][spaltencount]["tile_numb"] = int(0.5*inp_board[a_][spaltencount]["tile_numb"])
+              inp_board[a_ + 1][spaltencount] = copy.deepcopy(config.template_tile_dic)
+            else:
+              inp_board[a_][spaltencount] = copy.deepcopy(spalte)
+              inp_board[a_ + 1][spaltencount] = copy.deepcopy(config.template_tile_dic)
 
           #Gegner-kollision:
           elif inp_board[a_][spaltencount]["fraction"] != spalte["fraction"]:
