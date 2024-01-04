@@ -55,6 +55,15 @@ def move(board, dir, maxim=-1):
     board = left(board, maxim)
     countScore(board)
     board = merge(board)
+
+
+  stay_floor = config.levels[config.current_level]["stay_on_floor_tiles"]
+  for i in stay_floor:
+    x=i[0]
+    y=i[1]
+    if board[y][x]["tile_numb"] <= 0:
+      board[y][x]=copy.deepcopy(stay_floor[i])
+
   return board
 
 def left(board, maxim=-1):
@@ -253,6 +262,21 @@ def biggestTile(board, tile_category="player"):
           hoechster = spalte["tile_numb"]
   return hoechster
 
+def check_sieg_feld(cods, board, ziel):
+  '''
+  input: cods(Tuple, koordinaten des Zielfelds), board(spielfeld,Matrix), ziel(int, Zielbedingung)
+
+  prüft bei dem Modus 'maxTileOnField', ob die Entbedingung erfüllt wird.
+
+  return: float
+  '''
+  x=cods[0]
+  y=cods[1]
+  if board[y][x]["tile_numb"] >= ziel:
+    return True
+  else:
+    return False
+
 
 def createRandom(board, numb=1, chance_enemy=0, chance_duplicate=0, chance_halve=0):
   '''
@@ -352,6 +376,12 @@ def initLevel(board):
   config.gamemode=level["gamemode"]
   if config.gamemode == "maxTile":
     config.maxWertTile=level["maxTile"]
+  elif config.gamemode == "maxTileOnField":
+    config.tile_ziel=level["tile_ziel"]
+    for i in level["stay_on_floor_tiles"]:
+      if level["stay_on_floor_tiles"][i]["type"]== "sieg-feld":
+        config.ziel_feld_cods=i
+
   config.levelGoalText=level["level_text"]
   config.max_moves_per_move=level["max_moves_per_move"]
 
@@ -390,16 +420,6 @@ def drawBoard(board,
         fenster.blit(tile_surfs[str(tile["tile_numb"])+"_"+str(tile["fraction"])], (rectx, recty))
       else:
         fenster.blit(tile_surfs[str(tile["tile_numb"]) + "_" + str(tile["type"])], (rectx, recty))
-
-
-  stay_floor=config.levels[config.current_level]["stay_on_floor_tiles"]
-  for i in stay_floor:
-    x=i[0]+1
-    y=i[1]+1
-    rectx = config.size_in_between * x + config.size * (x - 1)
-    recty = config.yextra_top + config.size_in_between * y + config.size * (y - 1)
-    if board[y-1][x-1]["tile_numb"] <= 0:
-      fenster.blit(tile_surfs[str(stay_floor[i]["tile_numb"]) + "_" + str(stay_floor[i]["type"])], (rectx, recty))
 
 
 

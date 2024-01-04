@@ -116,6 +116,10 @@ def logicLoop():
     if cfg.gamemode=="maxTile":
       if biggestTile(cfg.board) == cfg.maxWertTile:
         cfg.status = "siegInit"
+    elif cfg.gamemode=="maxTileOnField":
+      lvl=cfg.levels[cfg.current_level]
+      if check_sieg_feld(cfg.ziel_feld_cods, cfg.board, cfg.max):
+        cfg.status = "siegInit"
 
 
 

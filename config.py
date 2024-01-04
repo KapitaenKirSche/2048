@@ -108,8 +108,13 @@ tile_list = ["0_none", "2_player", "4_player", "8_player", "16_player", "32_play
                        "2_enemy", "4_enemy", "8_enemy", "16_enemy", "32_enemy", "64_enemy", "128_enemy", "256_enemy", "512_enemy", "1024_enemy", "2048_enemy",
              "-1_wall", "-1_duplicate", "-1_halve", "-1_sieg-feld"]
 current_level=0
+
 gamemode=""
 maxWertTile = 2048
+
+tile_ziel = 0
+ziel_feld_cods=(0,0)
+
 levelGoalText="TestTest, langer Text und so."
 max_moves_per_move = -1
 
@@ -379,7 +384,9 @@ level07 = {
     "size_in_between": 8,
     "gamemode": "maxTileOnField",
 
-    "maxTile": 1024,  # only, if gamemode == "maxTile"
+    "maxTile": 0,  # only, if gamemode == "maxTile"
+    "tile_ziel":8, # only, if gamemode == "maxTileOnField
+
     "level_text": "Erreiche das 1024 Tile. Achtung: Gegner!",
     "chance_enemy_spawn": 30,
     "chance_duplicate_spawn": 0,
