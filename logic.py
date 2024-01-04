@@ -392,6 +392,17 @@ def drawBoard(board,
         fenster.blit(tile_surfs[str(tile["tile_numb"]) + "_" + str(tile["type"])], (rectx, recty))
 
 
+  stay_floor=config.levels[config.current_level]["stay_on_floor_tiles"]
+  for i in stay_floor:
+    x=i[0]+1
+    y=i[1]+1
+    rectx = config.size_in_between * x + config.size * (x - 1)
+    recty = config.yextra_top + config.size_in_between * y + config.size * (y - 1)
+    if board[y-1][x-1]["tile_numb"] <= 0:
+      fenster.blit(tile_surfs[str(stay_floor[i]["tile_numb"]) + "_" + str(stay_floor[i]["type"])], (rectx, recty))
+
+
+
 
 def drawUIingame(fenster, colors=config.colors):
   '''
@@ -511,6 +522,10 @@ def setup_tiles(width,
       draw_text_in_box(tile_surf, "*2", font, fraction="white")
     if tile_frac == "halve":
       draw_text_in_box(tile_surf,":2",font,fraction="white")
+
+    if tile_frac == "sieg-feld":
+      scaled_img = pygame.transform.scale(config.bilder.get("sieg-feld"), (width, heigth))
+      tile_surf.blit(scaled_img, (0, 0))
     if tile_numb > 0:
       if tile_numb <=4:
         draw_text_in_box(tile_surf, tile_numb, font, fraction="none")

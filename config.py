@@ -3,6 +3,7 @@ import timer
 #Initial
 colors = {
     "0_none": (192, 180, 165),
+
     "2_player": (238, 228, 218),
     "4_player": (237, 224, 200),
     "8_player": (242, 177, 121),
@@ -31,6 +32,7 @@ colors = {
     "-1_wall": (110, 109, 108),
     "-1_duplicate":(0,0,0),
     "-1_halve":(0,0,0),
+    "-1_sieg-feld":(192, 180, 165),
 
 
     "bg": (187, 173, 160),
@@ -104,7 +106,7 @@ best_level=15
 #---------------------------------------------------------
 tile_list = ["0_none", "2_player", "4_player", "8_player", "16_player", "32_player", "64_player", "128_player", "256_player", "512_player", "1024_player", "2048_player",
                        "2_enemy", "4_enemy", "8_enemy", "16_enemy", "32_enemy", "64_enemy", "128_enemy", "256_enemy", "512_enemy", "1024_enemy", "2048_enemy",
-             "-1_wall", "-1_duplicate", "-1_halve"]
+             "-1_wall", "-1_duplicate", "-1_halve", "-1_sieg-feld"]
 current_level=0
 gamemode=""
 maxWertTile = 2048
@@ -132,6 +134,7 @@ win1_original = pygame.image.load("assets/images/win1.JPG")
 lock_original = pygame.image.load("assets/images/lock.png")
 face1_original = pygame.image.load("assets/images/face1.png")
 face_big_enemy_original = pygame.image.load("assets/images/face_big_enemy.png")
+sieg_feld_original = pygame.image.load("assets/images/sieg-feld.png")
 
 bilder = {
     "startscreen": pygame.transform.scale(startscreen_original, (homeWidth, homeHeight)),
@@ -141,7 +144,8 @@ bilder = {
     "win1":        win1_original,
     "lock":        lock_original,
     "face1":       face1_original,
-    "face_enemy":  face_big_enemy_original
+    "face_enemy":  face_big_enemy_original,
+    "sieg-feld" :  sieg_feld_original
 }
 
 
@@ -203,7 +207,10 @@ level01={
                          (0,2):{"tile_numb" : 4,
                                 "fraction"  : "player",
                                 "type"      : "none"}
-                         }
+                         },
+    "stay_on_floor_tiles":{
+
+    }
 }
 
 level02={
@@ -227,7 +234,10 @@ level02={
                          (0,3):{"tile_numb" : 4,
                                 "fraction"  : "player",
                                 "type"      : "none"}
-                             }
+                             },
+    "stay_on_floor_tiles":{
+
+    }
 }
 
 level03={
@@ -251,7 +261,10 @@ level03={
                          (0,3):{"tile_numb" : 2,
                                 "fraction"  : "player",
                                 "type"      : "none"}
-                             }
+                             },
+    "stay_on_floor_tiles":{
+
+    }
 }
 
 level04={
@@ -275,8 +288,12 @@ level04={
                      (1, 3): {"tile_numb": 2,
                               "fraction": "player",
                               "type"      : "none"}
-                     }
+                     },
+    "stay_on_floor_tiles":{
+
+    }
 }
+
 
 level05={
     "size"            : 80,
@@ -302,7 +319,10 @@ level05={
                      (3, 3): {"tile_numb": 4,
                               "fraction": "enemy",
                               "type"      : "none"}
-                     }
+                     },
+    "stay_on_floor_tiles":{
+
+    }
 
 }
 
@@ -347,7 +367,45 @@ level06={
                      (0, 0): {"tile_numb": -1,
                               "fraction": "none",
                               "type": "halve"}
-                     }
+                     },
+    "stay_on_floor_tiles":{
+
+    }
+}
+
+
+level07 = {
+    "size": 80,
+    "size_in_between": 8,
+    "gamemode": "maxTileOnField",
+
+    "maxTile": 1024,  # only, if gamemode == "maxTile"
+    "level_text": "Erreiche das 1024 Tile. Achtung: Gegner!",
+    "chance_enemy_spawn": 30,
+    "chance_duplicate_spawn": 0,
+    "chance_halve_spawn": 0,
+    "max_moves_per_move": 1,  # -1 ist default -> bis zum Rand
+    "board": [[{}, {}, {}, {}, {}, {}],
+              [{}, {}, {}, {}, {}, {}],
+              [{}, {}, {}, {}, {}, {}],
+              [{}, {}, {}, {}, {}, {}]
+              ],
+    "preset_tiles": {(3, 0): {"tile_numb": 4,
+                              "fraction": "player",
+                              "type": "none"},
+                     (1, 3): {"tile_numb": 2,
+                              "fraction": "player",
+                              "type": "none"},
+                     (3, 3): {"tile_numb": 4,
+                              "fraction": "enemy",
+                              "type": "none"}
+                     },
+    "stay_on_floor_tiles": {(5,0): {"tile_numb": -1,
+                                    "fraction": "none",
+                                    "type": "sieg-feld"}
+
+    }
+
 }
 
 levels={
@@ -356,7 +414,8 @@ levels={
     3 : level03,
     4 : level04,
     5 : level05,
-    6 : level06
+    6 : level06,
+    7 : level07
 }
 
 
