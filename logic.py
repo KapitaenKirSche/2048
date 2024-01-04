@@ -113,6 +113,12 @@ def up(board, maxim=-1):
             inp_board[a_][spaltencount]=copy.deepcopy(spalte)
             inp_board[a_][spaltencount]["tile_numb"]*=-1
             inp_board[a_+1][spaltencount]=copy.deepcopy(config.template_tile_dic)
+
+          elif inp_board[a_][spaltencount]["type"]=="halve":
+            inp_board[a_][spaltencount] = copy.deepcopy(spalte)
+            inp_board[a_][spaltencount]["tile_numb"] = int(0.5*inp_board[a_][spaltencount]["tile_numb"])
+            inp_board[a_ + 1][spaltencount] = copy.deepcopy(config.template_tile_dic)
+
           #Gegner-kollision:
           elif inp_board[a_][spaltencount]["fraction"] != spalte["fraction"]:
             if inp_board[a_][spaltencount]["tile_numb"] > spalte["tile_numb"]:
@@ -244,7 +250,7 @@ def biggestTile(board, tile_category="player"):
   return hoechster
 
 
-def createRandom(board, numb=1, chance_enemy=0, chance_duplicate=0):
+def createRandom(board, numb=1, chance_enemy=0, chance_duplicate=0, chance_halve=0):
   '''
   Input: board: Spielfeld
          numb: Anzahl wie oft der Prozess wiederholt wird
@@ -269,6 +275,9 @@ def createRandom(board, numb=1, chance_enemy=0, chance_duplicate=0):
     elif rndm2 <= chance_enemy+chance_duplicate:
       insert["tile_numb"]=-1
       insert["type"]="duplicate"
+    elif rndm2 <= chance_enemy+chance_duplicate+chance_halve:
+      insert["tile_numb"]=-1
+      insert["type"]="halve"
     else:
       insert["fraction"] = "player"
     board[nullen[rndm][0]][nullen[rndm][1]] = insert
@@ -496,6 +505,8 @@ def setup_tiles(width,
       draw_face_in_tile(tile_surf, config.bilder.get("face_enemy"),width=width,heigth=heigth)
     if tile_frac == "duplicate":
       draw_text_in_box(tile_surf, "*2", font, fraction="white")
+    if tile_frac == "halve":
+      draw_text_in_box(tile_surf,":2",font,fraction="white")
     if tile_numb > 0:
       if tile_numb <=4:
         draw_text_in_box(tile_surf, tile_numb, font, fraction="none")

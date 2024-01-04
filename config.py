@@ -104,7 +104,7 @@ best_level=15
 #---------------------------------------------------------
 tile_list = ["0_none", "2_player", "4_player", "8_player", "16_player", "32_player", "64_player", "128_player", "256_player", "512_player", "1024_player", "2048_player",
                        "2_enemy", "4_enemy", "8_enemy", "16_enemy", "32_enemy", "64_enemy", "128_enemy", "256_enemy", "512_enemy", "1024_enemy", "2048_enemy",
-             "-1_wall", "-1_duplicate"]
+             "-1_wall", "-1_duplicate", "-1_halve"]
 current_level=0
 gamemode=""
 maxWertTile = 2048
@@ -189,6 +189,7 @@ level01={
     "level_text"      : "Erreiche das 128 Tile.",
     "chance_enemy_spawn": 0,
     "chance_duplicate_spawn": 0,
+    "chance_halve_spawn": 0,
     "max_moves_per_move"    : 1, #-1 ist default -> bis zum Rand
 
     "board"           : [[{}, {}, {}],
@@ -213,6 +214,7 @@ level02={
     "level_text"      : "Erreiche das 256 Tile.",
     "chance_enemy_spawn": 0,
     "chance_duplicate_spawn": 0,
+    "chance_halve_spawn": 0,
     "max_moves_per_move"    : 1, #-1 ist default -> bis zum Rand
     "board"           : [[{}, {}, {}, {}],
                          [{}, {}, {}, {}],
@@ -236,6 +238,7 @@ level03={
     "level_text"      : "Erreiche das 512 Tile.",
     "chance_enemy_spawn": 0,
     "chance_duplicate_spawn": 0,
+    "chance_halve_spawn": 0,
     "max_moves_per_move"    : 1, #-1 ist default -> bis zum Rand
     "board"           : [[{}, {}, {}, {}],
                          [{}, {}, {}, {}],
@@ -259,6 +262,7 @@ level04={
     "level_text"      : "Erreiche das 1024 Tile.",
     "chance_enemy_spawn": 0,
     "chance_duplicate_spawn": 0,
+    "chance_halve_spawn": 0,
     "max_moves_per_move"    : 1, #-1 ist default -> bis zum Rand
     "board"           : [[{}, {}, {}, {}, {}],
                          [{}, {}, {}, {}, {}],
@@ -282,6 +286,7 @@ level05={
     "level_text"      : "Erreiche das 1024 Tile. Achtung: Gegner!",
     "chance_enemy_spawn":30,
     "chance_duplicate_spawn": 0,
+    "chance_halve_spawn": 0,
     "max_moves_per_move"    : 1, #-1 ist default -> bis zum Rand
     "board"           : [[{}, {}, {}, {}, {}, {}],
                          [{}, {}, {}, {}, {}, {}],
@@ -310,6 +315,7 @@ level06={
     "level_text"      : "Erreiche das 1024 Tile. Achtung: Wände!",
     "chance_enemy_spawn":25,
     "chance_duplicate_spawn":1,
+    "chance_halve_spawn":10,
     "max_moves_per_move": 1, #-1 ist default -> bis zum Rand
     "board"           : [[{}, {}, {}, {}, {}, {}],
                          [{}, {}, {}, {}, {}, {}],
@@ -337,7 +343,10 @@ level06={
                               "type": "wall"},
                      (0,1): {"tile_numb": -1,
                               "fraction": "none",
-                              "type": "duplicate"}
+                              "type": "duplicate"},
+                     (0, 0): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "halve"}
                      }
 }
 

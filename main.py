@@ -123,7 +123,7 @@ def logicLoop():
     if cfg.direction >= 0:  #Wenn Pfeiltaste gedrückt ist
       if bewegungMoeglichSpeziell(cfg.board, cfg.direction,maxim=cfg.max_moves_per_move) == True:
         cfg.board = move(cfg.board, cfg.direction,maxim=cfg.max_moves_per_move)
-        cfg.board = createRandom(cfg.board,chance_enemy=cfg.levels[cfg.current_level]["chance_enemy_spawn"],chance_duplicate=cfg.levels[cfg.current_level]["chance_duplicate_spawn"])
+        cfg.board = createRandom(cfg.board,chance_enemy=cfg.levels[cfg.current_level]["chance_enemy_spawn"],chance_duplicate=cfg.levels[cfg.current_level]["chance_duplicate_spawn"], chance_halve=cfg.levels[cfg.current_level]["chance_halve_spawn"])
         cfg.changed = True
 
     cfg.direction = -1
