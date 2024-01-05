@@ -164,8 +164,8 @@ tile_surfaces = {}
 
 #Bilder-import-----------------
 startscreen_original = pygame.image.load("assets/images/startscreen.jpg")
-overworld1_original = pygame.image.load("assets/images/levelselect1.PNG")
-overworld2_original = pygame.image.load("assets/images/levelselect2.PNG")
+overworld1_original = pygame.image.load("assets/images/levelselect1.png")
+overworld2_original = pygame.image.load("assets/images/levelselect2.png")
 gameover1_original = pygame.image.load("assets/images/gameover1.JPG")
 win1_original = pygame.image.load("assets/images/win1.JPG")
 lock_original = pygame.image.load("assets/images/lock.png")
