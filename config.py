@@ -408,7 +408,7 @@ level07={
     "size_in_between" : 10,
     "gamemode"        : "maxTile",
     "maxTile"         : 256, #only, if gamemode == "maxTile
-    "level_text"      : "Erreiche das 512 Tile. Vorsicht: Gegner! (Blau!)",
+    "level_text"      : "Erreiche das 256 Tile. Vorsicht: Gegner! (Blau!)",
     "chance_enemy_spawn": 10,
     "chance_duplicate_spawn": 0,
     "chance_halve_spawn": 0,
@@ -439,8 +439,8 @@ level08={
     "size"            : 100,
     "size_in_between" : 10,
     "gamemode"        : "maxTile",
-    "maxTile"         : 1024, #only, if gamemode == "maxTile
-    "level_text"      : "Erreiche das 1024 Tile. Vorsicht: viele Gegner!",
+    "maxTile"         : 512, #only, if gamemode == "maxTile
+    "level_text"      : "Erreiche das 512 Tile. Vorsicht: viele Gegner!",
     "chance_enemy_spawn": 40,
     "chance_duplicate_spawn": 0,
     "chance_halve_spawn": 0,
