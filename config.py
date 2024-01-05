@@ -440,6 +440,38 @@ level08={
     "size_in_between" : 10,
     "gamemode"        : "maxTile",
     "maxTile"         : 512, #only, if gamemode == "maxTile
+    "level_text"      : "Erreiche das 256 Tile. Vorsicht: Gegner!",
+    "chance_enemy_spawn": 35,
+    "chance_duplicate_spawn": 0,
+    "chance_halve_spawn": 0,
+    "max_moves_per_move"    : 1, #-1 ist default -> bis zum Rand
+
+    "board"           : [[{}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}]
+                         ],
+    "preset_tiles"    : {(2,0):{"tile_numb" : 4,
+                                "fraction"  : "player",
+                                "type"      : "none"},
+                         (0,3):{"tile_numb" : 2,
+                                "fraction"  : "player",
+                                "type"      : "none"},
+                         (1,3):{"tile_numb" : 4,
+                                "fraction"  : "enemy",
+                                "type"      : "none"}
+                        },
+    "stay_on_floor_tiles":{
+
+    }
+}
+
+
+level09={
+    "size"            : 100,
+    "size_in_between" : 10,
+    "gamemode"        : "maxTile",
+    "maxTile"         : 512, #only, if gamemode == "maxTile
     "level_text"      : "Erreiche das 512 Tile. Vorsicht: viele Gegner!",
     "chance_enemy_spawn": 40,
     "chance_duplicate_spawn": 0,
@@ -470,38 +502,6 @@ level08={
                          (2, 1): {"tile_numb": -1,
                                   "fraction": "none",
                                   "type": "wall"}
-                        },
-    "stay_on_floor_tiles":{
-
-    }
-}
-
-
-level09={
-    "size"            : 100,
-    "size_in_between" : 10,
-    "gamemode"        : "maxTile",
-    "maxTile"         : 1024, #only, if gamemode == "maxTile
-    "level_text"      : "Erreiche das 1024 Tile. Vorsicht: Gegner!",
-    "chance_enemy_spawn": 35,
-    "chance_duplicate_spawn": 0,
-    "chance_halve_spawn": 0,
-    "max_moves_per_move"    : 1, #-1 ist default -> bis zum Rand
-
-    "board"           : [[{}, {}, {}, {}, {}, {}],
-                         [{}, {}, {}, {}, {}, {}],
-                         [{}, {}, {}, {}, {}, {}],
-                         [{}, {}, {}, {}, {}, {}]
-                         ],
-    "preset_tiles"    : {(2,0):{"tile_numb" : 4,
-                                "fraction"  : "player",
-                                "type"      : "none"},
-                         (0,3):{"tile_numb" : 2,
-                                "fraction"  : "player",
-                                "type"      : "none"},
-                         (1,3):{"tile_numb" : 4,
-                                "fraction"  : "enemy",
-                                "type"      : "none"}
                         },
     "stay_on_floor_tiles":{
 
