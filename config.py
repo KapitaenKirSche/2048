@@ -337,8 +337,8 @@ level05={
     "size"            : 100,
     "size_in_between" : 10,
     "gamemode"        : "maxTile",
-    "maxTile"         : 512, #only, if gamemode == "maxTile
-    "level_text"      : "Erreiche das 512 Tile. Vorsicht: Wand",
+    "maxTile"         : 128, #only, if gamemode == "maxTile
+    "level_text"      : "Erreiche das 128 Tile. Vorsicht: Wand",
     "chance_enemy_spawn": 0,
     "chance_duplicate_spawn": 0,
     "chance_halve_spawn": 0,
