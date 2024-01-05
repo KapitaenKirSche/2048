@@ -439,7 +439,7 @@ level08={
     "size"            : 100,
     "size_in_between" : 10,
     "gamemode"        : "maxTile",
-    "maxTile"         : 512, #only, if gamemode == "maxTile
+    "maxTile"         : 256, #only, if gamemode == "maxTile
     "level_text"      : "Erreiche das 256 Tile. Vorsicht: Gegner!",
     "chance_enemy_spawn": 35,
     "chance_duplicate_spawn": 0,
