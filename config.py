@@ -194,6 +194,34 @@ level01={
     "size"            : 100,
     "size_in_between" : 10,
     "gamemode"        : "maxTile",
+    "maxTile"         : 64, #only, if gamemode == "maxTile
+    "level_text"      : "Erreiche das 64 Tile.",
+    "chance_enemy_spawn": 0,
+    "chance_duplicate_spawn": 0,
+    "chance_halve_spawn": 0,
+    "max_moves_per_move"    : 1, #-1 ist default -> bis zum Rand
+
+    "board"           : [[{}, {}, {}],
+                         [{}, {}, {}],
+                         [{}, {}, {}]
+                         ],
+    "preset_tiles"    : {(2,0):{"tile_numb" : 2,
+                                "fraction"  : "player",
+                                "type"      : "none"},
+
+                         (0,2):{"tile_numb" : 4,
+                                "fraction"  : "player",
+                                "type"      : "none"}
+                         },
+    "stay_on_floor_tiles":{
+
+    }
+}
+
+level02={
+    "size"            : 100,
+    "size_in_between" : 10,
+    "gamemode"        : "maxTile",
     "maxTile"         : 128, #only, if gamemode == "maxTile
     "level_text"      : "Erreiche das 128 Tile.",
     "chance_enemy_spawn": 0,
@@ -218,7 +246,7 @@ level01={
     }
 }
 
-level02={
+level03={
     "size"            : 90,
     "size_in_between" : 9,
     "gamemode"        : "maxTile",
@@ -245,7 +273,7 @@ level02={
     }
 }
 
-level03={
+level04={
     "size"            : 90,
     "size_in_between" : 9,
     "gamemode"        : "maxTile",
@@ -272,74 +300,184 @@ level03={
     }
 }
 
-level04={
-    "size"            : 90,
-    "size_in_between" : 9,
+
+level05={
+    "size"            : 100,
+    "size_in_between" : 10,
     "gamemode"        : "maxTile",
-    "maxTile"         : 1024, #only, if gamemode == "maxTile
-    "level_text"      : "Erreiche das 1024 Tile. Achtung: Wand!",
+    "maxTile"         : 512, #only, if gamemode == "maxTile
+    "level_text"      : "Erreiche das 512 Tile. Vorsicht: Wand",
     "chance_enemy_spawn": 0,
     "chance_duplicate_spawn": 0,
     "chance_halve_spawn": 0,
     "max_moves_per_move"    : 1, #-1 ist default -> bis zum Rand
+
+    "board"           : [[{}, {}, {}, {}],
+                         [{}, {}, {}, {}],
+                         [{}, {}, {}, {}],
+                         [{}, {}, {}, {}]
+                         ],
+    "preset_tiles"    : {(2,0):{"tile_numb" : 2,
+                                "fraction"  : "player",
+                                "type"      : "none"},
+
+                         (0,2):{"tile_numb" : 4,
+                                "fraction"  : "player",
+                                "type"      : "none"},
+                         (0,0):{"tile_numb" : -1,
+                                "fraction"  : "none",
+                                "type"      : "wall"}
+                         },
+    "stay_on_floor_tiles":{
+
+    }
+}
+
+
+level06={
+    "size"            : 100,
+    "size_in_between" : 10,
+    "gamemode"        : "maxTile",
+    "maxTile"         : 512, #only, if gamemode == "maxTile
+    "level_text"      : "Erreiche das 512 Tile.",
+    "chance_enemy_spawn": 0,
+    "chance_duplicate_spawn": 0,
+    "chance_halve_spawn": 0,
+    "max_moves_per_move"    : 1, #-1 ist default -> bis zum Rand
+
+    "board"           : [[{}, {}, {}, {}],
+                         [{}, {}, {}, {}],
+                         [{}, {}, {}, {}],
+                         [{}, {}, {}, {}]
+                         ],
+    "preset_tiles"    : {(2,0):{"tile_numb" : 2,
+                                "fraction"  : "player",
+                                "type"      : "none"},
+
+                         (0,2):{"tile_numb" : 4,
+                                "fraction"  : "player",
+                                "type"      : "none"},
+                         (0,1):{"tile_numb" : -1,
+                                "fraction"  : "none",
+                                "type"      : "wall"},
+                         (1, 1): {"tile_numb": -1,
+                                  "fraction": "none",
+                                  "type": "wall"}
+                         },
+
+    "stay_on_floor_tiles":{
+
+    }
+}
+
+
+level07={
+    "size"            : 100,
+    "size_in_between" : 10,
+    "gamemode"        : "maxTile",
+    "maxTile"         : 512, #only, if gamemode == "maxTile
+    "level_text"      : "Erreiche das 512 Tile. Vorsicht: Gegner!",
+    "chance_enemy_spawn": 10,
+    "chance_duplicate_spawn": 0,
+    "chance_halve_spawn": 0,
+    "max_moves_per_move"    : 1, #-1 ist default -> bis zum Rand
+
     "board"           : [[{}, {}, {}, {}, {}],
                          [{}, {}, {}, {}, {}],
                          [{}, {}, {}, {}, {}],
                          [{}, {}, {}, {}, {}]
                          ],
-    "preset_tiles": {(2, 0): {"tile_numb": 2,
-                              "fraction": "player",
-                              "type"      : "none"},
-                     (1, 3): {"tile_numb": 2,
-                              "fraction": "player",
-                              "type"      : "none"},
-                     (0, 0): {"tile_numb": -1,
-                              "fraction": "none",
-                              "type": "wall"}
-
-                     },
+    "preset_tiles"    : {(2,0):{"tile_numb" : 4,
+                                "fraction"  : "player",
+                                "type"      : "none"},
+                         (0,3):{"tile_numb" : 2,
+                                "fraction"  : "player",
+                                "type"      : "none"},
+                         (1,3):{"tile_numb" : 4,
+                                "fraction"  : "enemy",
+                                "type"      : "none"}
+                        },
     "stay_on_floor_tiles":{
 
     }
 }
 
 
-level05={
-    "size"            : 80,
-    "size_in_between" : 8,
+level08={
+    "size"            : 100,
+    "size_in_between" : 10,
     "gamemode"        : "maxTile",
-    "maxTile"         : 1024, #only, if gamemode == "maxTile"
-    "level_text"      : "Erreiche das 1024 Tile. Achtung: Gegner",
-    "chance_enemy_spawn":35,
+    "maxTile"         : 1024, #only, if gamemode == "maxTile
+    "level_text"      : "Erreiche das 1024 Tile. Vorsicht: viele Gegner!",
+    "chance_enemy_spawn": 40,
     "chance_duplicate_spawn": 0,
     "chance_halve_spawn": 0,
     "max_moves_per_move"    : 1, #-1 ist default -> bis zum Rand
+
     "board"           : [[{}, {}, {}, {}, {}, {}],
                          [{}, {}, {}, {}, {}, {}],
                          [{}, {}, {}, {}, {}, {}],
                          [{}, {}, {}, {}, {}, {}]
                          ],
-    "preset_tiles": {(3, 0): {"tile_numb": 4,
-                              "fraction": "player",
-                              "type"      : "none"},
-                     (1, 3): {"tile_numb": 2,
-                              "fraction": "player",
-                              "type"      : "none"},
-                     (3, 3): {"tile_numb": 4,
-                              "fraction": "enemy",
-                              "type"      : "none"},
-                     (0, 0): {"tile_numb": -1,
-                              "fraction": "none",
-                              "type": "wall"}
-                     },
+    "preset_tiles"    : {(2,0):{"tile_numb" : 4,
+                                "fraction"  : "player",
+                                "type"      : "none"},
+                         (0,3):{"tile_numb" : 2,
+                                "fraction"  : "player",
+                                "type"      : "none"},
+                         (4,3):{"tile_numb" : 4,
+                                "fraction"  : "enemy",
+                                "type"      : "none"},
+
+                         (0, 1): {"tile_numb": -1,
+                                  "fraction": "none",
+                                  "type": "wall"},
+                         (1, 1): {"tile_numb": -1,
+                                  "fraction": "none",
+                                  "type": "wall"},
+                         (2, 1): {"tile_numb": -1,
+                                  "fraction": "none",
+                                  "type": "wall"}
+                        },
     "stay_on_floor_tiles":{
 
     }
-
 }
 
 
-level06={
+level09={
+    "size"            : 100,
+    "size_in_between" : 10,
+    "gamemode"        : "maxTile",
+    "maxTile"         : 1024, #only, if gamemode == "maxTile
+    "level_text"      : "Erreiche das 1024 Tile. Vorsicht: Gegner!",
+    "chance_enemy_spawn": 35,
+    "chance_duplicate_spawn": 0,
+    "chance_halve_spawn": 0,
+    "max_moves_per_move"    : 1, #-1 ist default -> bis zum Rand
+
+    "board"           : [[{}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}]
+                         ],
+    "preset_tiles"    : {(2,0):{"tile_numb" : 4,
+                                "fraction"  : "player",
+                                "type"      : "none"},
+                         (0,3):{"tile_numb" : 2,
+                                "fraction"  : "player",
+                                "type"      : "none"},
+                         (1,3):{"tile_numb" : 4,
+                                "fraction"  : "enemy",
+                                "type"      : "none"}
+                        },
+    "stay_on_floor_tiles":{
+
+    }
+}
+
+
+level10={
     "size"            : 80,
     "size_in_between" : 8,
     "gamemode"        : "maxTile",
@@ -389,7 +527,39 @@ level06={
 }
 
 
-level07 = {
+level11={
+    "size"            : 100,
+    "size_in_between" : 10,
+    "gamemode"        : "maxTile",
+    "maxTile"         : 512, #only, if gamemode == "maxTile
+    "level_text"      : "Erreiche das 512 Tile. Es gibt nun Verdopplungen.",
+    "chance_enemy_spawn": 0,
+    "chance_duplicate_spawn": 20,
+    "chance_halve_spawn": 0,
+    "max_moves_per_move"    : 1, #-1 ist default -> bis zum Rand
+
+    "board"           : [[{}, {}, {}, {}],
+                         [{}, {}, {}, {}],
+                         [{}, {}, {}, {}],
+                         [{}, {}, {}, {}]
+                         ],
+    "preset_tiles"    : {(2,0):{"tile_numb" : 2,
+                                "fraction"  : "player",
+                                "type"      : "none"},
+
+                         (0,2):{"tile_numb" : 4,
+                                "fraction"  : "player",
+                                "type"      : "none"},
+                         (0,0):{"tile_numb" : -1,
+                                "fraction"  : "none",
+                                "type"      : "duplicate"}
+                         },
+    "stay_on_floor_tiles":{
+
+    }
+}
+
+level12 = {
     "size": 80,
     "size_in_between": 8,
     "gamemode": "maxTile",
@@ -426,6 +596,190 @@ level07 = {
     }
 }
 
+
+level13 = {
+    "size": 60,
+    "size_in_between": 6,
+    "gamemode": "maxTile",
+
+    "maxTile": 512,  # only, if gamemode == "maxTile"
+    "tile_ziel":0, # only, if gamemode == "maxTileOnField
+
+    "level_text": "Erreiche das 512 Tile. Achtung: Sehr viele Gegner!",
+    "chance_enemy_spawn": 40,
+    "chance_duplicate_spawn": 1,
+    "chance_halve_spawn": 0,
+    "max_moves_per_move": 1,  # -1 ist default -> bis zum Rand
+    "board": [[{}, {}, {}, {}, {}, {}, {}, {}],
+              [{}, {}, {}, {}, {}, {}, {}, {}],
+              [{}, {}, {}, {}, {}, {}, {}, {}],
+              [{}, {}, {}, {}, {}, {}, {}, {}],
+              [{}, {}, {}, {}, {}, {}, {}, {}]
+              ],
+    "preset_tiles": {(0, 0): {"tile_numb": 16,
+                              "fraction": "enemy",
+                              "type": "none"},
+                     (2, 1): {"tile_numb": 4,
+                              "fraction": "enemy",
+                              "type": "none"},
+                     (4, 3): {"tile_numb": 4,
+                              "fraction": "player",
+                              "type": "none"},
+
+                     (1,0): {"tile_numb":-1,
+                             "fraction": "none",
+                             "type":"duplicate"},
+                     (2, 0): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "duplicate"},
+                     (3, 0): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "duplicate"},
+                     (4, 0): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "duplicate"},
+                     (5, 3): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "duplicate"},
+                     (6, 3): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "duplicate"},
+                     (7, 3): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "duplicate"},
+
+
+                     (1, 1): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "wall"},
+                     (3, 4): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "wall"}
+                     },
+    "stay_on_floor_tiles": {
+
+    }
+}
+
+
+level14 = {
+    "size": 80,
+    "size_in_between": 8,
+    "gamemode": "maxTile",
+
+    "maxTile": 128,  # only, if gamemode == "maxTile"
+    "tile_ziel":0, # only, if gamemode == "maxTileOnField
+
+    "level_text": "Erreiche das 128 Tile. Achtung: Halbieren!",
+    "chance_enemy_spawn": 0,
+    "chance_duplicate_spawn": 0,
+    "chance_halve_spawn": 20,
+    "max_moves_per_move": 1,  # -1 ist default -> bis zum Rand
+    "board": [[{}, {}, {}, {}, {}, {}],
+              [{}, {}, {}, {}, {}, {}],
+              [{}, {}, {}, {}, {}, {}],
+              [{}, {}, {}, {}, {}, {}]
+              ],
+    "preset_tiles": {(3, 0): {"tile_numb": 4,
+                              "fraction": "player",
+                              "type": "none"},
+                     (1, 3): {"tile_numb": 2,
+                              "fraction": "player",
+                              "type": "none"},
+
+                     (5,3): {"tile_numb":-1,
+                             "fraction": "none",
+                             "type":"halve"}
+                     },
+    "stay_on_floor_tiles": {
+
+    }
+}
+
+level15 = {
+    "size": 80,
+    "size_in_between": 8,
+    "gamemode": "maxTile",
+
+    "maxTile": 512,  # only, if gamemode == "maxTile"
+    "tile_ziel":0, # only, if gamemode == "maxTileOnField"
+
+    "level_text": "Erreiche das 512 Tile. Achtung: Halbieren!",
+    "chance_enemy_spawn": 0,
+    "chance_duplicate_spawn": 5,
+    "chance_halve_spawn": 20,
+    "max_moves_per_move": 1,  # -1 ist default -> bis zum Rand
+    "board": [[{}, {}, {}, {}, {}, {}],
+              [{}, {}, {}, {}, {}, {}],
+              [{}, {}, {}, {}, {}, {}],
+              [{}, {}, {}, {}, {}, {}]
+              ],
+    "preset_tiles": {(3, 0): {"tile_numb": 4,
+                              "fraction": "player",
+                              "type": "none"},
+                     (0, 3): {"tile_numb": 2,
+                              "fraction": "player",
+                              "type": "none"},
+
+                     (5,3): {"tile_numb":-1,
+                             "fraction": "none",
+                             "type":"halve",},
+
+                     (0, 0): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "wall",},
+                     (0, 1): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "wall",},
+                     (1, 2): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "wall",},
+                     (1, 3): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "wall",}
+
+
+                     },
+    "stay_on_floor_tiles": {
+
+    }
+}
+
+
+level16 = {
+    "size": 80,
+    "size_in_between": 8,
+    "gamemode": "maxTile",
+
+    "maxTile": 128,  # only, if gamemode == "maxTile"
+    "tile_ziel":0, # only, if gamemode == "maxTileOnField
+
+    "level_text": "Erreiche das 512 Tile. Achtung: Halbieren und viele Gegner!",
+    "chance_enemy_spawn": 30,
+    "chance_duplicate_spawn": 0,
+    "chance_halve_spawn": 10,
+    "max_moves_per_move": 1,  # -1 ist default -> bis zum Rand
+    "board": [[{}, {}, {}, {}, {}, {}],
+              [{}, {}, {}, {}, {}, {}],
+              [{}, {}, {}, {}, {}, {}],
+              [{}, {}, {}, {}, {}, {}]
+              ],
+    "preset_tiles": {(3, 0): {"tile_numb": 4,
+                              "fraction": "player",
+                              "type": "none"},
+                     (1, 3): {"tile_numb": 2,
+                              "fraction": "player",
+                              "type": "none"},
+
+                     (5,3): {"tile_numb":-1,
+                             "fraction": "none",
+                             "type":"halve"}
+                     },
+    "stay_on_floor_tiles": {
+
+    }
+}
+
 levels={
     1 : level01,
     2 : level02,
@@ -434,7 +788,6 @@ levels={
     5 : level05,
     6 : level06,
     7 : level07,
-    '''
     8 : level08,
     9 : level09,
     10: level10,
@@ -443,6 +796,7 @@ levels={
     13: level13,
     14: level14,
     15: level15,
+    '''
     16: level16,
     17: level17,
     18: level18,
