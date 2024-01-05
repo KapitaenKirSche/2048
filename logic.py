@@ -400,7 +400,7 @@ def initLevel(board):
     x = i[0]
     y = i[1]
     if board[y][x]["tile_numb"] <= 0:
-      board[y][x] = copy.deepcopy(stay_floor[i])
+      config.board[y][x] = copy.deepcopy(stay_floor[i])
 
   setup_surfaces_ui()
   config.score=0

@@ -100,7 +100,7 @@ score = 0
 tilerect = pygame.Rect(size_in_between, size_in_between, size, size)
 #default status.
 status = "homeInit"
-best_level=15
+best_level=19
 
 
 #---------------------------------------------------------
@@ -780,6 +780,126 @@ level16 = {
     }
 }
 
+
+level17 = {
+    "size": 70,
+    "size_in_between": 7,
+    "gamemode": "maxTile",
+
+    "maxTile": 2048,  # only, if gamemode == "maxTile"
+    "tile_ziel":0, # only, if gamemode == "maxTileOnField
+
+    "level_text": "Erreiche das 2048 Tile.",
+    "chance_enemy_spawn": 40,
+    "chance_duplicate_spawn": 3,
+    "chance_halve_spawn": 7,
+    "max_moves_per_move": 1,  # -1 ist default -> bis zum Rand
+    "board": [[{}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
+              [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
+              [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
+              [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
+              [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}]
+              ],
+    "preset_tiles": {(1, 0): {"tile_numb": 1024,
+                              "fraction": "player",
+                              "type": "none"},
+                     (1, 4): {"tile_numb": 4,
+                              "fraction": "player",
+                              "type": "none"},
+                     (6, 0): {"tile_numb": 32,
+                              "fraction": "enemy",
+                              "type": "none"},
+
+                     (2,0): {"tile_numb":-1,
+                             "fraction": "none",
+                             "type":"halve"},
+                     (3, 0): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "halve"},
+                     (4, 0): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "halve"},
+                     (5, 1): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "duplicate"},
+
+
+                     (0, 0): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "wall"},
+                     (0, 1): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "wall"},
+                     (0, 2): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "wall"},
+                     (1, 1): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "wall"},
+                     (2, 1): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "wall"},
+                     (3, 1): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "wall"},
+                     (5, 0): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "wall"},
+
+                     (9, 4): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "wall"},
+                     (8, 4): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "wall"},
+                     (7, 4): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "wall"},
+                     (7, 3): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "wall"},
+                     (8, 3): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "wall"},
+                     },
+    "stay_on_floor_tiles": {
+
+    }
+}
+
+
+level18 = {
+    "size": 80,
+    "size_in_between": 8,
+    "gamemode": "maxTileOnField",
+
+    "maxTile": 0,  # only, if gamemode == "maxTile"
+    "tile_ziel":512, # only, if gamemode == "maxTileOnField"
+
+    "level_text": "Lege ein (>=) 512 Tile auf das Sieg-Feld (gelbe Spirale).",
+    "chance_enemy_spawn": 0,
+    "chance_duplicate_spawn": 2,
+    "chance_halve_spawn": 0,
+    "max_moves_per_move": 1,  # -1 ist default -> bis zum Rand
+    "board": [[{}, {}, {}, {}, {}, {}],
+              [{}, {}, {}, {}, {}, {}],
+              [{}, {}, {}, {}, {}, {}],
+              [{}, {}, {}, {}, {}, {}]
+              ],
+    "preset_tiles": {(3, 0): {"tile_numb": 4,
+                              "fraction": "player",
+                              "type": "none"},
+                     (1, 3): {"tile_numb": 2,
+                              "fraction": "player",
+                              "type": "none"},
+                     },
+    "stay_on_floor_tiles": {
+        (5,3): {"tile_numb":-1,
+                "fraction" : "none",
+                "type":"sieg-feld"}
+    }
+}
+
 levels={
     1 : level01,
     2 : level02,
@@ -796,10 +916,10 @@ levels={
     13: level13,
     14: level14,
     15: level15,
-    '''
     16: level16,
     17: level17,
     18: level18,
+    '''
     19: level19,
     20: level20
     ''':6

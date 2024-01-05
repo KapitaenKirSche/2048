@@ -12,9 +12,6 @@ def inputLoop():
       pygame.quit()
       quit()
     if event.type == pygame.KEYDOWN:
-      if event.key == pygame.K_ESCAPE:
-        pygame.quit()
-        quit()
 
       #status
       if cfg.status == "inGame":
@@ -29,6 +26,9 @@ def inputLoop():
 
         if event.key == pygame.K_LEFT:
           cfg.direction = 3
+
+        if event.key == pygame.K_ESCAPE:
+          cfg.status = "gameOverInit"
 
 
       #Homescreen
