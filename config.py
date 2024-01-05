@@ -15,6 +15,8 @@ colors = {
     "512_player": (237, 200, 80),
     "1024_player": (237, 197, 63),
     "2048_player": (237, 194, 46),
+    "4096_player": (128,0,128),
+    "8192_player": (75,0,130),
 
 
     "2_enemy": (218, 250, 220),
@@ -28,6 +30,8 @@ colors = {
     "512_enemy": (80, 148, 220),
     "1024_enemy": (43, 128, 217),
     "2048_enemy": (18, 121, 230),
+    "4096_enemy":(254,105,180),
+    "8192_enemy":(254,20,147),
 
     "-1_wall": (110, 109, 108),
     "-1_duplicate":(0,0,0),
@@ -104,8 +108,8 @@ best_level=19
 
 
 #---------------------------------------------------------
-tile_list = ["0_none", "2_player", "4_player", "8_player", "16_player", "32_player", "64_player", "128_player", "256_player", "512_player", "1024_player", "2048_player",
-                       "2_enemy", "4_enemy", "8_enemy", "16_enemy", "32_enemy", "64_enemy", "128_enemy", "256_enemy", "512_enemy", "1024_enemy", "2048_enemy",
+tile_list = ["0_none", "2_player", "4_player", "8_player", "16_player", "32_player", "64_player", "128_player", "256_player", "512_player", "1024_player", "2048_player", "4096_player", "8192_player",
+                       "2_enemy", "4_enemy", "8_enemy", "16_enemy", "32_enemy", "64_enemy", "128_enemy", "256_enemy", "512_enemy", "1024_enemy", "2048_enemy", "4096_enemy", "4096_enemy",
              "-1_wall", "-1_duplicate", "-1_halve", "-1_sieg-feld"]
 current_level=0
 
