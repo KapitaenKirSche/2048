@@ -783,7 +783,7 @@ level16 = {
     "size_in_between": 8,
     "gamemode": "maxTile",
 
-    "maxTile": 128,  # only, if gamemode == "maxTile"
+    "maxTile": 512,  # only, if gamemode == "maxTile"
     "tile_ziel":0, # only, if gamemode == "maxTileOnField
 
     "level_text": "Erreiche das 512 Tile. Achtung: Halbieren und viele Gegner!",
