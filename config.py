@@ -946,9 +946,9 @@ level20 = {
     "gamemode": "maxTileOnField",
 
     "maxTile": 0,  # only, if gamemode == "maxTile"
-    "tile_ziel":2048, # only, if gamemode == "maxTileOnField"
+    "tile_ziel":1024, # only, if gamemode == "maxTileOnField"
 
-    "level_text": "Lege ein (>=) 2048 Tile auf das Sieg-Feld. Achtung: Gegner!",
+    "level_text": "Lege ein (>=) 1024 Tile auf das Sieg-Feld. Achtung: Gegner!",
     "chance_enemy_spawn": 30,
     "chance_duplicate_spawn": 5,
     "chance_halve_spawn": 5,
