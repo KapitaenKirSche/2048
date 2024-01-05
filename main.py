@@ -66,6 +66,8 @@ def inputLoop():
 
               if area[1] == "Levelselect2":
                 cfg.status = "overworld2"
+              elif area[1] == "unlock_all":
+                cfg.best_level=99
               elif "Level" in area[1]:
                 cfg.status = str(area[1]).lower() + "Init"
 

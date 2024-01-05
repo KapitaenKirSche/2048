@@ -132,7 +132,7 @@ score = 0
 tilerect = pygame.Rect(size_in_between, size_in_between, size, size)
 #default status.
 status = "homeInit"
-best_level=19
+best_level=0
 
 
 #---------------------------------------------------------
@@ -210,8 +210,8 @@ clickpos_levelselect1 = [
     (pygame.Rect(11 * r_siz + 5, 9 * r_siz + 5, r_siz, r_siz), "Level18"),
     (pygame.Rect(13 * r_siz + 5, 10 * r_siz + 5, r_siz, r_siz), "Level19"),
     (pygame.Rect(13 * r_siz + 5, 7 * r_siz + 5, r_siz, r_siz), "Level20"),
-    (pygame.Rect(14 * r_siz + 3, 10 * r_siz + 4, r_siz,
-                 r_siz), "Levelselect2"),
+    (pygame.Rect(14 * r_siz + 3, 10 * r_siz + 4, r_siz, r_siz), "Levelselect2"),
+    (pygame.Rect(0 * r_siz + 3, 0 * r_siz + 4, r_siz, r_siz), "unlock_all")
 ]
 
 
