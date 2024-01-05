@@ -818,10 +818,10 @@ level17 = {
     "size_in_between": 7,
     "gamemode": "maxTile",
 
-    "maxTile": 2048,  # only, if gamemode == "maxTile"
+    "maxTile": 512,  # only, if gamemode == "maxTile"
     "tile_ziel":0, # only, if gamemode == "maxTileOnField
 
-    "level_text": "Erreiche das 2048 Tile.",
+    "level_text": "Erreiche das 512 Tile.",
     "chance_enemy_spawn": 40,
     "chance_duplicate_spawn": 3,
     "chance_halve_spawn": 7,
