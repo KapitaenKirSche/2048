@@ -289,10 +289,21 @@ def createRandom(board, numb=1, chance_enemy=0, chance_duplicate=0, chance_halve
   '''
   for _ in range(numb):
     nullen = []
+    blocked=[]
+    nullen_in_blocked=[]
+    if "blocked" in config.levels[config.current_level]:
+      blocked=copy.deepcopy(config.levels[config.current_level]["blocked"])
+
     for zeile in range(len(board)):
       for spalte in range(len(board[zeile])):
         if board[zeile][spalte]["tile_numb"] == 0:
-          nullen.append((zeile, spalte))
+          if (spalte, zeile) in blocked:
+            nullen_in_blocked.append((zeile,spalte))
+          else:
+            nullen.append((zeile, spalte))
+
+    if nullen==[]:
+      nullen=copy.deepcopy(nullen_in_blocked)
     rndm = random.randint(0, len(nullen) - 1)
 
     insert=copy.deepcopy(config.template_tile_dic)
