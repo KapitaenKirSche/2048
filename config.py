@@ -265,7 +265,7 @@ level03={
                                 "type"      : "none"},
                          (0,3):{"tile_numb" : 2,
                                 "fraction"  : "player",
-                                "type"      : "none"}
+                                "type"      : "none"},
                              },
     "stay_on_floor_tiles":{
 
@@ -277,7 +277,7 @@ level04={
     "size_in_between" : 9,
     "gamemode"        : "maxTile",
     "maxTile"         : 1024, #only, if gamemode == "maxTile
-    "level_text"      : "Erreiche das 1024 Tile.",
+    "level_text"      : "Erreiche das 1024 Tile. Achtung: Wand!",
     "chance_enemy_spawn": 0,
     "chance_duplicate_spawn": 0,
     "chance_halve_spawn": 0,
@@ -292,7 +292,11 @@ level04={
                               "type"      : "none"},
                      (1, 3): {"tile_numb": 2,
                               "fraction": "player",
-                              "type"      : "none"}
+                              "type"      : "none"},
+                     (0, 0): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "wall"}
+
                      },
     "stay_on_floor_tiles":{
 
@@ -305,8 +309,8 @@ level05={
     "size_in_between" : 8,
     "gamemode"        : "maxTile",
     "maxTile"         : 1024, #only, if gamemode == "maxTile"
-    "level_text"      : "Erreiche das 1024 Tile. Achtung: Gegner!",
-    "chance_enemy_spawn":30,
+    "level_text"      : "Erreiche das 1024 Tile. Achtung: Gegner",
+    "chance_enemy_spawn":35,
     "chance_duplicate_spawn": 0,
     "chance_halve_spawn": 0,
     "max_moves_per_move"    : 1, #-1 ist default -> bis zum Rand
@@ -323,7 +327,10 @@ level05={
                               "type"      : "none"},
                      (3, 3): {"tile_numb": 4,
                               "fraction": "enemy",
-                              "type"      : "none"}
+                              "type"      : "none"},
+                     (0, 0): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "wall"}
                      },
     "stay_on_floor_tiles":{
 
@@ -336,16 +343,16 @@ level06={
     "size"            : 80,
     "size_in_between" : 8,
     "gamemode"        : "maxTile",
-    "maxTile"         : 1024, #only, if gamemode == "maxTile"
-    "level_text"      : "Erreiche das 1024 Tile. Achtung: Wände!",
-    "chance_enemy_spawn":25,
-    "chance_duplicate_spawn":1,
-    "chance_halve_spawn":10,
+    "maxTile"         : 32, #only, if gamemode == "maxTile"
+    "level_text"      : "Erreiche das 32 Tile.",
+    "chance_enemy_spawn":3,
+    "chance_duplicate_spawn":0,
+    "chance_halve_spawn":0,
     "max_moves_per_move": 1, #-1 ist default -> bis zum Rand
-    "board"           : [[{}, {}, {}, {}, {}, {}],
-                         [{}, {}, {}, {}, {}, {}],
-                         [{}, {}, {}, {}, {}, {}],
-                         [{}, {}, {}, {}, {}, {}]
+    "board"           : [[{}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}]
                          ],
     "preset_tiles": {(4, 0): {"tile_numb": 4,
                               "fraction": "player",
@@ -353,27 +360,30 @@ level06={
                      (5, 2): {"tile_numb": 2,
                               "fraction": "player",
                               "type"      : "none"},
-                     (3, 1): {"tile_numb": 4,
-                              "fraction": "enemy",
-                              "type"      : "none"},
 
-                     (4, 2): {"tile_numb": -1,
+
+                     (1, 1): {"tile_numb": -1,
                               "fraction": "none",
                               "type":"wall"},
-                     (4, 3): {"tile_numb": -1,
+                     (1, 2): {"tile_numb": -1,
                               "fraction": "none",
                               "type": "wall"},
-                     (5, 3): {"tile_numb": -1,
+                     (1, 3): {"tile_numb": -1,
                               "fraction": "none",
                               "type": "wall"},
-                     (0,1): {"tile_numb": -1,
+
+                     (3, 0): {"tile_numb": -1,
                               "fraction": "none",
-                              "type": "duplicate"},
-                     (0, 0): {"tile_numb": -1,
+                              "type": "wall"},
+                     (3, 1): {"tile_numb": -1,
                               "fraction": "none",
-                              "type": "halve"}
+                              "type": "wall"},
+                     (3, 2): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "wall"},
                      },
     "stay_on_floor_tiles":{
+
 
     }
 }
@@ -382,14 +392,14 @@ level06={
 level07 = {
     "size": 80,
     "size_in_between": 8,
-    "gamemode": "maxTileOnField",
+    "gamemode": "maxTile",
 
-    "maxTile": 0,  # only, if gamemode == "maxTile"
-    "tile_ziel":8, # only, if gamemode == "maxTileOnField
+    "maxTile": 1024,  # only, if gamemode == "maxTile"
+    "tile_ziel":0, # only, if gamemode == "maxTileOnField
 
-    "level_text": "Erreiche das 1024 Tile. Achtung: Gegner!",
-    "chance_enemy_spawn": 30,
-    "chance_duplicate_spawn": 0,
+    "level_text": "Erreiche das 1024 Tile. Achtung: Viele Gegner, und Verdopplungen!",
+    "chance_enemy_spawn": 35,
+    "chance_duplicate_spawn": 3,
     "chance_halve_spawn": 0,
     "max_moves_per_move": 1,  # -1 ist default -> bis zum Rand
     "board": [[{}, {}, {}, {}, {}, {}],
@@ -405,14 +415,15 @@ level07 = {
                               "type": "none"},
                      (3, 3): {"tile_numb": 4,
                               "fraction": "enemy",
-                              "type": "none"}
+                              "type": "none"},
+
+                     (5,3): {"tile_numb":-1,
+                             "fraction": "none",
+                             "type":"duplicate"}
                      },
-    "stay_on_floor_tiles": {(5,0): {"tile_numb": -1,
-                                    "fraction": "none",
-                                    "type": "sieg-feld"}
+    "stay_on_floor_tiles": {
 
     }
-
 }
 
 levels={
@@ -422,7 +433,22 @@ levels={
     4 : level04,
     5 : level05,
     6 : level06,
-    7 : level07
+    7 : level07,
+    '''
+    8 : level08,
+    9 : level09,
+    10: level10,
+    11: level11,
+    12: level12,
+    13: level13,
+    14: level14,
+    15: level15,
+    16: level16,
+    17: level17,
+    18: level18,
+    19: level19,
+    20: level20
+    ''':6
 }
 
 

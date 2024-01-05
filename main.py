@@ -117,11 +117,8 @@ def logicLoop():
       if biggestTile(cfg.board) == cfg.maxWertTile:
         cfg.status = "siegInit"
     elif cfg.gamemode=="maxTileOnField":
-      lvl=cfg.levels[cfg.current_level]
-      if check_sieg_feld(cfg.ziel_feld_cods, cfg.board, cfg.max):
+      if check_sieg_feld(cfg.ziel_feld_cods, cfg.board, cfg.tile_ziel):
         cfg.status = "siegInit"
-
-
 
 
     if cfg.direction >= 0:  #Wenn Pfeiltaste gedrückt ist
@@ -131,9 +128,6 @@ def logicLoop():
         cfg.changed = True
 
     cfg.direction = -1
-
-
-
 
 
 def drawLoop():

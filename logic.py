@@ -352,8 +352,11 @@ def fillBoardWithDictionarys(board=config.board,aussnahmen={}):
 def countScore(board):
   for i in board:
     for j in i:
-      if j["tile_numb"] < 0:
-        config.score+=j["tile_numb"]*-2
+      if j["tile_numb"] < -1:
+        if j["fraction"] == "player":
+          config.score+=j["tile_numb"]*-2
+        elif j["fraction"] == "enemy":
+          config.score += j["tile_numb"] * 2
 
 
 #----------------------------------------------------------------------------------------------------------------------#
@@ -391,6 +394,13 @@ def initLevel(board):
   config.ymax = config.yextra_top + config.length * config.size + config.yextra + config.size_in_between * (
       config.length + 1)
 
+
+  stay_floor = config.levels[config.current_level]["stay_on_floor_tiles"]
+  for i in stay_floor:
+    x = i[0]
+    y = i[1]
+    if board[y][x]["tile_numb"] <= 0:
+      board[y][x] = copy.deepcopy(stay_floor[i])
 
   setup_surfaces_ui()
   config.score=0
