@@ -900,6 +900,202 @@ level18 = {
     }
 }
 
+level19 = {
+    "size": 80,
+    "size_in_between": 8,
+    "gamemode": "maxTileOnField",
+
+    "maxTile": 0,  # only, if gamemode == "maxTile"
+    "tile_ziel":1024, # only, if gamemode == "maxTileOnField"
+
+    "level_text": "Lege ein (>=) 1024 Tile auf das Sieg-Feld. Achtung: Gegner!",
+    "chance_enemy_spawn": 20,
+    "chance_duplicate_spawn": 3,
+    "chance_halve_spawn": 0,
+    "max_moves_per_move": 1,  # -1 ist default -> bis zum Rand
+    "board": [[{}, {}, {}, {}, {}, {}, {}, {}],
+              [{}, {}, {}, {}, {}, {}, {}, {}],
+              [{}, {}, {}, {}, {}, {}, {}, {}],
+              [{}, {}, {}, {}, {}, {}, {}, {}]
+              ],
+    "preset_tiles": {(2, 0): {"tile_numb": 4,
+                              "fraction": "player",
+                              "type": "none"},
+                     (5, 3): {"tile_numb": 2,
+                              "fraction": "player",
+                              "type": "none"},
+                     (7, 1): {"tile_numb": 4,
+                              "fraction": "enemy",
+                              "type": "none"},
+                     },
+    "stay_on_floor_tiles": {
+        (0,3): {"tile_numb":-1,
+                "fraction" : "none",
+                "type":"sieg-feld"}
+    }
+}
+
+
+level20 = {
+    "size": 60,
+    "size_in_between": 6,
+    "gamemode": "maxTileOnField",
+
+    "maxTile": 0,  # only, if gamemode == "maxTile"
+    "tile_ziel":2048, # only, if gamemode == "maxTileOnField"
+
+    "level_text": "Lege ein (>=) 2048 Tile auf das Sieg-Feld. Achtung: Gegner!",
+    "chance_enemy_spawn": 30,
+    "chance_duplicate_spawn": 5,
+    "chance_halve_spawn": 5,
+    "max_moves_per_move": 1,  # -1 ist default -> bis zum Rand
+    "board": [[{}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
+              [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
+              [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
+              [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
+              [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
+              [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
+              ],
+    "preset_tiles": {(0, 0): {"tile_numb": 4,
+                              "fraction": "player",
+                              "type": "none"},
+                     (0, 2): {"tile_numb": 4,
+                              "fraction": "enemy",
+                              "type": "none"},
+
+
+                     (9,1): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "duplicate"},
+
+                     (1,0): {"tile_numb":-1,
+                             "fraction" : "none",
+                             "type"     : "duplicate"},
+                     (2, 0): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "duplicate"},
+                     (3, 0): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "duplicate"},
+                     (4, 0): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "duplicate"},
+                     (5, 0): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "duplicate"},
+                     (6, 0): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "duplicate"},
+                     (7, 0): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "duplicate"},
+                     (8, 0): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "duplicate"},
+                     (9, 0): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "duplicate"},
+
+
+                     (1, 2): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "duplicate"},
+                     (2, 2): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "duplicate"},
+                     (3, 2): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "duplicate"},
+                     (4, 2): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "duplicate"},
+                     (5, 2): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "duplicate"},
+                     (6, 2): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "duplicate"},
+                     (7, 2): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "duplicate"},
+                     (8, 2): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "duplicate"},
+                     (9, 2): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "duplicate"},
+
+
+                     (9, 3): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "wall"},
+
+
+                     (1, 1): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "wall"},
+                     (2, 1): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "wall"},
+                     (3, 1): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "wall"},
+                     (4, 1): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "wall"},
+                     (5, 1): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "wall"},
+                     (6, 1): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "wall"},
+                     (7, 1): {"tile_numb": -1,
+                              "fraction": "none",
+                             "type": "wall"},
+                     (8, 1): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "wall"},
+                     (0, 1): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "wall"},
+
+
+                     (1, 4): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "wall"},
+                     (2, 4): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "wall"},
+                     (3, 4): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "wall"},
+                     (4, 4): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "wall"},
+                     (5, 4): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "wall"},
+                     (6, 4): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "wall"},
+                     (7, 4): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "wall"},
+                     (8, 4): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "wall"},
+                     (9, 4): {"tile_numb": -1,
+                              "fraction": "none",
+                              "type": "wall"},
+                     },
+
+    "stay_on_floor_tiles": {
+        (9, 5): {"tile_numb":-1,
+                "fraction" : "none",
+                "type":"sieg-feld"}
+    }
+}
+
 levels={
     1 : level01,
     2 : level02,
@@ -919,10 +1115,9 @@ levels={
     16: level16,
     17: level17,
     18: level18,
-    '''
     19: level19,
     20: level20
-    ''':6
+
 }
 
 
