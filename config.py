@@ -214,6 +214,21 @@ clickpos_levelselect1 = [
     (pygame.Rect(0 * r_siz + 3, 0 * r_siz + 4, r_siz, r_siz), "unlock_all")
 ]
 
+clickpos_levelselect2 =[
+    (pygame.Rect(1 * r_siz + 19, 4 * r_siz + 6, r_siz, r_siz), "Level21"),
+    (pygame.Rect(3 * r_siz + 19, 4 * r_siz + 6, r_siz, r_siz), "Level22"),
+    (pygame.Rect(5 * r_siz + 19, 4 * r_siz + 6, r_siz, r_siz), "Level23"),
+    (pygame.Rect(7 * r_siz + 19, 4 * r_siz + 6, r_siz, r_siz), "Level24"),
+    (pygame.Rect(9 * r_siz + 19, 4 * r_siz + 6, r_siz, r_siz), "Level25"),
+    (pygame.Rect(11 * r_siz + 19, 4 * r_siz + 6, r_siz, r_siz), "Level26"),
+    (pygame.Rect(13 * r_siz + 19, 4 * r_siz + 6, r_siz, r_siz), "Level27"),
+
+    (pygame.Rect(4 * r_siz + 19, 6 * r_siz + 6, r_siz, r_siz), "Level28"),
+    (pygame.Rect(10 * r_siz + 19, 6 * r_siz + 6, r_siz, r_siz), "Level29"),
+
+    (pygame.Rect(0 * r_siz + 19, 10 * r_siz + 6, r_siz, r_siz), "Levelselect1")
+]
+
 
 template_tile_dic={
     "tile_numb" : 0,
@@ -1131,6 +1146,284 @@ level20 = {
     }
 }
 
+
+level21={
+    "size"            : 140,
+    "size_in_between" : 15,
+    "gamemode"        : "maxTile",
+    "maxTile"         : 99999, #only, if gamemode == "maxTile
+    "level_text"      : "Erreiche einen möglichst hohen Score.",
+    "chance_enemy_spawn": 0,
+    "chance_duplicate_spawn": 0,
+    "chance_halve_spawn": 0,
+    "max_moves_per_move"    : -1, #-1 ist default -> bis zum Rand
+
+    "board"           : [[{}, {}, {}],
+                         [{}, {}, {}],
+                         [{}, {}, {}]
+                         ],
+    "preset_tiles"    : {(2,0):{"tile_numb" : 4,
+                                "fraction"  : "player",
+                                "type"      : "none"},
+                         (1,2):{"tile_numb" : 2,
+                                "fraction"  : "player",
+                                "type"      : "none"}
+                        },
+    "stay_on_floor_tiles":{
+
+    }
+}
+
+level22={
+    "size"            : 80,
+    "size_in_between" : 8,
+    "gamemode"        : "maxTile",
+    "maxTile"         : 99999, #only, if gamemode == "maxTile
+    "level_text"      : "Erreiche einen möglichst hohen Score.",
+    "chance_enemy_spawn": 0,
+    "chance_duplicate_spawn": 0,
+    "chance_halve_spawn": 0,
+    "max_moves_per_move"    : -1, #-1 ist default -> bis zum Rand
+
+    "board"           : [[{}, {}, {}, {}],
+                         [{}, {}, {}, {}],
+                         [{}, {}, {}, {}],
+                         [{}, {}, {}, {}]
+                         ],
+    "preset_tiles"    : {(2,0):{"tile_numb" : 4,
+                                "fraction"  : "player",
+                                "type"      : "none"},
+                         (1,2):{"tile_numb" : 2,
+                                "fraction"  : "player",
+                                "type"      : "none"}
+                        },
+    "stay_on_floor_tiles":{
+
+    }
+}
+
+
+level23={
+    "size"            : 78,
+    "size_in_between" : 7,
+    "gamemode"        : "maxTile",
+    "maxTile"         : 99999, #only, if gamemode == "maxTile
+    "level_text"      : "Erreiche einen möglichst hohen Score.",
+    "chance_enemy_spawn": 0,
+    "chance_duplicate_spawn": 0,
+    "chance_halve_spawn": 0,
+    "max_moves_per_move"    : -1, #-1 ist default -> bis zum Rand
+
+    "board"           : [[{}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}]
+                         ],
+    "preset_tiles"    : {(2,0):{"tile_numb" : 4,
+                                "fraction"  : "player",
+                                "type"      : "none"},
+                         (1,2):{"tile_numb" : 2,
+                                "fraction"  : "player",
+                                "type"      : "none"}
+                        },
+    "stay_on_floor_tiles":{
+
+    }
+}
+
+
+level24={
+    "size"            : 75,
+    "size_in_between" : 7,
+    "gamemode"        : "maxTile",
+    "maxTile"         : 99999, #only, if gamemode == "maxTile
+    "level_text"      : "Erreiche einen möglichst hohen Score.",
+    "chance_enemy_spawn": 0,
+    "chance_duplicate_spawn": 0,
+    "chance_halve_spawn": 0,
+    "max_moves_per_move"    : -1, #-1 ist default -> bis zum Rand
+
+    "board"           : [[{}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}]
+                         ],
+    "preset_tiles"    : {(2,0):{"tile_numb" : 4,
+                                "fraction"  : "player",
+                                "type"      : "none"},
+                         (1,2):{"tile_numb" : 2,
+                                "fraction"  : "player",
+                                "type"      : "none"}
+                        },
+    "stay_on_floor_tiles":{
+
+    }
+}
+
+
+
+level25={
+    "size"            : 70,
+    "size_in_between" : 7,
+    "gamemode"        : "maxTile",
+    "maxTile"         : 99999, #only, if gamemode == "maxTile
+    "level_text"      : "Erreiche einen möglichst hohen Score.",
+    "chance_enemy_spawn": 0,
+    "chance_duplicate_spawn": 0,
+    "chance_halve_spawn": 0,
+    "max_moves_per_move"    : -1, #-1 ist default -> bis zum Rand
+
+    "board"           : [[{}, {}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}, {}]
+                         ],
+    "preset_tiles"    : {(2,0):{"tile_numb" : 4,
+                                "fraction"  : "player",
+                                "type"      : "none"},
+                         (1,2):{"tile_numb" : 2,
+                                "fraction"  : "player",
+                                "type"      : "none"}
+                        },
+    "stay_on_floor_tiles":{
+
+    }
+}
+
+
+level26={
+    "size"            : 70,
+    "size_in_between" : 7,
+    "gamemode"        : "maxTile",
+    "maxTile"         : 99999, #only, if gamemode == "maxTile
+    "level_text"      : "Erreiche einen möglichst hohen Score.",
+    "chance_enemy_spawn": 0,
+    "chance_duplicate_spawn": 0,
+    "chance_halve_spawn": 0,
+    "max_moves_per_move"    : -1, #-1 ist default -> bis zum Rand
+
+    "board"           : [[{}, {}, {}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}, {}, {}]
+                         ],
+    "preset_tiles"    : {(2,0):{"tile_numb" : 4,
+                                "fraction"  : "player",
+                                "type"      : "none"},
+                         (1,2):{"tile_numb" : 2,
+                                "fraction"  : "player",
+                                "type"      : "none"}
+                        },
+    "stay_on_floor_tiles":{
+
+    }
+}
+
+
+
+level27={
+    "size"            : 60,
+    "size_in_between" : 5,
+    "gamemode"        : "maxTile",
+    "maxTile"         : 99999, #only, if gamemode == "maxTile
+    "level_text"      : "Erreiche einen möglichst hohen Score.",
+    "chance_enemy_spawn": 0,
+    "chance_duplicate_spawn": 0,
+    "chance_halve_spawn": 0,
+    "max_moves_per_move"    : -1, #-1 ist default -> bis zum Rand
+
+    "board"           : [[{}, {}, {}, {}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}, {}, {}, {}]
+                         ],
+    "preset_tiles"    : {(2,0):{"tile_numb" : 4,
+                                "fraction"  : "player",
+                                "type"      : "none"},
+                         (1,2):{"tile_numb" : 2,
+                                "fraction"  : "player",
+                                "type"      : "none"}
+                        },
+    "stay_on_floor_tiles":{
+
+    }
+}
+
+
+
+level28={
+    "size"            : 140,
+    "size_in_between" : 15,
+    "gamemode"        : "maxTile",
+    "maxTile"         : 99999, #only, if gamemode == "maxTile
+    "level_text"      : "Erreiche einen möglichst hohen Score.",
+    "chance_enemy_spawn": 0,
+    "chance_duplicate_spawn": 0,
+    "chance_halve_spawn": 0,
+    "max_moves_per_move"    : -1, #-1 ist default -> bis zum Rand
+
+    "board"           : [[{}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}]
+                         ],
+    "preset_tiles"    : {(2,0):{"tile_numb" : 4,
+                                "fraction"  : "player",
+                                "type"      : "none"},
+                         (1,2):{"tile_numb" : 2,
+                                "fraction"  : "player",
+                                "type"      : "none"}
+                        },
+    "stay_on_floor_tiles":{
+
+    }
+}
+
+
+level29={
+    "size"            : 150,
+    "size_in_between" : 15,
+    "gamemode"        : "maxTile",
+    "maxTile"         : 99999, #only, if gamemode == "maxTile
+    "level_text"      : "Erreiche einen möglichst hohen Score.",
+    "chance_enemy_spawn": 0,
+    "chance_duplicate_spawn": 0,
+    "chance_halve_spawn": 0,
+    "max_moves_per_move"    : -1, #-1 ist default -> bis zum Rand
+
+    "board"           : [[{}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}]
+                         ],
+    "preset_tiles"    : {(2,0):{"tile_numb" : 4,
+                                "fraction"  : "player",
+                                "type"      : "none"},
+                         (1,2):{"tile_numb" : 2,
+                                "fraction"  : "player",
+                                "type"      : "none"}
+                        },
+    "stay_on_floor_tiles":{
+
+    }
+}
 levels={
     1 : level01,
     2 : level02,
@@ -1151,7 +1444,15 @@ levels={
     17: level17,
     18: level18,
     19: level19,
-    20: level20
+    20: level20,
+
+    21: level21,
+    22: level22,
+    23: level23,
+    24: level24,
+    25: level25,
+    26: level26,
+    27: level27
 
 }
 

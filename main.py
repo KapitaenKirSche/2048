@@ -71,6 +71,15 @@ def inputLoop():
               elif "Level" in area[1]:
                 cfg.status = str(area[1]).lower() + "Init"
 
+        elif cfg.status == "overworld2":
+          for area in cfg.clickpos_levelselect2:
+            if area[0].collidepoint(event.pos):
+
+              if area[1] == "Levelselect1":
+                cfg.status = "overworld1"
+              elif "Level" in area[1]:
+                cfg.status = str(area[1]).lower() + "Init"
+
 
 def logicLoop():
   '''
@@ -95,7 +104,7 @@ def logicLoop():
   elif "level" in cfg.status:
     if "Init" in cfg.status:
       cfg.current_level=int(cfg.status[5:7])
-      if cfg.current_level <= cfg.best_level+1:
+      if cfg.current_level <= cfg.best_level+1 or cfg.current_level >20:
         initLevel(cfg.levels[cfg.current_level]["board"])
       else:
         if cfg.current_level <= 20:
@@ -188,7 +197,8 @@ def drawLoop():
     else:
       if timer.wait():
         window = pygame.display.set_mode((cfg.siegWidth, cfg.siegHeight))
-        cfg.best_level = max(cfg.best_level, cfg.current_level)
+        if cfg.current_level <=20:
+          cfg.best_level = max(cfg.best_level, cfg.current_level)
         cfg.current_level = 0
         cfg.status="sieg"
         cfg.timer_set = False
