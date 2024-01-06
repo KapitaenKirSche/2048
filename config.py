@@ -1367,8 +1367,8 @@ level27={
 
 
 level28={
-    "size"            : 140,
-    "size_in_between" : 15,
+    "size"            : 80,
+    "size_in_between" : 8,
     "gamemode"        : "maxTile",
     "maxTile"         : 99999, #only, if gamemode == "maxTile
     "level_text"      : "Erreiche einen möglichst hohen Score.",
@@ -1377,11 +1377,10 @@ level28={
     "chance_halve_spawn": 0,
     "max_moves_per_move"    : -1, #-1 ist default -> bis zum Rand
 
-    "board"           : [[{}, {}, {}, {}, {}],
-                         [{}, {}, {}, {}, {}],
-                         [{}, {}, {}, {}, {}],
-                         [{}, {}, {}, {}, {}],
-                         [{}, {}, {}, {}, {}]
+    "board"           : [[{}, {}, {}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}, {}, {}]
                          ],
     "preset_tiles"    : {(2,0):{"tile_numb" : 4,
                                 "fraction"  : "player",
@@ -1397,8 +1396,8 @@ level28={
 
 
 level29={
-    "size"            : 150,
-    "size_in_between" : 15,
+    "size"            : 80,
+    "size_in_between" : 8,
     "gamemode"        : "maxTile",
     "maxTile"         : 99999, #only, if gamemode == "maxTile
     "level_text"      : "Erreiche einen möglichst hohen Score.",
@@ -1407,11 +1406,11 @@ level29={
     "chance_halve_spawn": 0,
     "max_moves_per_move"    : -1, #-1 ist default -> bis zum Rand
 
-    "board"           : [[{}, {}, {}, {}, {}],
-                         [{}, {}, {}, {}, {}],
-                         [{}, {}, {}, {}, {}],
-                         [{}, {}, {}, {}, {}],
-                         [{}, {}, {}, {}, {}]
+    "board"           : [[{}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
+                         [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}]
                          ],
     "preset_tiles"    : {(2,0):{"tile_numb" : 4,
                                 "fraction"  : "player",
@@ -1452,7 +1451,10 @@ levels={
     24: level24,
     25: level25,
     26: level26,
-    27: level27
+    27: level27,
+
+    28: level28,
+    29: level29
 
 }
 
