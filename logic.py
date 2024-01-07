@@ -93,6 +93,7 @@ def up(board, maxim=-1):
     spaltencount = 0
 
     for spalte in zeile:
+
       maxim_ = maxim
       a_ = zeilencount
       if zeilencount == 0 or maxim == 0:
